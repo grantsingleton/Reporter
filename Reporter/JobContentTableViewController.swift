@@ -1,0 +1,171 @@
+//
+//  JobContentTableViewController.swift
+//  Reporter
+//
+//  Created by Grant Singleton on 11/24/19.
+//  Copyright © 2019 Grant Singleton. All rights reserved.
+//
+
+import UIKit
+import os.log
+
+class JobContentTableViewController: UITableViewController, UINavigationControllerDelegate {
+    
+    //MARK: Properties
+    // The job passed in when the user selects a job
+    var job: Job?
+    var content: [JobContentItem] = []
+    var callback: ((_ job: Job) -> Void)?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if let job = job {
+            navigationItem.title = job.name
+            content = job.content
+        }
+        
+    }
+
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // lets use one section for now
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // need as many rows as content items
+        return content.count
+    }
+
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "JobContentTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? JobContentTableViewCell else {
+            fatalError("The dequeued cell is not an instance of JobContentTableViewCell")
+        }
+
+        let contentItem = content[indexPath.row]
+        
+        cell.shortDescriptionLabel.text = contentItem.shortDescription
+        cell.contentPhoto.image = contentItem.photo
+        cell.severityIconPhoto.image = contentItem.severityIconPhoto
+
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90.0
+    }
+    
+
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+
+
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            content.remove(at: indexPath.row)
+            // update the job and pass it back to JobTableViewController to be saved
+            self.job?.content = content
+            callback?(self.job!)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "AddContent":
+            os_log("Adding new content.", log: OSLog.default, type: .debug)
+            
+        case "ShowContentDetail":
+            guard let contentDetailViewController = segue.destination as? JobContentViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedContentCell = sender as? JobContentTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedContentCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            // pass selected content to the content view controller
+            let selectedContent = content[indexPath.row]
+            contentDetailViewController.content = selectedContent
+            
+        default:
+            fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")
+        }
+    }
+
+    
+    //MARK: Actions
+    @IBAction func unwindToJobContentList(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? JobContentViewController, let contentItem = sourceViewController.content {
+            
+            // update existing item if it was an edit
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                content[selectedIndexPath.row] = contentItem
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else {
+                // Add a new job content item
+                let newIndexPath = IndexPath(row: content.count, section: 0)
+                content.append(contentItem)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+            // Pass the job back to the jobtableviewcontroller and save it there
+            self.job?.content = content
+            callback?(self.job!)
+            
+        }
+    }
+
+}
