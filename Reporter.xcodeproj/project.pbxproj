@@ -20,6 +20,8 @@
 		D91C212E238A5E31005463E1 /* JobContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C212D238A5E31005463E1 /* JobContentItem.swift */; };
 		D91C2130238A6D35005463E1 /* JobContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C212F238A6D35005463E1 /* JobContentTableViewCell.swift */; };
 		D92BD30B238B73D500DC6D77 /* JobContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */; };
+		D9466466238F7DEA0004C062 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9466465238F7DEA0004C062 /* ShapeView.swift */; };
+		D9466468238F7F480004C062 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9466467238F7F480004C062 /* PhotoEditingViewController.swift */; };
 		D9E3C004238E3D6F00D54D1D /* LongDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */; };
 		D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */; };
 /* End PBXBuildFile section */
@@ -34,8 +36,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D946645B238F6BAD0004C062 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		D91C2102238A1E15005463E1 /* Reporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91C2105238A1E15005463E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D91C2107238A1E15005463E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D91C2109238A1E15005463E1 /* JobTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +57,6 @@
 		D91C210E238A1E17005463E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D91C2111238A1E17005463E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D91C2113238A1E17005463E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D91C2118238A1E17005463E1 /* ReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91C211C238A1E17005463E1 /* ReporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReporterTests.swift; sourceTree = "<group>"; };
 		D91C211E238A1E17005463E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D91C2127238A2416005463E1 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
@@ -52,6 +65,10 @@
 		D91C212D238A5E31005463E1 /* JobContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobContentItem.swift; sourceTree = "<group>"; };
 		D91C212F238A6D35005463E1 /* JobContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobContentTableViewCell.swift; sourceTree = "<group>"; };
 		D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobContentTableViewController.swift; sourceTree = "<group>"; };
+		D946645F238F707C0004C062 /* Reporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9466464238F7DBC0004C062 /* ReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9466465238F7DEA0004C062 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
+		D9466467238F7F480004C062 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongDescriptionViewController.swift; sourceTree = "<group>"; };
 		D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAdditions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,17 +96,9 @@
 			children = (
 				D91C2104238A1E15005463E1 /* Reporter */,
 				D91C211B238A1E17005463E1 /* ReporterTests */,
-				D91C2103238A1E15005463E1 /* Products */,
+				D946645F238F707C0004C062 /* Reporter.app */,
+				D9466464238F7DBC0004C062 /* ReporterTests.xctest */,
 			);
-			sourceTree = "<group>";
-		};
-		D91C2103238A1E15005463E1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D91C2102238A1E15005463E1 /* Reporter.app */,
-				D91C2118238A1E17005463E1 /* ReporterTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		D91C2104238A1E15005463E1 /* Reporter */ = {
@@ -102,9 +111,11 @@
 				D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */,
 				D91C212F238A6D35005463E1 /* JobContentTableViewCell.swift */,
 				D91C212B238A5931005463E1 /* JobContentViewController.swift */,
+				D9466467238F7F480004C062 /* PhotoEditingViewController.swift */,
 				D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */,
 				D91C212D238A5E31005463E1 /* JobContentItem.swift */,
 				D91C2129238A24D8005463E1 /* Job.swift */,
+				D9466465238F7DEA0004C062 /* ShapeView.swift */,
 				D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */,
 				D91C210B238A1E15005463E1 /* Main.storyboard */,
 				D91C210E238A1E17005463E1 /* Assets.xcassets */,
@@ -133,6 +144,7 @@
 				D91C20FE238A1E15005463E1 /* Sources */,
 				D91C20FF238A1E15005463E1 /* Frameworks */,
 				D91C2100238A1E15005463E1 /* Resources */,
+				D946645B238F6BAD0004C062 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -140,7 +152,7 @@
 			);
 			name = Reporter;
 			productName = Reporter;
-			productReference = D91C2102238A1E15005463E1 /* Reporter.app */;
+			productReference = D946645F238F707C0004C062 /* Reporter.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D91C2117238A1E17005463E1 /* ReporterTests */ = {
@@ -158,7 +170,7 @@
 			);
 			name = ReporterTests;
 			productName = ReporterTests;
-			productReference = D91C2118238A1E17005463E1 /* ReporterTests.xctest */;
+			productReference = D9466464238F7DBC0004C062 /* ReporterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -189,7 +201,7 @@
 				Base,
 			);
 			mainGroup = D91C20F9238A1E15005463E1;
-			productRefGroup = D91C2103238A1E15005463E1 /* Products */;
+			productRefGroup = D91C20F9238A1E15005463E1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -230,11 +242,13 @@
 				D91C210A238A1E15005463E1 /* JobTableViewController.swift in Sources */,
 				D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */,
 				D92BD30B238B73D500DC6D77 /* JobContentTableViewController.swift in Sources */,
+				D9466466238F7DEA0004C062 /* ShapeView.swift in Sources */,
 				D91C212E238A5E31005463E1 /* JobContentItem.swift in Sources */,
 				D91C2106238A1E15005463E1 /* AppDelegate.swift in Sources */,
 				D91C2108238A1E15005463E1 /* SceneDelegate.swift in Sources */,
 				D91C212C238A5931005463E1 /* JobContentViewController.swift in Sources */,
 				D91C212A238A24D8005463E1 /* Job.swift in Sources */,
+				D9466468238F7F480004C062 /* PhotoEditingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +411,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 53DUN5SP9N;
 				INFOPLIST_FILE = Reporter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,6 +430,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 53DUN5SP9N;
 				INFOPLIST_FILE = Reporter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

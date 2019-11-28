@@ -1,0 +1,107 @@
+//
+//  PhotoEditingViewController.swift
+//  Reporter
+//
+//  Created by Grant Singleton on 11/27/19.
+//  Copyright © 2019 Grant Singleton. All rights reserved.
+//
+
+import UIKit
+import os.log
+
+class PhotoEditingViewController: UIViewController, UINavigationControllerDelegate {
+    
+    //MARK: Properties
+    @IBOutlet weak var photoView: UIImageView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var editingSelectionControl: UISegmentedControl!
+    
+    // passed to this view from the job content view
+    var photo: UIImage?
+    
+    // editor selector enum
+    enum SelectedEdit {
+        case CIRCLE, ARROW, ERASER, NONE
+    }
+    
+    var editTypeSelected: SelectedEdit?
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // initialize selected edit to none
+        editTypeSelected = SelectedEdit.NONE
+        
+        // Do any additional setup after loading the view.
+        if let photo = photo {
+            photoView.image = photo
+        }
+    }
+    
+
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        guard let button = sender as? UIBarButtonItem, button == saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        // The following is for saving the image with the markups as a new image
+        // It renders the entire photoView and its subviews as an image
+        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
+        let editedImage = renderer.image { ctx in
+            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
+        }
+        
+        photo = editedImage
+    }
+
+    
+    //MARK: Actions
+    @IBAction func didTap(_ sender: UITapGestureRecognizer) {
+        
+        switch editTypeSelected {
+        case .CIRCLE:
+            
+            let tapPoint = sender.location(in: self.photoView)
+            
+            let shapeView = ShapeView(origin: tapPoint)
+            
+            self.photoView.addSubview(shapeView)
+            
+        case .ARROW:
+            print("Create an arrow")
+        case .ERASER:
+            print("ERASE")
+        case .NONE:
+            print("Do nothing, no edit selected")
+        default:
+            print("Do nothing")
+        }
+    }
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func editTypeChanged(_ sender: UISegmentedControl) {
+        
+        let selected = sender.selectedSegmentIndex
+        switch selected {
+        case 0:
+            editTypeSelected = SelectedEdit.CIRCLE
+        case 1:
+            editTypeSelected = SelectedEdit.ARROW
+        case 2:
+            editTypeSelected = SelectedEdit.ERASER
+        default:
+            print("An option not on the segment control was selected")
+        }
+    }
+}

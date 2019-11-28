@@ -68,7 +68,15 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
             longDescriptionViewController.longDescription = longDescriptionText
         
         case "EditPhoto":
-            os_log("Editing Photo", log: OSLog.default, type: .debug)
+            guard let navigation = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let photoEditingViewController = navigation.topViewController as? PhotoEditingViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            let photoToEdit = self.content?.photo
+            photoEditingViewController.photo = photoToEdit
         
         default:
             guard let button = sender as? UIBarButtonItem, button == saveButton else {
@@ -214,6 +222,10 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let sourceViewController = sender.source as? LongDescriptionViewController, let longDescriptionText = sourceViewController.longDescription {
             longDescription = longDescriptionText
+        }
+        else if let sourceViewController = sender.source as? PhotoEditingViewController, let editedPhoto = sourceViewController.photo {
+            content?.photo = editedPhoto
+            photoImageView.image = editedPhoto
         }
     }
     
