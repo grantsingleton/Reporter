@@ -236,17 +236,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-gq-M93">
+                                <rect key="frame" x="0.0" y="603" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="circle" catalog="system" id="Y62-db-LZB">
+                                        <connections>
+                                            <action selector="addCircle:" destination="awn-mq-y9e" id="IYr-ou-vu2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="arrow.up.right" catalog="system" id="ZHG-YN-AER">
+                                        <connections>
+                                            <action selector="addArrow:" destination="awn-mq-y9e" id="IUK-uA-UGf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="clear" catalog="system" id="zWT-97-X0p">
+                                        <connections>
+                                            <action selector="deleteItem:" destination="awn-mq-y9e" id="V9b-hT-81A"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ge9-Hp-qSU">
-                                <rect key="frame" x="0.0" y="56" width="375" height="442.5"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="375"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A little description about editing maybe..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hq-1f-qfu">
-                                        <rect key="frame" x="31" y="0.0" width="313" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="RhI-Q6-bbe">
-                                        <rect key="frame" x="0.0" y="28.5" width="375" height="375"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RhI-Q6-bbe" secondAttribute="height" multiplier="1:1" id="tcf-Gu-Htm"/>
@@ -255,17 +270,6 @@
                                             <outletCollection property="gestureRecognizers" destination="dSb-gt-7Az" appends="YES" id="dke-bd-cBm"/>
                                         </connections>
                                     </imageView>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C6E-Wz-26l">
-                                        <rect key="frame" x="129.5" y="411.5" width="116" height="32"/>
-                                        <segments>
-                                            <segment title="" image="circle" catalog="system"/>
-                                            <segment title="" image="arrow.up.right" catalog="system"/>
-                                            <segment title="" image="trash" catalog="system"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="editTypeChanged:" destination="awn-mq-y9e" eventType="valueChanged" id="Imq-4m-fFF"/>
-                                        </connections>
-                                    </segmentedControl>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -290,7 +294,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editingSelectionControl" destination="C6E-Wz-26l" id="cS0-sy-hFI"/>
                         <outlet property="photoView" destination="RhI-Q6-bbe" id="loS-fT-Q7u"/>
                         <outlet property="saveButton" destination="UrY-Zm-mzd" id="Dxm-6G-RDM"/>
                     </connections>
@@ -443,8 +446,8 @@
     <resources>
         <image name="arrow.up.right" catalog="system" width="64" height="54"/>
         <image name="circle" catalog="system" width="64" height="60"/>
+        <image name="clear" catalog="system" width="64" height="56"/>
         <image name="defaultPhoto" width="540" height="540"/>
-        <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8br-sw-ujN"/>

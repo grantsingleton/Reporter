@@ -14,7 +14,6 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     //MARK: Properties
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var editingSelectionControl: UISegmentedControl!
     
     // passed to this view from the job content view
     var photo: UIImage?
@@ -32,6 +31,9 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         // initialize selected edit to none
         editTypeSelected = SelectedEdit.NONE
+        
+        // set background color
+        self.view.backgroundColor = UIColor.black
         
         // Do any additional setup after loading the view.
         if let photo = photo {
@@ -90,18 +92,16 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func editTypeChanged(_ sender: UISegmentedControl) {
-        
-        let selected = sender.selectedSegmentIndex
-        switch selected {
-        case 0:
-            editTypeSelected = SelectedEdit.CIRCLE
-        case 1:
-            editTypeSelected = SelectedEdit.ARROW
-        case 2:
-            editTypeSelected = SelectedEdit.ERASER
-        default:
-            print("An option not on the segment control was selected")
-        }
+    @IBAction func addCircle(_ sender: UIBarButtonItem) {
+        editTypeSelected = SelectedEdit.CIRCLE
     }
+    
+    @IBAction func addArrow(_ sender: UIBarButtonItem) {
+        editTypeSelected = SelectedEdit.ARROW
+    }
+    
+    @IBAction func deleteItem(_ sender: UIBarButtonItem) {
+        editTypeSelected = SelectedEdit.ERASER
+    }
+
 }
