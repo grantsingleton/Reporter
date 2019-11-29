@@ -68,19 +68,21 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     //MARK: Actions
     @IBAction func didTap(_ sender: UITapGestureRecognizer) {
         
+        let tapPoint = sender.location(in: self.photoView)
+        
         switch editTypeSelected {
         case .CIRCLE:
             
-            let tapPoint = sender.location(in: self.photoView)
-            
-            let shapeView = ShapeView(origin: tapPoint)
-            
-            self.photoView.addSubview(shapeView)
+            drawCircle(tapPoint: tapPoint)
             
         case .ARROW:
-            print("Create an arrow")
+            
+            drawArrow(tapPoint: tapPoint)
+            
         case .ERASER:
-            print("ERASE")
+            
+            deleteAtLocation(tapPoint: tapPoint)
+            
         case .NONE:
             print("Do nothing, no edit selected")
         default:
@@ -102,6 +104,22 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     
     @IBAction func deleteItem(_ sender: UIBarButtonItem) {
         editTypeSelected = SelectedEdit.ERASER
+    }
+    
+    //Mark: Private Methods
+    private func drawCircle(tapPoint: CGPoint) {
+        
+        let shapeView = ShapeView(origin: tapPoint)
+        
+        self.photoView.addSubview(shapeView)
+    }
+    
+    private func drawArrow(tapPoint: CGPoint) {
+        print("Create an arrow")
+    }
+    
+    private func deleteAtLocation(tapPoint: CGPoint) {
+        print("ERASE")
     }
 
 }
