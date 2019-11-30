@@ -22,6 +22,8 @@
 		D92BD30B238B73D500DC6D77 /* JobContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */; };
 		D9466466238F7DEA0004C062 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9466465238F7DEA0004C062 /* ShapeView.swift */; };
 		D9466468238F7F480004C062 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9466467238F7F480004C062 /* PhotoEditingViewController.swift */; };
+		D94B09C5239162BE0070021C /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94B09C4239162BE0070021C /* Circle.swift */; };
+		D94B09C7239162C90070021C /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94B09C6239162C90070021C /* Arrow.swift */; };
 		D9E3C004238E3D6F00D54D1D /* LongDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */; };
 		D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,8 @@
 		D9466464238F7DBC0004C062 /* ReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9466465238F7DEA0004C062 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		D9466467238F7F480004C062 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		D94B09C4239162BE0070021C /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		D94B09C6239162C90070021C /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongDescriptionViewController.swift; sourceTree = "<group>"; };
 		D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAdditions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,8 +119,10 @@
 				D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */,
 				D91C212D238A5E31005463E1 /* JobContentItem.swift */,
 				D91C2129238A24D8005463E1 /* Job.swift */,
-				D9466465238F7DEA0004C062 /* ShapeView.swift */,
 				D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */,
+				D9466465238F7DEA0004C062 /* ShapeView.swift */,
+				D94B09C4239162BE0070021C /* Circle.swift */,
+				D94B09C6239162C90070021C /* Arrow.swift */,
 				D91C210B238A1E15005463E1 /* Main.storyboard */,
 				D91C210E238A1E17005463E1 /* Assets.xcassets */,
 				D91C2110238A1E17005463E1 /* LaunchScreen.storyboard */,
@@ -243,6 +249,8 @@
 				D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */,
 				D92BD30B238B73D500DC6D77 /* JobContentTableViewController.swift in Sources */,
 				D9466466238F7DEA0004C062 /* ShapeView.swift in Sources */,
+				D94B09C5239162BE0070021C /* Circle.swift in Sources */,
+				D94B09C7239162C90070021C /* Arrow.swift in Sources */,
 				D91C212E238A5E31005463E1 /* JobContentItem.swift in Sources */,
 				D91C2106238A1E15005463E1 /* AppDelegate.swift in Sources */,
 				D91C2108238A1E15005463E1 /* SceneDelegate.swift in Sources */,

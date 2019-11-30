@@ -11,7 +11,7 @@ import UIKit
 class ShapeView: UIView {
     
     //MARK: Properties
-    let size: CGFloat = 150.0
+    let size: CGFloat = 200.0
     let lineWidth: CGFloat = 3
     
     init(origin: CGPoint) {
@@ -31,17 +31,7 @@ class ShapeView: UIView {
     }
     
     override func draw(_ rectangle: CGRect) {
-        
-        let insetRectangle = rectangle.insetBy(dx: lineWidth / 2, dy: lineWidth / 2)
-        
-        let path = UIBezierPath(ovalIn: insetRectangle)
-        
-        UIColor.clear.setFill()
-        path.fill()
-        
-        path.lineWidth = self.lineWidth
-        UIColor.red.setStroke()
-        path.stroke()
+        //Overidden in Subclasses
     }
     
     //MARK: Actions
@@ -53,6 +43,9 @@ class ShapeView: UIView {
         
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: Selector(("didPinch:")))
         addGestureRecognizer(pinchGestureRecognizer)
+        
+        let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: Selector(("didRotate:")))
+        addGestureRecognizer(rotationGestureRecognizer)
     }
     
     
@@ -60,7 +53,9 @@ class ShapeView: UIView {
         
         self.superview!.bringSubviewToFront(self)
         
-        let translation = sender.translation(in: self)
+        var translation = sender.translation(in: self)
+                       
+        translation = translation.applying(self.transform)
         
         self.center.x += translation.x
         self.center.y += translation.y
@@ -78,6 +73,17 @@ class ShapeView: UIView {
         self.transform = self.transform.scaledBy(x: scale, y: scale)
         
         sender.scale = 1.0
+    }
+    
+    @IBAction func didRotate(_ sender: UIRotationGestureRecognizer) {
+
+        self.superview!.bringSubviewToFront(self)
+
+        let rotation = sender.rotation
+
+        self.transform = self.transform.rotated(by: rotation)
+
+        sender.rotation = 0.0
     }
     
 }

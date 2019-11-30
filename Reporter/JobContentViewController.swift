@@ -75,7 +75,7 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            let photoToEdit = self.content?.photo
+            let photoToEdit = photoImageView.image
             photoEditingViewController.photo = photoToEdit
         
         default:
@@ -217,7 +217,6 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     // This function receieves the changes from the long description editor and the image editor
-    // I still need to add the condition for the image editor
     @IBAction func unwindToJobContentView(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? LongDescriptionViewController, let longDescriptionText = sourceViewController.longDescription {

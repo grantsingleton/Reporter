@@ -81,10 +81,12 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
             
         case .ERASER:
             
-            deleteAtLocation(tapPoint: tapPoint)
+            print("handled by shapeviews own tapGR action")
             
         case .NONE:
+            
             print("Do nothing, no edit selected")
+            
         default:
             print("Do nothing")
         }
@@ -109,17 +111,29 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     //Mark: Private Methods
     private func drawCircle(tapPoint: CGPoint) {
         
-        let shapeView = ShapeView(origin: tapPoint)
+        let shapeView = Circle(origin: tapPoint)
         
         self.photoView.addSubview(shapeView)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector(("didTapShape:")))
+        shapeView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func drawArrow(tapPoint: CGPoint) {
-        print("Create an arrow")
+        
+        let shapeView = Arrow(origin: tapPoint)
+        
+        self.photoView.addSubview(shapeView)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector(("didTapShape:")))
+        shapeView.addGestureRecognizer(tapGestureRecognizer)
     }
+
     
-    private func deleteAtLocation(tapPoint: CGPoint) {
-        print("ERASE")
+    @IBAction func didTapShape(_ sender: UIPinchGestureRecognizer) {
+        if editTypeSelected == SelectedEdit.ERASER {
+            sender.view?.removeFromSuperview()
+        }
     }
 
 }
