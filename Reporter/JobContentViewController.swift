@@ -36,6 +36,14 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
             severity = content.status
             setSeveritySelector(severity: content.status)
             longDescription = content.longDescription
+            
+            if longDescription != nil {
+                content.containsLongDescription = true
+            }
+            
+            if content.photo != UIImage(named: "defaultPhoto") {
+                content.containsPhoto = true
+            }
         }
         
         updateSaveButtonState()
@@ -120,6 +128,11 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
         
         photoImageView.image = selectedImage
+        self.content?.photo = selectedImage
+        
+        if self.content?.photo != UIImage(named: "defaultPhoto") {
+            self.content?.containsPhoto = true
+        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -221,10 +234,18 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let sourceViewController = sender.source as? LongDescriptionViewController, let longDescriptionText = sourceViewController.longDescription {
             longDescription = longDescriptionText
+            
+            if longDescription != nil {
+                self.content?.containsLongDescription = true
+            }
         }
         else if let sourceViewController = sender.source as? PhotoEditingViewController, let editedPhoto = sourceViewController.photo {
             content?.photo = editedPhoto
             photoImageView.image = editedPhoto
+            
+            if content?.photo != UIImage(named: "defaultPhoto") {
+                self.content?.containsPhoto = true
+            }
         }
     }
     

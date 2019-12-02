@@ -46,6 +46,8 @@ class JobContentItem: NSObject, NSCoding {
     var status: Severity
     var severityIconPhoto: UIImage?
     var longDescription: String
+    var containsPhoto: Bool
+    var containsLongDescription: Bool
     
     //MARK: Types
     struct PropertyKey {
@@ -58,7 +60,7 @@ class JobContentItem: NSObject, NSCoding {
     
     
     //MARK: Initialization
-    init?(shortDescription: String, photo: UIImage?, status: Severity?, severityIconPhoto: UIImage?, longDescription: String?) {
+    init?(shortDescription: String, photo: UIImage?, status: Severity?, severityIconPhoto: UIImage?, longDescription: String?, containsPhoto: Bool = false, containsLongDescription: Bool = false) {
         
         if shortDescription.isEmpty {
             return nil
@@ -68,6 +70,8 @@ class JobContentItem: NSObject, NSCoding {
         self.photo = photo
         self.status = status ?? Severity.GREEN
         self.longDescription = longDescription ?? ""
+        self.containsPhoto = containsPhoto
+        self.containsLongDescription = containsLongDescription
         
         if status == Severity.GREEN {
             self.severityIconPhoto = UIImage(named: "greenIcon")
@@ -77,5 +81,12 @@ class JobContentItem: NSObject, NSCoding {
             self.severityIconPhoto = UIImage(named: "redIcon")
         }
        
+        if longDescription != nil {
+            self.containsLongDescription = true
+        }
+        
+        if photo != UIImage(named: "defaultPhoto") {
+            self.containsPhoto = true
+        }
     }
 }
