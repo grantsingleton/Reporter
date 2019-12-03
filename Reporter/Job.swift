@@ -36,6 +36,8 @@ class Job: NSObject, NSCoding {
     var name: String
     // list of content
     var content: [JobContentItem]
+    var isWeatherLoaded: Bool
+    var weather: WeatherData?
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -56,6 +58,7 @@ class Job: NSObject, NSCoding {
         
         self.name = name
         self.content = content ?? [JobContentItem]()
+        self.isWeatherLoaded = false
     }
     
     

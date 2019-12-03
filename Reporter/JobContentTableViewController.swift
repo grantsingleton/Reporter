@@ -9,14 +9,18 @@
 import UIKit
 import os.log
 import MessageUI
+import CoreLocation
 
-class JobContentTableViewController: UITableViewController, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate {
+class JobContentTableViewController: UITableViewController, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, CLLocationManagerDelegate {
     
     //MARK: Properties
     // The job passed in when the user selects a job
     var job: Job?
     var content: [JobContentItem] = []
     var callback: ((_ job: Job) -> Void)?
+    let locationManager = CLLocationManager()
+    var deviceLocation: CLLocationCoordinate2D?
+    var weatherData: WeatherData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,18 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         if let job = job {
             navigationItem.title = job.name
             content = job.content
+        }
+        
+        // Ask for Authorization from the User for location data.
+        self.locationManager.requestAlwaysAuthorization()
+
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
         }
         
     }
@@ -109,6 +125,16 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     }
     */
 
+    //MARK: Delegate Methods
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locationValue: CLLocationCoordinate2D = manager.location?.coordinate else {
+            print("Unable to fetch device location")
+            return
+        }
+        self.deviceLocation = locationValue
+        
+    }
 
     // MARK: - Navigation
 
@@ -161,6 +187,14 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
                 let newIndexPath = IndexPath(row: content.count, section: 0)
                 content.append(contentItem)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+                
+                // load weather data if this is the first content item
+                if !(self.job?.isWeatherLoaded ?? false) {
+                    self.weatherData = WeatherData(coordinates: self.deviceLocation!)
+                    self.job?.weather = self.weatherData
+                    self.job?.isWeatherLoaded = true
+                    print("fetched weather")
+                }
             }
             // Pass the job back to the jobtableviewcontroller and save it there
             self.job?.content = content
@@ -182,7 +216,17 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             return
         }
         
-        let pdfBuilder = PDFBuilder(name: job!.name, contentList: job!.content)
+        if job?.content.count == 0 {
+            print("No content to run report on")
+            return
+        }
+        
+        if job?.isWeatherLoaded == false {
+            print("no weather data loaded")
+            return
+        }
+        
+        let pdfBuilder = PDFBuilder(name: job!.name, contentList: job!.content, weatherData: self.job!.weather!)
         let reportDataPDF = pdfBuilder.buildPDF()
         
         let composeMailViewController = MFMailComposeViewController()

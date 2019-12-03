@@ -115,7 +115,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         self.photoView.addSubview(shapeView)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector(("didTapShape:")))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhotoEditingViewController.didTapShape(_:)))
         shapeView.addGestureRecognizer(tapGestureRecognizer)
     }
     
@@ -125,7 +125,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         self.photoView.addSubview(shapeView)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector(("didTapShape:")))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhotoEditingViewController.didTapShape(_:)))
         shapeView.addGestureRecognizer(tapGestureRecognizer)
     }
 

@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Reporter/Pods-Reporter-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/DarkSkyKit/DarkSkyKit.framework
 ${BUILT_PRODUCTS_DIR}/SimplePDF/SimplePDF.framework

@@ -5,6 +5,7 @@ target 'Reporter' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'SimplePDF'
+  pod 'DarkSkyKit'
   # Pods for Reporter
 
   target 'ReporterTests' do

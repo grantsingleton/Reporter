@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1D871F95538B8A3C00754FF5 /* Pods_ReporterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CD5D9448157E47915B3D0A /* Pods_ReporterTests.framework */; };
 		21D18F9ABD718907D2D205D4 /* Pods_Reporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0558675A30EA33BD702ABCFB /* Pods_Reporter.framework */; };
+		D91A4D352395FBD300E98A44 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A4D342395FBD300E98A44 /* WeatherData.swift */; };
 		D91C2106238A1E15005463E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C2105238A1E15005463E1 /* AppDelegate.swift */; };
 		D91C2108238A1E15005463E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C2107238A1E15005463E1 /* SceneDelegate.swift */; };
 		D91C210A238A1E15005463E1 /* JobTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C2109238A1E15005463E1 /* JobTableViewController.swift */; };
@@ -61,6 +62,7 @@
 		69CADE63C99FCF3A7F253152 /* Pods-Reporter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reporter.debug.xcconfig"; path = "Target Support Files/Pods-Reporter/Pods-Reporter.debug.xcconfig"; sourceTree = "<group>"; };
 		79B9494740D2967CB6C92DBF /* Pods-ReporterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.release.xcconfig"; path = "Target Support Files/Pods-ReporterTests/Pods-ReporterTests.release.xcconfig"; sourceTree = "<group>"; };
 		D16A573DDAB03D44FE8D4F7B /* Pods-ReporterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.debug.xcconfig"; path = "Target Support Files/Pods-ReporterTests/Pods-ReporterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D91A4D342395FBD300E98A44 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		D91C2105238A1E15005463E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D91C2107238A1E15005463E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D91C2109238A1E15005463E1 /* JobTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +117,6 @@
 				D16A573DDAB03D44FE8D4F7B /* Pods-ReporterTests.debug.xcconfig */,
 				79B9494740D2967CB6C92DBF /* Pods-ReporterTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -152,6 +153,7 @@
 				D91C212B238A5931005463E1 /* JobContentViewController.swift */,
 				D9466467238F7F480004C062 /* PhotoEditingViewController.swift */,
 				D98DD15F239455F7003A359B /* PDFBuilder.swift */,
+				D91A4D342395FBD300E98A44 /* WeatherData.swift */,
 				D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */,
 				D91C212D238A5E31005463E1 /* JobContentItem.swift */,
 				D91C2129238A24D8005463E1 /* Job.swift */,
@@ -358,6 +360,7 @@
 				D91C2106238A1E15005463E1 /* AppDelegate.swift in Sources */,
 				D91C2108238A1E15005463E1 /* SceneDelegate.swift in Sources */,
 				D98DD160239455F7003A359B /* PDFBuilder.swift in Sources */,
+				D91A4D352395FBD300E98A44 /* WeatherData.swift in Sources */,
 				D91C212C238A5931005463E1 /* JobContentViewController.swift in Sources */,
 				D91C212A238A24D8005463E1 /* Job.swift in Sources */,
 				D9466468238F7F480004C062 /* PhotoEditingViewController.swift in Sources */,

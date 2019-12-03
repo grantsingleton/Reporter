@@ -1,16 +1,24 @@
 PODS:
+  - Alamofire (4.9.1)
+  - DarkSkyKit (0.0.6):
+    - Alamofire (~> 4.0)
   - SimplePDF (3.0.0)
 
 DEPENDENCIES:
+  - DarkSkyKit
   - SimplePDF
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - DarkSkyKit
     - SimplePDF
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  DarkSkyKit: ae500687161b11e1f352cdf261ff620fe3837cf5
   SimplePDF: 903143ede36965886997a5c1bc6b8940b082ba20
 
-PODFILE CHECKSUM: 7de769f850fb7ad5bf00571c4bcb6c9d04ff490b
+PODFILE CHECKSUM: 6a0775c14df3bc740fa80a00fcc7529ebd8db19f
 
 COCOAPODS: 1.8.4

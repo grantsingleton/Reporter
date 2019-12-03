@@ -64,5 +64,11 @@
 	<string>Allows user to select photo from library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allows user to take photo with camera</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Reporter would like to use your location</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Reporter would like to use your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Reporter would like to use your location</string>
 </dict>
 </plist>
