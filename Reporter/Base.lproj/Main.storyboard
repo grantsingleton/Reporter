@@ -44,12 +44,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Jobs" id="VA0-xx-haU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EAf-9S-Y28"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EAf-9S-Y28">
+                            <connections>
+                                <segue destination="rDU-2R-MSS" kind="presentation" identifier="AddNewJob" id="hIv-q8-RSo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCS-TI-f0j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039.1304347826087" y="30.803571428571427"/>
+            <point key="canvasLocation" x="770" y="29"/>
         </scene>
         <!--Content-->
         <scene sceneID="tY6-Nk-D6t">
@@ -111,7 +115,7 @@
                                     <outlet property="contentPhoto" destination="drl-Am-AxX" id="Cdv-D9-8RR"/>
                                     <outlet property="severityIconPhoto" destination="1eW-In-oQN" id="z7z-6X-kes"/>
                                     <outlet property="shortDescriptionLabel" destination="yah-zt-3Gb" id="dt4-Bd-fEA"/>
-                                    <segue destination="zGg-F4-Eqk" kind="show" identifier="ShowContentDetail" id="DFi-W0-4lE"/>
+                                    <segue destination="zGg-F4-Eqk" kind="show" identifier="ShowContentDetail" id="zq0-E3-wqD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -124,7 +128,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="o5Q-P1-dZ7">
                                 <connections>
-                                    <segue destination="k5R-gI-JhZ" kind="presentation" identifier="AddContent" id="YUB-qh-u21"/>
+                                    <segue destination="k5R-gI-JhZ" kind="presentation" identifier="AddContent" id="FHf-ql-PqK"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="action" id="Nwq-M5-ypc">
@@ -138,6 +142,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPF-DG-bHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2000" y="29.296874999999996"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="aAy-IB-JMY">
+            <objects>
+                <tableViewController id="a67-Bs-Tk8" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ejy-yN-HyF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="DSq-6b-bjg" rowHeight="90" style="IBUITableViewCellStyleDefault" id="bcb-DX-hps">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bcb-DX-hps" id="VUc-W8-pyf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DSq-6b-bjg">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="a67-Bs-Tk8" id="HXd-Fc-RxD"/>
+                            <outlet property="delegate" destination="a67-Bs-Tk8" id="Vgw-2y-eAg"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HAe-OJ-Exq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="508"/>
+        </scene>
+        <!--Date Picker View Controller-->
+        <scene sceneID="SLt-EC-GDg">
+            <objects>
+                <viewController id="og0-Bd-IWt" customClass="DatePickerViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KCJ-Y5-xLd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f2S-Xu-EdE">
+                                <rect key="frame" x="0.0" y="56" width="375" height="244.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wo-gM-OeE">
+                                        <rect key="frame" x="40" y="0.0" width="295" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-Hn-09E">
+                                        <rect key="frame" x="28" y="28" width="320" height="216"/>
+                                    </datePicker>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="2Wo-gM-OeE" secondAttribute="trailing" constant="40" id="7yB-vm-rBn"/>
+                                    <constraint firstItem="jfh-Hn-09E" firstAttribute="top" secondItem="2Wo-gM-OeE" secondAttribute="bottom" constant="8" id="Z2R-bu-N9y"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hQ4-a2-HQF" firstAttribute="trailing" secondItem="f2S-Xu-EdE" secondAttribute="trailing" id="5Pv-yb-v2Y"/>
+                            <constraint firstItem="f2S-Xu-EdE" firstAttribute="leading" secondItem="hQ4-a2-HQF" secondAttribute="leading" id="Ias-ju-vLJ"/>
+                            <constraint firstItem="f2S-Xu-EdE" firstAttribute="top" secondItem="hQ4-a2-HQF" secondAttribute="top" id="vX2-z8-T9o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hQ4-a2-HQF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="483-7b-78C">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="x9w-uI-puy">
+                            <connections>
+                                <action selector="cancel:" destination="og0-Bd-IWt" id="dQb-K6-siO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Cbt-OG-cBr">
+                            <connections>
+                                <segue destination="KRg-ub-gF7" kind="unwind" unwindAction="unwindToJobListWithSender:" id="4qY-Bw-KO7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="jfh-Hn-09E" id="LgQ-BP-RiP"/>
+                        <outlet property="saveButton" destination="Cbt-OG-cBr" id="OEx-3b-X7O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="REi-ob-1wk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="KRg-ub-gF7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2574" y="-732"/>
         </scene>
         <!--Content Editor-->
         <scene sceneID="aRZ-tP-aPE">
@@ -313,7 +411,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5538.28125" y="-545.5078125"/>
+            <point key="canvasLocation" x="6476" y="-545.57721139430294"/>
         </scene>
         <!--Description-->
         <scene sceneID="U2n-PC-XLi">
@@ -393,7 +491,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMt-3r-NAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128.98550724637681" y="30.803571428571427"/>
+            <point key="canvasLocation" x="-753" y="30"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SwQ-tp-xiM">
@@ -411,7 +509,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eg2-Fx-DNX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2914" y="472"/>
+            <point key="canvasLocation" x="2903" y="420"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="og2-Zq-4n6">
@@ -447,7 +545,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpQ-uy-O11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4772.65625" y="-545.5078125"/>
+            <point key="canvasLocation" x="5711.1999999999998" y="-545.57721139430294"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Hw0-vR-pbK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rDU-2R-MSS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4dC-wF-d0e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="og0-Bd-IWt" kind="relationship" relationship="rootViewController" id="Rpt-AK-aeg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UnU-JA-UZ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1596" y="-731"/>
         </scene>
     </scenes>
     <resources>
@@ -457,6 +573,6 @@
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DFi-W0-4lE"/>
+        <segue reference="zq0-E3-wqD"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,27 +13,26 @@ class Job: NSObject, NSCoding {
     
     //MARK: NSCoding
     func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: PropertyKey.name)
         coder.encode(content, forKey: PropertyKey.content)
+        coder.encode(date, forKey: PropertyKey.date)
     }
     
     required convenience init?(coder: NSCoder) {
-    
         
-        guard let name = coder.decodeObject(forKey: PropertyKey.name) as? String else {
-            os_log("unable to decode the name for a Job object", log: OSLog.default, type: .debug)
+        guard let date = coder.decodeObject(forKey: PropertyKey.date) as? String else {
+            os_log("unable to decode the date for a Job object", log: OSLog.default, type: .debug)
             return nil
         }
-        
+                
         let content = coder.decodeObject(forKey: PropertyKey.content) as? [JobContentItem]
         
-        self.init(name: name, content: content)
+        self.init(date: date, content: content)
     }
     
     
     //MARK: Properties
-    // name of the job
-    var name: String
+    // date of the job
+    var date: String
     // list of content
     var content: [JobContentItem]
     var isWeatherLoaded: Bool
@@ -45,18 +44,18 @@ class Job: NSObject, NSCoding {
     
     //MARK: Types
     struct PropertyKey {
-        static let name = "name"
+        static let date = "date"
         static let content = "content"
     }
     
     //MARK: Initialization
-    init?(name: String, content: [JobContentItem]?) {
+    init?(date: String, content: [JobContentItem]?) {
         
-        guard !name.isEmpty else {
+        guard !date.isEmpty else {
             return nil
         }
         
-        self.name = name
+        self.date = date
         self.content = content ?? [JobContentItem]()
         self.isWeatherLoaded = false
     }

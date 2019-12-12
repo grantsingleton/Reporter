@@ -50,7 +50,7 @@ class JobTableViewController: UITableViewController {
         
         let job = jobs[indexPath.row]
         
-        cell.jobLabel.text = job.name
+        cell.jobLabel.text = job.date
         
         return cell
     }
@@ -110,6 +110,23 @@ class JobTableViewController: UITableViewController {
             fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
         }
     }
+    
+    @IBAction func unwindToJobList(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? DatePickerViewController, let job = sourceViewController.job {
+            // update existing item if it was an edit
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                jobs[selectedIndexPath.row] = job
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else {
+                // Add a new job content item
+                let newIndexPath = IndexPath(row: jobs.count, section: 0)
+                jobs.append(job)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+    }
 
     //MARK: Private Methods
     private func loadSampleJobs() {
@@ -128,15 +145,15 @@ class JobTableViewController: UITableViewController {
         
         contentList += [content1, content2, content3]
         
-        guard let job1 = Job(name: "UTMB Hospital", content: contentList) else {
+        guard let job1 = Job(date: "December 9th", content: contentList) else {
             fatalError("Unable to instantiate Job")
         }
         
-        guard let job2 = Job(name: "Zachry Engineering  Center", content: [JobContentItem]()) else {
+        guard let job2 = Job(date: "December 10th", content: [JobContentItem]()) else {
             fatalError("Unable to instantiate Job")
         }
         
-        guard let job3 = Job(name: "Cisco Tower", content: [JobContentItem]()) else {
+        guard let job3 = Job(date: "December 11th", content: [JobContentItem]()) else {
             fatalError("Unable to instantiate Job")
         }
         
@@ -147,7 +164,7 @@ class JobTableViewController: UITableViewController {
         
         // Replace the outdated job with the new one
         for index in 0..<jobs.count {
-            if jobs[index].name == job.name {
+            if jobs[index].date == job.date {
                 jobs[index] = job
             }
         }

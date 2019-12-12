@@ -30,6 +30,8 @@
 		D98DD160239455F7003A359B /* PDFBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DD15F239455F7003A359B /* PDFBuilder.swift */; };
 		D9E3C004238E3D6F00D54D1D /* LongDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */; };
 		D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */; };
+		D9FA428723A19BD000952434 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA428623A19BD000952434 /* DatePickerViewController.swift */; };
+		D9FA428A23A1F25600952434 /* report_template.html in Resources */ = {isa = PBXBuildFile; fileRef = D9FA428923A1F25600952434 /* report_template.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		D98DD15F239455F7003A359B /* PDFBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFBuilder.swift; sourceTree = "<group>"; };
 		D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongDescriptionViewController.swift; sourceTree = "<group>"; };
 		D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAdditions.swift; sourceTree = "<group>"; };
+		D9FA428623A19BD000952434 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		D9FA428923A1F25600952434 /* report_template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = report_template.html; path = ../../../../Downloads/report_template.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		D91C20F9238A1E15005463E1 = {
 			isa = PBXGroup;
 			children = (
+				D9FA428823A1F23F00952434 /* Templates */,
 				D91C2104238A1E15005463E1 /* Reporter */,
 				D91C211B238A1E17005463E1 /* ReporterTests */,
 				D946645F238F707C0004C062 /* Reporter.app */,
@@ -148,6 +153,7 @@
 				D91C2107238A1E15005463E1 /* SceneDelegate.swift */,
 				D91C2109238A1E15005463E1 /* JobTableViewController.swift */,
 				D91C2127238A2416005463E1 /* JobTableViewCell.swift */,
+				D9FA428623A19BD000952434 /* DatePickerViewController.swift */,
 				D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */,
 				D91C212F238A6D35005463E1 /* JobContentTableViewCell.swift */,
 				D91C212B238A5931005463E1 /* JobContentViewController.swift */,
@@ -176,6 +182,14 @@
 				D91C211E238A1E17005463E1 /* Info.plist */,
 			);
 			path = ReporterTests;
+			sourceTree = "<group>";
+		};
+		D9FA428823A1F23F00952434 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				D9FA428923A1F25600952434 /* report_template.html */,
+			);
+			path = Templates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +279,7 @@
 			files = (
 				D91C2112238A1E17005463E1 /* LaunchScreen.storyboard in Resources */,
 				D91C210F238A1E17005463E1 /* Assets.xcassets in Resources */,
+				D9FA428A23A1F25600952434 /* report_template.html in Resources */,
 				D91C210D238A1E15005463E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +364,7 @@
 			files = (
 				D91C2128238A2416005463E1 /* JobTableViewCell.swift in Sources */,
 				D91C2130238A6D35005463E1 /* JobContentTableViewCell.swift in Sources */,
+				D9FA428723A19BD000952434 /* DatePickerViewController.swift in Sources */,
 				D9E3C004238E3D6F00D54D1D /* LongDescriptionViewController.swift in Sources */,
 				D91C210A238A1E15005463E1 /* JobTableViewController.swift in Sources */,
 				D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */,
