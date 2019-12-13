@@ -136,6 +136,11 @@
                                     <action selector="emailReport:" destination="v27-kF-d4G" id="6eO-0a-4vn"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Item" image="cloud.sun.fill" catalog="system" id="PS3-1l-Syx">
+                                <connections>
+                                    <action selector="fetchWeather:" destination="v27-kF-d4G" id="C2c-bq-lS8"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
@@ -198,7 +203,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-Hn-09E">
-                                        <rect key="frame" x="28" y="28" width="320" height="216"/>
+                                        <rect key="frame" x="27.5" y="28.5" width="320" height="216"/>
                                     </datePicker>
                                 </subviews>
                                 <constraints>
@@ -570,6 +575,7 @@
         <image name="arrow.up.right" catalog="system" width="64" height="54"/>
         <image name="circle" catalog="system" width="64" height="60"/>
         <image name="clear" catalog="system" width="64" height="56"/>
+        <image name="cloud.sun.fill" catalog="system" width="64" height="44"/>
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>

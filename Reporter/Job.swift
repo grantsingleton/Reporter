@@ -14,7 +14,10 @@ class Job: NSObject, NSCoding {
     //MARK: NSCoding
     func encode(with coder: NSCoder) {
         coder.encode(content, forKey: PropertyKey.content)
+        coder.encode(content, forKey: PropertyKey.weatherDate)
         coder.encode(date, forKey: PropertyKey.date)
+        coder.encode(isWeatherLoaded, forKey: PropertyKey.isWeatherLoaded)
+        coder.encode(weather, forKey: PropertyKey.weather)
     }
     
     required convenience init?(coder: NSCoder) {
@@ -23,20 +26,28 @@ class Job: NSObject, NSCoding {
             os_log("unable to decode the date for a Job object", log: OSLog.default, type: .debug)
             return nil
         }
+        
+        let weatherDate = coder.decodeObject(forKey: PropertyKey.weatherDate) as? Date ?? Date()
                 
         let content = coder.decodeObject(forKey: PropertyKey.content) as? [JobContentItem]
         
-        self.init(date: date, content: content)
+        let isWeatherLoaded = coder.decodeBool(forKey: PropertyKey.isWeatherLoaded)
+        
+        let weather = coder.decodeObject(forKey: PropertyKey.weather) as? WeatherInformation
+        
+        self.init(date: date, weatherDate: weatherDate, content: content, isWeatherLoaded: isWeatherLoaded, weather: weather)
     }
     
     
     //MARK: Properties
     // date of the job
     var date: String
+    // date for weather purposes
+    var weatherDate: Date
     // list of content
     var content: [JobContentItem]
     var isWeatherLoaded: Bool
-    var weather: WeatherData?
+    var weather: WeatherInformation?
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -45,19 +56,24 @@ class Job: NSObject, NSCoding {
     //MARK: Types
     struct PropertyKey {
         static let date = "date"
+        static let weatherDate = "weatherDate"
         static let content = "content"
+        static let isWeatherLoaded = "isWeatherLoaded"
+        static let weather = "weather"
     }
     
     //MARK: Initialization
-    init?(date: String, content: [JobContentItem]?) {
+    init?(date: String, weatherDate: Date, content: [JobContentItem]?, isWeatherLoaded: Bool = false, weather: WeatherInformation?) {
         
         guard !date.isEmpty else {
             return nil
         }
         
         self.date = date
+        self.weatherDate = weatherDate
         self.content = content ?? [JobContentItem]()
-        self.isWeatherLoaded = false
+        self.weather = weather ?? nil
+        self.isWeatherLoaded = isWeatherLoaded
     }
     
     

@@ -145,15 +145,15 @@ class JobTableViewController: UITableViewController {
         
         contentList += [content1, content2, content3]
         
-        guard let job1 = Job(date: "December 9th", content: contentList) else {
+        guard let job1 = Job(date: "December 9th", weatherDate: Date(), content: contentList, weather: nil) else {
             fatalError("Unable to instantiate Job")
         }
         
-        guard let job2 = Job(date: "December 10th", content: [JobContentItem]()) else {
+        guard let job2 = Job(date: "December 10th", weatherDate: Date(), content: [JobContentItem](), weather: nil) else {
             fatalError("Unable to instantiate Job")
         }
         
-        guard let job3 = Job(date: "December 11th", content: [JobContentItem]()) else {
+        guard let job3 = Job(date: "December 11th", weatherDate: Date(), content: [JobContentItem](), weather: nil) else {
             fatalError("Unable to instantiate Job")
         }
         

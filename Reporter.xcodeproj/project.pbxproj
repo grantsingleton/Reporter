@@ -27,11 +27,13 @@
 		D9466468238F7F480004C062 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9466467238F7F480004C062 /* PhotoEditingViewController.swift */; };
 		D94B09C5239162BE0070021C /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94B09C4239162BE0070021C /* Circle.swift */; };
 		D94B09C7239162C90070021C /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94B09C6239162C90070021C /* Arrow.swift */; };
+		D9699FFF23A42441003D85C5 /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9699FFE23A42441003D85C5 /* WeatherInformation.swift */; };
 		D98DD160239455F7003A359B /* PDFBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DD15F239455F7003A359B /* PDFBuilder.swift */; };
 		D9E3C004238E3D6F00D54D1D /* LongDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */; };
 		D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */; };
 		D9FA428723A19BD000952434 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA428623A19BD000952434 /* DatePickerViewController.swift */; };
 		D9FA428A23A1F25600952434 /* report_template.html in Resources */ = {isa = PBXBuildFile; fileRef = D9FA428923A1F25600952434 /* report_template.html */; };
+		D9FA428C23A1F4E000952434 /* JobLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA428B23A1F4E000952434 /* JobLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,11 +88,13 @@
 		D9466467238F7F480004C062 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		D94B09C4239162BE0070021C /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		D94B09C6239162C90070021C /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
+		D9699FFE23A42441003D85C5 /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
 		D98DD15F239455F7003A359B /* PDFBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFBuilder.swift; sourceTree = "<group>"; };
 		D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongDescriptionViewController.swift; sourceTree = "<group>"; };
 		D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAdditions.swift; sourceTree = "<group>"; };
 		D9FA428623A19BD000952434 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		D9FA428923A1F25600952434 /* report_template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = report_template.html; path = ../../../../Downloads/report_template.html; sourceTree = "<group>"; };
+		D9FA428B23A1F4E000952434 /* JobLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,9 +164,11 @@
 				D9466467238F7F480004C062 /* PhotoEditingViewController.swift */,
 				D98DD15F239455F7003A359B /* PDFBuilder.swift */,
 				D91A4D342395FBD300E98A44 /* WeatherData.swift */,
+				D9699FFE23A42441003D85C5 /* WeatherInformation.swift */,
 				D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */,
 				D91C212D238A5E31005463E1 /* JobContentItem.swift */,
 				D91C2129238A24D8005463E1 /* Job.swift */,
+				D9FA428B23A1F4E000952434 /* JobLocation.swift */,
 				D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */,
 				D9466465238F7DEA0004C062 /* ShapeView.swift */,
 				D94B09C4239162BE0070021C /* Circle.swift */,
@@ -364,8 +370,10 @@
 			files = (
 				D91C2128238A2416005463E1 /* JobTableViewCell.swift in Sources */,
 				D91C2130238A6D35005463E1 /* JobContentTableViewCell.swift in Sources */,
+				D9FA428C23A1F4E000952434 /* JobLocation.swift in Sources */,
 				D9FA428723A19BD000952434 /* DatePickerViewController.swift in Sources */,
 				D9E3C004238E3D6F00D54D1D /* LongDescriptionViewController.swift in Sources */,
+				D9699FFF23A42441003D85C5 /* WeatherInformation.swift in Sources */,
 				D91C210A238A1E15005463E1 /* JobTableViewController.swift in Sources */,
 				D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */,
 				D92BD30B238B73D500DC6D77 /* JobContentTableViewController.swift in Sources */,

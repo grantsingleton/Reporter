@@ -20,8 +20,9 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     var callback: ((_ job: Job) -> Void)?
     let locationManager = CLLocationManager()
     var deviceLocation: CLLocationCoordinate2D?
+    var weatherInformation: WeatherInformation?
     var weatherData: WeatherData?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -187,14 +188,6 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
                 let newIndexPath = IndexPath(row: content.count, section: 0)
                 content.append(contentItem)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
-                
-                // load weather data if this is the first content item
-                if !(self.job?.isWeatherLoaded ?? false) {
-                    self.weatherData = WeatherData(coordinates: self.deviceLocation!)
-                    self.job?.weather = self.weatherData
-                    self.job?.isWeatherLoaded = true
-                    print("fetched weather")
-                }
             }
             // Pass the job back to the jobtableviewcontroller and save it there
             self.job?.content = content
@@ -203,13 +196,17 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         }
     }
 
+    @IBAction func fetchWeather(_ sender: UIBarButtonItem) {
+        loadWeather()
+    }
+    
     // MARK: Email Actions
     @IBAction func emailReport(_ sender: UIBarButtonItem) {
         
-        if !MFMailComposeViewController.canSendMail() {
+       /* if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
             return
-        }
+        }*/
         
         if job == nil {
             print("There is no job to run a report for")
@@ -221,11 +218,20 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             return
         }
         
-        if job?.isWeatherLoaded == false {
-            print("no weather data loaded")
-            return
+        // if the jobs WeatherInformation has not yet been loaded, run the following
+        if job?.weather == nil {
+            // If the weather hasn't been fetched this session, fetch it. Otherwise set WeatherInformation to WeatherData
+            if (weatherData == nil) {
+                print("Weather has not been fetched")
+                loadWeather()
+                return
+            } else {
+                job?.weather = WeatherInformation(weatherData: weatherData!)
+            }
         }
         
+        print("Weather: " + (self.job?.weather?.precipitationType ?? ""))
+        /*
         let pdfBuilder = PDFBuilder(name: job!.date, contentList: job!.content, weatherData: self.job!.weather!)
         let reportDataPDF = pdfBuilder.buildPDF()
         
@@ -237,10 +243,17 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         composeMailViewController.addAttachmentData(reportDataPDF, mimeType: "application/pdf", fileName: "pdfReport")
         
         self.present(composeMailViewController, animated: true, completion: nil)
+ */
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func loadWeather() {
+        
+        weatherData = WeatherData(coordinates: self.deviceLocation!, weatherDate: self.job!.weatherDate)
+        
     }
 
 }
