@@ -203,10 +203,10 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     // MARK: Email Actions
     @IBAction func emailReport(_ sender: UIBarButtonItem) {
         
-       /* if !MFMailComposeViewController.canSendMail() {
+        if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
             return
-        }*/
+        }
         
         if job == nil {
             print("There is no job to run a report for")
@@ -231,7 +231,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         }
         
         print("Weather: " + (self.job?.weather?.precipitationType ?? ""))
-        /*
+        
         let pdfBuilder = PDFBuilder(name: job!.date, contentList: job!.content, weatherData: self.job!.weather!)
         let reportDataPDF = pdfBuilder.buildPDF()
         
@@ -243,7 +243,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         composeMailViewController.addAttachmentData(reportDataPDF, mimeType: "application/pdf", fileName: "pdfReport")
         
         self.present(composeMailViewController, animated: true, completion: nil)
- */
+ 
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
