@@ -346,9 +346,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-gq-M93">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-gq-M93">
                                 <rect key="frame" x="0.0" y="603" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem image="circle" catalog="system" id="Y62-db-LZB">
                                         <connections>
@@ -367,27 +366,20 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ge9-Hp-qSU">
-                                <rect key="frame" x="0.0" y="56" width="375" height="375"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="RhI-Q6-bbe">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="RhI-Q6-bbe" secondAttribute="height" multiplier="1:1" id="tcf-Gu-Htm"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="dSb-gt-7Az" appends="YES" id="dke-bd-cBm"/>
-                                        </connections>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DFr-ue-v44">
+                                <rect key="frame" x="67" y="56" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="VGD-XW-50m" appends="YES" id="bQO-ko-dN4"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Ge9-Hp-qSU" firstAttribute="leading" secondItem="pfL-gW-dVB" secondAttribute="leading" id="2fm-V0-1zv"/>
-                            <constraint firstItem="Ge9-Hp-qSU" firstAttribute="top" secondItem="pfL-gW-dVB" secondAttribute="top" constant="0.20000000000000001" id="Q0L-iC-Kb7"/>
-                            <constraint firstItem="pfL-gW-dVB" firstAttribute="trailing" secondItem="Ge9-Hp-qSU" secondAttribute="trailing" id="TqW-TW-iNW"/>
+                            <constraint firstItem="Sk3-gq-M93" firstAttribute="leading" secondItem="nzn-7i-llZ" secondAttribute="leading" id="Lix-9B-tdx"/>
+                            <constraint firstItem="Sk3-gq-M93" firstAttribute="bottom" secondItem="pfL-gW-dVB" secondAttribute="bottom" id="S08-1P-C7b"/>
+                            <constraint firstAttribute="trailing" secondItem="Sk3-gq-M93" secondAttribute="trailing" id="efd-TH-34R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pfL-gW-dVB"/>
                     </view>
@@ -404,15 +396,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="photoView" destination="RhI-Q6-bbe" id="loS-fT-Q7u"/>
+                        <outlet property="bottomToolBar" destination="Sk3-gq-M93" id="bn1-Uw-Kld"/>
+                        <outlet property="photoView" destination="DFr-ue-v44" id="5Kj-dU-wUv"/>
                         <outlet property="saveButton" destination="UrY-Zm-mzd" id="Dxm-6G-RDM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEi-ZB-Rei" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="rVB-Nf-4mZ" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="dSb-gt-7Az">
+                <tapGestureRecognizer id="VGD-XW-50m">
                     <connections>
-                        <action selector="didTap:" destination="awn-mq-y9e" id="JaZ-Rz-WKz"/>
+                        <action selector="didTap:" destination="awn-mq-y9e" id="Baq-yj-fib"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

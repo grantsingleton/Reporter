@@ -127,6 +127,25 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
+        
+        /*
+            Resize the image view for the aspect ratio of the image
+        */
+        let imageWidth = selectedImage.size.width
+        let imageHeight = selectedImage.size.height
+        let viewWidth = photoImageView.frame.size.width
+        
+        let ratio = viewWidth / imageWidth
+        let scaledHeight = imageHeight * ratio
+                
+        let size = CGSize(width: viewWidth, height: scaledHeight)
+        
+        photoImageView.frame.size = size
+        /*
+            Done resizing Image view, now put in the photo
+        */
+        
+        
         photoImageView.image = selectedImage
         self.content?.photo = selectedImage
         
