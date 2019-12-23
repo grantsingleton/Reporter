@@ -103,6 +103,12 @@ class JobTableViewController: UITableViewController {
             
             // this is the job that was selected by the user
             let selectedJob = jobs[indexPath.row]
+            
+            // If the selected job isnt the first job in the list then pass the previous job in so we can get the meta data
+            if (indexPath.row > 0) {
+                let previousJob = jobs[indexPath.row - 1]
+                jobContentTableViewController.previousJob = previousJob
+            }
             // pass this selected job into the jobContentTableView by setting its member variable "job" to selectedJob
             jobContentTableViewController.job = selectedJob
         

@@ -16,6 +16,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     //MARK: Properties
     // The job passed in when the user selects a job
     var job: Job?
+    var previousJob: Job?
     var content: [JobContentItem] = []
     var callback: ((_ job: Job) -> Void)?
     let locationManager = CLLocationManager()
@@ -35,6 +36,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             navigationItem.title = job.date
             content = job.content
         }
+        
         
         // Ask for Authorization from the User for location data.
         self.locationManager.requestAlwaysAuthorization()
@@ -167,6 +169,43 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             let selectedContent = content[indexPath.row]
             contentDetailViewController.content = selectedContent
             
+        //MARK: **FIX META SEGUE**
+        case "AddMetaData":
+            print("Adding Meta Data to Job Content item")
+            
+            guard let metaDataViewController = segue.destination as? MetaDataViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            // Check if the meta data has been set yet
+            // If it hasnt, preset it to the previous reports meta data if it exists
+            // Otherwise leave it blank
+            let selectedJob = self.job
+            
+            // if there is a previous report and the current report has no meta data then set the previous reports meta data to be this reports meta data
+            if (previousJob != nil) {
+                
+                // Check if the meta data is filled out
+                if (selectedJob!.issuedBy == "") {
+                    selectedJob!.issuedBy = previousJob!.issuedBy
+                }
+                if (selectedJob!.purposeOfVisit == "") {
+                    selectedJob!.purposeOfVisit = previousJob!.purposeOfVisit
+                }
+                if (selectedJob!.inAttendance == nil) {
+                    selectedJob!.inAttendance = previousJob!.inAttendance
+                }
+                if (selectedJob!.distribution == nil) {
+                    selectedJob!.distribution = previousJob!.distribution
+                }
+            }
+            // Set the controllers meta data before segue
+            metaDataViewController.issuedBy = selectedJob!.issuedBy
+            metaDataViewController.purposeOfVisit = selectedJob!.purposeOfVisit
+            metaDataViewController.inAttendance = selectedJob!.inAttendance
+            metaDataViewController.distribution = selectedJob!.distribution
+            
+            
         default:
             fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")
         }
@@ -193,6 +232,22 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             self.job?.content = content
             callback?(self.job!)
             
+        }
+        else if let sourceViewController = sender.source as? MetaDataViewController {
+            // get the data from the MetaDataViewController
+            let issuedByText = sourceViewController.issuedBy
+            let purposeOfVisitText = sourceViewController.purposeOfVisit
+            let inAttendanceList = sourceViewController.inAttendance
+            let distributionList = sourceViewController.distribution
+            
+            // Set that data to the Job
+            self.job?.issuedBy = issuedByText
+            self.job?.purposeOfVisit = purposeOfVisitText
+            self.job?.inAttendance = inAttendanceList
+            self.job?.distribution = distributionList
+            
+            // Pass the job back to the jobtableviewcontroller and save it there
+            callback?(self.job!)
         }
     }
 

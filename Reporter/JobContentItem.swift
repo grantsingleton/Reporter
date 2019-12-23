@@ -31,6 +31,7 @@ class JobContentItem: NSObject, NSCoding {
         let longDescription = coder.decodeObject(forKey: PropertyKey.longDescription) as? String
                 
         self.init(shortDescription: shortDescription, photo: photo, status: status, severityIconPhoto: severityIconPhoto, longDescription: longDescription)
+        
     }
     
     
@@ -48,6 +49,7 @@ class JobContentItem: NSObject, NSCoding {
     var longDescription: String
     var containsPhoto: Bool
     var containsLongDescription: Bool
+
     
     //MARK: Types
     struct PropertyKey {
@@ -72,6 +74,7 @@ class JobContentItem: NSObject, NSCoding {
         self.longDescription = longDescription ?? ""
         self.containsPhoto = containsPhoto
         self.containsLongDescription = containsLongDescription
+    
         
         if status == Severity.GREEN {
             self.severityIconPhoto = UIImage(named: "greenIcon")
@@ -89,4 +92,5 @@ class JobContentItem: NSObject, NSCoding {
             self.containsPhoto = true
         }
     }
+
 }

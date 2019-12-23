@@ -18,6 +18,10 @@ class Job: NSObject, NSCoding {
         coder.encode(date, forKey: PropertyKey.date)
         coder.encode(isWeatherLoaded, forKey: PropertyKey.isWeatherLoaded)
         coder.encode(weather, forKey: PropertyKey.weather)
+        coder.encode(issuedBy, forKey: PropertyKey.issuedBy)
+        coder.encode(purposeOfVisit, forKey: PropertyKey.purposeOfVisit)
+        coder.encode(inAttendance, forKey: PropertyKey.inAttendance)
+        coder.encode(distribution, forKey: PropertyKey.distribution)
     }
     
     required convenience init?(coder: NSCoder) {
@@ -36,6 +40,17 @@ class Job: NSObject, NSCoding {
         let weather = coder.decodeObject(forKey: PropertyKey.weather) as? WeatherInformation
         
         self.init(date: date, weatherDate: weatherDate, content: content, isWeatherLoaded: isWeatherLoaded, weather: weather)
+        
+        let issuedBy = coder.decodeObject(forKey: PropertyKey.issuedBy) as? String
+        let purposeOfVisit = coder.decodeObject(forKey: PropertyKey.purposeOfVisit) as? String
+        let inAttendance = coder.decodeObject(forKey: PropertyKey.inAttendance) as? [(name: String, from: String)]
+        let distribution = coder.decodeObject(forKey: PropertyKey.distribution) as? [(name: String, from: String)]
+        
+        // Set the meta data
+        self.issuedBy = issuedBy
+        self.purposeOfVisit = purposeOfVisit
+        self.inAttendance = inAttendance
+        self.distribution = distribution
     }
     
     
@@ -49,6 +64,12 @@ class Job: NSObject, NSCoding {
     var isWeatherLoaded: Bool
     var weather: WeatherInformation?
     
+    // Meta Data Properties
+    var issuedBy: String?
+    var purposeOfVisit: String?
+    var inAttendance: [(name: String, from: String)]?
+    var distribution: [(name: String, from: String)]?
+    
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("jobs")
@@ -60,6 +81,10 @@ class Job: NSObject, NSCoding {
         static let content = "content"
         static let isWeatherLoaded = "isWeatherLoaded"
         static let weather = "weather"
+        static let issuedBy = "issuedBy"
+        static let purposeOfVisit = "purposeOfVisit"
+        static let inAttendance = "inAttendance"
+        static let distribution = "distribution"
     }
     
     //MARK: Initialization
@@ -74,6 +99,12 @@ class Job: NSObject, NSCoding {
         self.content = content ?? [JobContentItem]()
         self.weather = weather ?? nil
         self.isWeatherLoaded = isWeatherLoaded
+        
+        // Initialize Meta Data to null values, it will be set later by setters
+        self.issuedBy = ""
+        self.purposeOfVisit = ""
+        self.inAttendance = nil
+        self.distribution = nil
     }
     
     
