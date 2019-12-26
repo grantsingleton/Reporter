@@ -103,8 +103,8 @@ class Job: NSObject, NSCoding {
         // Initialize Meta Data to null values, it will be set later by setters
         self.issuedBy = ""
         self.purposeOfVisit = ""
-        self.inAttendance = nil
-        self.distribution = nil
+        self.inAttendance = []
+        self.distribution = []
     }
     
     

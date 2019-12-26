@@ -88,6 +88,7 @@ class JobTableViewController: UITableViewController {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             jobContentTableViewController.callback = { (job) -> Void in
+                print("ATTEMPTING TO SAVE")
                 self.saveExistingJob(job: job)
             }
          
@@ -174,9 +175,9 @@ class JobTableViewController: UITableViewController {
                 jobs[index] = job
             }
         }
-        
+        print("NSKEYARCHIVER")
         let isSuccesfulSave = NSKeyedArchiver.archiveRootObject(jobs, toFile: Job.ArchiveURL.path)
-        
+        print("POSTNSKEYARCHIVER")
         if isSuccesfulSave {
             os_log("Jobs succesfully saved.", log: OSLog.default, type: .debug)
         } else {

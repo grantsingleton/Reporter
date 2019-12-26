@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D871F95538B8A3C00754FF5 /* Pods_ReporterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CD5D9448157E47915B3D0A /* Pods_ReporterTests.framework */; };
 		21D18F9ABD718907D2D205D4 /* Pods_Reporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0558675A30EA33BD702ABCFB /* Pods_Reporter.framework */; };
+		D90EC1A423B50EDD003DA073 /* AttendanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90EC1A323B50EDD003DA073 /* AttendanceTableViewCell.swift */; };
+		D90EC1A823B51138003DA073 /* DistributionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90EC1A723B51138003DA073 /* DistributionTableViewCell.swift */; };
 		D91A4D352395FBD300E98A44 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A4D342395FBD300E98A44 /* WeatherData.swift */; };
 		D91C2106238A1E15005463E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C2105238A1E15005463E1 /* AppDelegate.swift */; };
 		D91C2108238A1E15005463E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C2107238A1E15005463E1 /* SceneDelegate.swift */; };
@@ -67,6 +69,8 @@
 		69CADE63C99FCF3A7F253152 /* Pods-Reporter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reporter.debug.xcconfig"; path = "Target Support Files/Pods-Reporter/Pods-Reporter.debug.xcconfig"; sourceTree = "<group>"; };
 		79B9494740D2967CB6C92DBF /* Pods-ReporterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.release.xcconfig"; path = "Target Support Files/Pods-ReporterTests/Pods-ReporterTests.release.xcconfig"; sourceTree = "<group>"; };
 		D16A573DDAB03D44FE8D4F7B /* Pods-ReporterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.debug.xcconfig"; path = "Target Support Files/Pods-ReporterTests/Pods-ReporterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D90EC1A323B50EDD003DA073 /* AttendanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceTableViewCell.swift; sourceTree = "<group>"; };
+		D90EC1A723B51138003DA073 /* DistributionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionTableViewCell.swift; sourceTree = "<group>"; };
 		D91A4D342395FBD300E98A44 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		D91C2105238A1E15005463E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D91C2107238A1E15005463E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,18 +162,20 @@
 				D91C2105238A1E15005463E1 /* AppDelegate.swift */,
 				D91C2107238A1E15005463E1 /* SceneDelegate.swift */,
 				D91C2109238A1E15005463E1 /* JobTableViewController.swift */,
+				D90EC1A323B50EDD003DA073 /* AttendanceTableViewCell.swift */,
+				D90EC1A723B51138003DA073 /* DistributionTableViewCell.swift */,
 				D91C2127238A2416005463E1 /* JobTableViewCell.swift */,
 				D9FA428623A19BD000952434 /* DatePickerViewController.swift */,
 				D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */,
 				D91C212F238A6D35005463E1 /* JobContentTableViewCell.swift */,
 				D91C212B238A5931005463E1 /* JobContentViewController.swift */,
+				D9B6FA1523B1226600582268 /* MetaDataViewController.swift */,
 				D9466467238F7F480004C062 /* PhotoEditingViewController.swift */,
 				D98DD15F239455F7003A359B /* PDFBuilder.swift */,
 				D91A4D342395FBD300E98A44 /* WeatherData.swift */,
 				D9699FFE23A42441003D85C5 /* WeatherInformation.swift */,
 				D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */,
 				D91C212D238A5E31005463E1 /* JobContentItem.swift */,
-				D9B6FA1523B1226600582268 /* MetaDataViewController.swift */,
 				D91C2129238A24D8005463E1 /* Job.swift */,
 				D9FA428B23A1F4E000952434 /* JobLocation.swift */,
 				D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */,
@@ -383,6 +389,7 @@
 				D92BD30B238B73D500DC6D77 /* JobContentTableViewController.swift in Sources */,
 				D9466466238F7DEA0004C062 /* ShapeView.swift in Sources */,
 				D94B09C5239162BE0070021C /* Circle.swift in Sources */,
+				D90EC1A823B51138003DA073 /* DistributionTableViewCell.swift in Sources */,
 				D94B09C7239162C90070021C /* Arrow.swift in Sources */,
 				D91C212E238A5E31005463E1 /* JobContentItem.swift in Sources */,
 				D91C2106238A1E15005463E1 /* AppDelegate.swift in Sources */,
@@ -391,6 +398,7 @@
 				D91A4D352395FBD300E98A44 /* WeatherData.swift in Sources */,
 				D91C212C238A5931005463E1 /* JobContentViewController.swift in Sources */,
 				D91C212A238A24D8005463E1 /* Job.swift in Sources */,
+				D90EC1A423B50EDD003DA073 /* AttendanceTableViewCell.swift in Sources */,
 				D9466468238F7F480004C062 /* PhotoEditingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

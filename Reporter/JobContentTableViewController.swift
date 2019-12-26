@@ -202,7 +202,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             // Set the controllers meta data before segue
             metaDataViewController.issuedBy = selectedJob!.issuedBy
             metaDataViewController.purposeOfVisit = selectedJob!.purposeOfVisit
-            metaDataViewController.inAttendance = selectedJob!.inAttendance
+            metaDataViewController.attendance = selectedJob!.inAttendance
             metaDataViewController.distribution = selectedJob!.distribution
             
             
@@ -237,7 +237,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             // get the data from the MetaDataViewController
             let issuedByText = sourceViewController.issuedBy
             let purposeOfVisitText = sourceViewController.purposeOfVisit
-            let inAttendanceList = sourceViewController.inAttendance
+            let inAttendanceList = sourceViewController.attendance
             let distributionList = sourceViewController.distribution
             
             // Set that data to the Job
@@ -245,7 +245,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             self.job?.purposeOfVisit = purposeOfVisitText
             self.job?.inAttendance = inAttendanceList
             self.job?.distribution = distributionList
-            
+            print("SET JOB DATA")
             // Pass the job back to the jobtableviewcontroller and save it there
             callback?(self.job!)
         }
