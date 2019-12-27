@@ -14,6 +14,7 @@ class JobTableViewController: UITableViewController {
     //MARK: Properties
     
     var jobs = [Job]()
+    var jobCount: JobCount!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,24 @@ class JobTableViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = editButtonItem
         
-        // load any saved meals, otherwise load sample data
-        if let savedJobs = loadJobs() {
-            jobs += savedJobs
-        } else {
-            loadSampleJobs()
+        self.jobCount = JobCount(count: 0)
+        self.jobs = []
+        
+        //get a saved job count
+        if let count = loadJobCount() {
+            self.jobCount = count
+            print("Job Count: " + String(count.count))
         }
         
+        // If there are saved jobs, then load them
+        if (jobCount.count > 0) {
+            
+            if let savedJobs = loadJobs() {
+                jobs += savedJobs
+            } else {
+                // do nothing
+            }
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -88,7 +100,6 @@ class JobTableViewController: UITableViewController {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             jobContentTableViewController.callback = { (job) -> Void in
-                print("ATTEMPTING TO SAVE")
                 self.saveExistingJob(job: job)
             }
          
@@ -124,80 +135,94 @@ class JobTableViewController: UITableViewController {
             // update existing item if it was an edit
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 jobs[selectedIndexPath.row] = job
+                saveJob(job: job, index: selectedIndexPath.row)
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
                 // Add a new job content item
                 let newIndexPath = IndexPath(row: jobs.count, section: 0)
                 jobs.append(job)
+                saveJob(job: job, index: jobs.count - 1)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
     }
 
-    //MARK: Private Methods
-    private func loadSampleJobs() {
-        
-        let photo1 = UIImage(named: "img1")
-        let photo2 = UIImage(named: "defaultPhoto")
-        let photo3 = UIImage(named: "img2")
-        
-        var contentList = [JobContentItem]()
-        
-        guard let content1 = JobContentItem(shortDescription: "Found leakage in the window", photo: photo1, status: JobContentItem.Severity.RED, severityIconPhoto: nil, longDescription: "This leakage has caused a major issue for everyone involved with the company. Many employees have been soaked during a storm while walking by this window. Much mold has been discovered which has given people lung issues. Must remedy this asap.") else { fatalError("Unable to instantiate content") }
-        
-        guard let content2 = JobContentItem(shortDescription: "Nothing here", photo: photo2, status: JobContentItem.Severity.YELLOW, severityIconPhoto: nil, longDescription: "") else { fatalError("Unable to instantiate content") }
-        
-        guard let content3 = JobContentItem(shortDescription: "This is great work, no leaks.", photo: photo3, status: JobContentItem.Severity.GREEN, severityIconPhoto: nil, longDescription: "This is a really great improvement over last inspection. No leaks found in upper five floors.") else { fatalError("Unable to instantiate content") }
-        
-        contentList += [content1, content2, content3]
-        
-        guard let job1 = Job(date: "December 9th", weatherDate: Date(), content: contentList, weather: nil) else {
-            fatalError("Unable to instantiate Job")
-        }
-        
-        guard let job2 = Job(date: "December 10th", weatherDate: Date(), content: [JobContentItem](), weather: nil) else {
-            fatalError("Unable to instantiate Job")
-        }
-        
-        guard let job3 = Job(date: "December 11th", weatherDate: Date(), content: [JobContentItem](), weather: nil) else {
-            fatalError("Unable to instantiate Job")
-        }
-        
-        jobs += [job1, job2, job3]
-    }
-    
-    private func saveExistingJob(job: Job) {
+    //MARK: Memory Methods
+    private func saveExistingJob(job: Job) -> Void {
         
         // Replace the outdated job with the new one
         for index in 0..<jobs.count {
             if jobs[index].date == job.date {
-                jobs[index] = job
+                saveJob(job: job, index: index)
             }
         }
-        print("NSKEYARCHIVER")
-        let isSuccesfulSave = NSKeyedArchiver.archiveRootObject(jobs, toFile: Job.ArchiveURL.path)
-        print("POSTNSKEYARCHIVER")
+    
+    }
+    
+    private func saveJob(job: Job, index: Int) {
+        
+        // give the job its own ArchiveURL inside the documents "jobs" folder
+        let JobArchiveURL = Job.DocumentsDirectory.appendingPathComponent("Job" + String(index))
+        
+        let isSuccesfulSave = NSKeyedArchiver.archiveRootObject(job, toFile: JobArchiveURL.path)
+        
         if isSuccesfulSave {
-            os_log("Jobs succesfully saved.", log: OSLog.default, type: .debug)
+            // update jobCount if this is a new job
+            if (index + 1 > self.jobCount.count) {
+                self.jobCount.count = index + 1
+                saveJobCount()
+            }
+            os_log("Job succesfully saved.", log: OSLog.default, type: .debug)
         } else {
-            os_log("Jobs failed to save...", log: OSLog.default, type: .error)
+            os_log("Job failed to save...", log: OSLog.default, type: .error)
         }
+        
     }
     
     private func saveJobs() {
         
-        let isSuccesfulSave = NSKeyedArchiver.archiveRootObject(jobs, toFile: Job.ArchiveURL.path)
-        
-        if isSuccesfulSave {
-            os_log("Jobs succesfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Jobs failed to save...", log: OSLog.default, type: .error)
+        var index = 0
+        for job in self.jobs {
+            saveJob(job: job, index: index)
+            index += 1
         }
+        // reset job count
+        self.jobCount.count = self.jobs.count
+        saveJobCount()
     }
     
     private func loadJobs() -> [Job]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Job.ArchiveURL.path) as? [Job]
+        
+        var jobList: [Job] = []
+        
+        for index in 0..<self.jobCount.count {
+            
+            //Get the url for this job
+            let jobURL = Job.DocumentsDirectory.appendingPathComponent("Job" + String(index))
+            
+            // Read this job from memory
+            let newJob = NSKeyedUnarchiver.unarchiveObject(withFile: jobURL.path) as? Job
+            
+            // Add the job to the job list
+            jobList.append(newJob!)
+        }
+        return jobList
+    }
+    
+    private func loadJobCount() -> JobCount? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: JobCount.ArchiveURL.path) as? JobCount
+    }
+    
+    private func saveJobCount() {
+                
+        let isSuccesfulSave = NSKeyedArchiver.archiveRootObject(self.jobCount!, toFile: JobCount.ArchiveURL.path)
+        
+        if isSuccesfulSave {
+            os_log("JobCount succesfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("JobCount failed to save...", log: OSLog.default, type: .error)
+        }
     }
 
 }

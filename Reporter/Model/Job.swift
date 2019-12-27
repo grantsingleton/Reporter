@@ -43,8 +43,8 @@ class Job: NSObject, NSCoding {
         
         let issuedBy = coder.decodeObject(forKey: PropertyKey.issuedBy) as? String
         let purposeOfVisit = coder.decodeObject(forKey: PropertyKey.purposeOfVisit) as? String
-        let inAttendance = coder.decodeObject(forKey: PropertyKey.inAttendance) as? [(name: String, from: String)]
-        let distribution = coder.decodeObject(forKey: PropertyKey.distribution) as? [(name: String, from: String)]
+        let inAttendance = coder.decodeObject(forKey: PropertyKey.inAttendance) as? [Person]
+        let distribution = coder.decodeObject(forKey: PropertyKey.distribution) as? [Person]
         
         // Set the meta data
         self.issuedBy = issuedBy
@@ -67,12 +67,11 @@ class Job: NSObject, NSCoding {
     // Meta Data Properties
     var issuedBy: String?
     var purposeOfVisit: String?
-    var inAttendance: [(name: String, from: String)]?
-    var distribution: [(name: String, from: String)]?
+    var inAttendance: [Person]?
+    var distribution: [Person]?
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("jobs")
     
     //MARK: Types
     struct PropertyKey {

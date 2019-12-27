@@ -28,11 +28,11 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
     //MARK: Properties
     var issuedBy: String?
     var purposeOfVisit: String?
-    var attendance: [(name: String, from: String)]?
-    var distribution: [(name: String, from: String)]?
+    var attendance: [Person]?
+    var distribution: [Person]?
     
-    var attendanceList: [(name: String, from: String)] = []
-    var distributionList: [(name: String, from: String)] = []
+    var attendanceList: [Person] = []
+    var distributionList: [Person] = []
     
 
     override func viewDidLoad() {
@@ -165,9 +165,12 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
             // add the new person to the table view
             let newName = attendanceNameTextField.text!
             let newFrom = attendanceFromTextField.text!
-            let newPerson = [(name: newName, from: newFrom)]
-            attendanceList += newPerson
+            let newPerson = Person(name: newName, from: newFrom)
+            attendanceList.append(newPerson)
             inAttendanceTableView.reloadData()
+            
+            attendanceNameTextField.text = ""
+            attendanceFromTextField.text = ""
         }
     }
     
@@ -176,9 +179,12 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
             // add the new person to the list
             let newName = distributionNameTextField.text!
             let newFrom = distributionFromTextField.text!
-            let newPerson = [(name: newName, from: newFrom)]
-            distributionList += newPerson
+            let newPerson = Person(name: newName, from: newFrom)
+            distributionList.append(newPerson)
             distributionTableView.reloadData()
+            
+            distributionNameTextField.text = ""
+            distributionFromTextField.text = ""
         }
     }
     

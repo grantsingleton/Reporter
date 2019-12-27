@@ -11,9 +11,8 @@ import CoreLocation
 
 class PDFBuilder {
     
-    var name: String
-    var contentList: [JobContentItem]
-    var weatherData: WeatherInformation
+    //MARK: Data Properties
+    var job: Job
     
     //MARK: Page Properties
     let topMargin: CGFloat = 18.0
@@ -38,15 +37,62 @@ class PDFBuilder {
     let paragraphFont = UIFont(name: "Helvetica", size: 12)
     let paragraphBackupFont = UIFont.systemFont(ofSize: 12, weight: .regular)
     
-    init(name: String, contentList: [JobContentItem], weatherData: WeatherInformation) {
-        self.name = name
-        self.contentList = contentList
-        self.weatherData = weatherData
+    init(job: Job) {
+        self.job = job
     }
     
     func buildPDF() -> Data {
         
-        // Set dimensions for the page
+        /*
+          SET PAGE CONTENT PROPERTIES
+         */
+        let locationTitle = "UTMB Hospital" // Temp hardcode until fix
+        let jobDescription = "Modernization and Facade Replacement" // Temp hard code unti fix
+        let jobNumber = "UTMB 59562" //temp hardcode until fix
+        let reportNumber = "Daily Field Report 12" //Temp hardcode until fix
+        
+        let dayOfVisit = "Day of Visit: " + self.job.date
+        
+        // get the current date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        // US English Locale (en_US)
+        dateFormatter.locale = Locale(identifier: "en_US")
+        let todaysDate = Date()
+        let dateString = dateFormatter.string(from: todaysDate)
+        
+        // Set the issue date to be todays date
+        let issueDate = "Issued: " + dateString
+        
+        let issuedBy = "Issued by: " + self.job.issuedBy!
+        
+        let purposeTitle = "Purpose of Visit:"
+        
+        let purposeOfVisit = self.job.purposeOfVisit!
+        
+        // Count the number of flags
+        let redFlagsCount = countFlags(type: JobContentItem.Severity.RED)
+        let yellowFlagsCount = countFlags(type: JobContentItem.Severity.YELLOW)
+        let greenFlagsCount = countFlags(type: JobContentItem.Severity.GREEN)
+        
+        // This is where we list the flags that are in the report
+        let findingsTitle = "Findings of Visit:"
+        
+        let redFlags = "Red Flags - " + String(redFlagsCount)
+        let yellowFlags = "Yellow Flags - " + String(yellowFlagsCount)
+        let greenFlags = "Green Flags - " + String(greenFlagsCount)
+        
+        
+        /*
+         ***FIXME**** Add dynamic weather date here when you get to that point
+         */
+
+        
+        
+        /*
+         SET PAGE FORMATTING PROPERTIES
+        */
         let  pageWidth = 612 // 8.5 * 72
         let pageHeight = 11 * 72
         let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
@@ -66,54 +112,43 @@ class PDFBuilder {
 
             
             //MARK: Centered Title
-            // **FIXME** temp hardcode of text
-            let locationTitle = "UTMB Hospital"
+            // Job Location Title
             var bottomOfTitle = addTitle(pageRect: pageRect, titleTop: bottomOfLogo + 18, title: locationTitle, titleFont: titleFont ?? titleBackupFont)
             
-            // **FIXME** temp hardcode of text
-            let jobDescription = "Modernization and Facade Replacement"
+            // Job Description Title
             bottomOfTitle = addTitle(pageRect: pageRect, titleTop: bottomOfTitle + verticalSpace, title: jobDescription, titleFont: titleFont ?? titleBackupFont)
             
-            // **FIXME** temp hardcode of text
-            let jobNumber = "UTMB 59562"
+            // Job Number Title
             bottomOfTitle = addTitle(pageRect: pageRect, titleTop: bottomOfTitle + verticalSpace, title: jobNumber, titleFont: titleFont ?? titleBackupFont)
             
-            // **FIXME** temp hardcode of text
-            let reportNumber = "Daily Field Report 12"
+            // Report Number Title
             bottomOfTitle = addTitle(pageRect: pageRect, titleTop: bottomOfTitle + verticalSpace, title: reportNumber, titleFont: titleFont ?? titleBackupFont)
             
             
             //MARK: Small title
-            // **FIXME** temp hardcode of text
-            let dayOfVisit = "Day of Visit: November 25, 2019 (Monday)"
+            // Day of Visit Title
             bottomOfTitle = addTitle(pageRect: pageRect, titleTop: bottomOfTitle + verticalSpace, title: dayOfVisit, titleFont: smallTitleFont ?? smallTitleBackupFont)
             
             
             //MARK: Left Title
-            // **FIXME** temp hardcode of text
-            let issueDate = "Issued: November 27, 2019"
+            // Issue Date Title
             var bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitle + doubleVerticalSpace, title: issueDate, font: (smallTitleFont ?? smallTitleBackupFont))
             
-            // **FIXME** temp hardcode of text
-            let issuedBy = "Issued by: Joe Inspector"
+            // Issued By Title
             bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + verticalSpace, title: issuedBy, font: (smallTitleFont ?? smallTitleBackupFont))
             
             //MARK: Purpose of Visit
-            // **FIXME** temp hardcode of text
-            let purposeTitle = "Purpose of Visit:"
+            // Purpose Title
             bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + doubleVerticalSpace, title: purposeTitle, font: (smallTitleFont ?? smallTitleBackupFont))
             
-            let purposeOfVisit = "This AHU was noted to have  a damaged roof seam directly above the leak location and additional caulking at all metal wall/roof panel on the east end.  "
+            // Purpose of Visit Content
             let bottomOfParagraph = addParagraph(pageRect: pageRect, textTop: bottomOfTitleTuple.bottom + verticalSpace, paragraphText: purposeOfVisit, font: (paragraphFont ?? paragraphBackupFont))
     
             //MARK: Findings of Visit (Flags)
-            let findingsOfVisit = "Findings of Visit:"
-            bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfParagraph + verticalSpace, title: findingsOfVisit, font: (smallTitleFont ?? smallTitleBackupFont))
+            // Finding of Visit Title
+            bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfParagraph + verticalSpace, title: findingsTitle, font: (smallTitleFont ?? smallTitleBackupFont))
             
-            let redFlags = "Red Flags - 3"
-            let yellowFlags = "Yellow Flags - 2"
-            let greenFlags = "Green Flags - 5"
-            
+            // Flag Count
             bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + verticalSpace + 10, title: redFlags, font: (smallTitleFont ?? smallTitleBackupFont))
             bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + verticalSpace, title: yellowFlags, font: (smallTitleFont ?? smallTitleBackupFont))
             bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + verticalSpace, title: greenFlags, font: (smallTitleFont ?? smallTitleBackupFont))
@@ -124,7 +159,7 @@ class PDFBuilder {
             var bottomOfContent: CGFloat = topMargin
             var photoNumber = 1
             
-            for item in contentList {
+            for item in self.job.content {
                 
                 // draw a photo content item
                 if (item.photo != UIImage(named: "defaultPhoto")) {
@@ -518,4 +553,19 @@ class PDFBuilder {
         
         return bottomOfContent
     }
+    
+    //Used to count the number of a certain color of severity flag for a list of content items
+    func countFlags(type: JobContentItem.Severity) -> Int {
+        
+        var count: Int = 0
+        
+        for item in self.job.content {
+            
+            if (item.status == type){
+                count += 1
+            }
+        }
+        return count
+    }
+    
 }

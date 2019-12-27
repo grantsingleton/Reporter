@@ -192,10 +192,10 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
                 if (selectedJob!.purposeOfVisit == "") {
                     selectedJob!.purposeOfVisit = previousJob!.purposeOfVisit
                 }
-                if (selectedJob!.inAttendance == nil) {
+                if (selectedJob!.inAttendance!.count == 0) {
                     selectedJob!.inAttendance = previousJob!.inAttendance
                 }
-                if (selectedJob!.distribution == nil) {
+                if (selectedJob!.distribution!.count == 0) {
                     selectedJob!.distribution = previousJob!.distribution
                 }
             }
@@ -287,7 +287,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         
         print("Weather: " + (self.job?.weather?.precipitationType ?? ""))
         
-        let pdfBuilder = PDFBuilder(name: job!.date, contentList: job!.content, weatherData: self.job!.weather!)
+        let pdfBuilder = PDFBuilder(job: job!)
         let reportDataPDF = pdfBuilder.buildPDF()
         
         let composeMailViewController = MFMailComposeViewController()
