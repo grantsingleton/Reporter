@@ -15,12 +15,14 @@ class JobTableViewController: UITableViewController {
     
     var jobs = [Job]()
     var jobCount: JobCount!
+    var jobLocation: JobLocation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        navigationItem.leftBarButtonItem = editButtonItem
+        // remove this for now since the left button item should be back to location
+        //navigationItem.leftBarButtonItem = editButtonItem
         
         self.jobCount = JobCount(count: 0)
         self.jobs = []
@@ -148,7 +150,7 @@ class JobTableViewController: UITableViewController {
         }
     }
 
-    //MARK: Memory Methods
+    //MARK: Storage Methods
     private func saveExistingJob(job: Job) -> Void {
         
         // Replace the outdated job with the new one
@@ -161,6 +163,7 @@ class JobTableViewController: UITableViewController {
     }
     
     private func saveJob(job: Job, index: Int) {
+        
         
         // give the job its own ArchiveURL inside the documents "jobs" folder
         let JobArchiveURL = Job.DocumentsDirectory.appendingPathComponent("Job" + String(index))
