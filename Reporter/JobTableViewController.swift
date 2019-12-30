@@ -121,6 +121,8 @@ class JobTableViewController: UITableViewController {
             }
             // pass this selected job into the jobContentTableView by setting its member variable "job" to selectedJob
             jobContentTableViewController.job = selectedJob
+            jobContentTableViewController.jobLocationName = self.jobLocation.jobLocationName
+            jobContentTableViewController.jobDescription = self.jobLocation.jobDescription
         
         default:
             fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")

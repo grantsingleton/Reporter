@@ -21,6 +21,8 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var attendanceFromTextField: UITextField!
     @IBOutlet weak var distributionNameTextField: UITextField!
     @IBOutlet weak var distributionFromTextField: UITextField!
+    @IBOutlet weak var jobNumberTextField: UITextField!
+    @IBOutlet weak var reportNumberTextField: UITextField!
     @IBOutlet weak var inAttendanceTableView: UITableView!
     @IBOutlet weak var distributionTableView: UITableView!
     
@@ -28,6 +30,8 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
     //MARK: Properties
     var issuedBy: String?
     var purposeOfVisit: String?
+    var jobNumber: String?
+    var reportNumber: Int?
     var attendance: [Person]?
     var distribution: [Person]?
     
@@ -40,6 +44,8 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
         
         issuedByTextField.delegate = self
         purposeOfVisitTextField.delegate = self
+        jobNumberTextField.delegate = self
+        reportNumberTextField.delegate = self
         
         inAttendanceTableView.dataSource = self
         inAttendanceTableView.delegate = self
@@ -54,12 +60,21 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
         if let purposeOfVisit = purposeOfVisit {
             purposeOfVisitTextField.text = purposeOfVisit
         }
+        if let jobNumber = jobNumber {
+            jobNumberTextField.text = jobNumber
+        }
+        if let reportNumber = reportNumber {
+            if reportNumber > 0 {
+                reportNumberTextField.text = String(reportNumber)
+            }
+        }
         if let attendance = attendance {
             attendanceList = attendance
         }
         if let distribution = distribution {
             distributionList = distribution
         }
+        
     }
     
 
@@ -82,6 +97,8 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
             
             issuedBy = issuedByTextField.text ?? ""
             purposeOfVisit = purposeOfVisitTextField.text ?? ""
+            jobNumber = jobNumberTextField.text ?? ""
+            reportNumber = Int(reportNumberTextField.text ?? "0" )
             attendance = attendanceList
             distribution = distributionList
         }

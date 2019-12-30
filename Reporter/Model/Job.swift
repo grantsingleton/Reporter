@@ -22,6 +22,8 @@ class Job: NSObject, NSCoding {
         coder.encode(purposeOfVisit, forKey: PropertyKey.purposeOfVisit)
         coder.encode(inAttendance, forKey: PropertyKey.inAttendance)
         coder.encode(distribution, forKey: PropertyKey.distribution)
+        coder.encode(jobNumber, forKey: PropertyKey.jobNumber)
+        coder.encode(reportNumber, forKey: PropertyKey.reportNumber)
     }
     
     required convenience init?(coder: NSCoder) {
@@ -46,11 +48,17 @@ class Job: NSObject, NSCoding {
         let inAttendance = coder.decodeObject(forKey: PropertyKey.inAttendance) as? [Person]
         let distribution = coder.decodeObject(forKey: PropertyKey.distribution) as? [Person]
         
+        let jobNumber = coder.decodeObject(forKey: PropertyKey.jobNumber) as? String
+        
+        let reportNumber = coder.decodeInteger(forKey: PropertyKey.reportNumber)
+        
         // Set the meta data
         self.issuedBy = issuedBy
         self.purposeOfVisit = purposeOfVisit
         self.inAttendance = inAttendance
         self.distribution = distribution
+        self.jobNumber = jobNumber
+        self.reportNumber = reportNumber
     }
     
     
@@ -69,6 +77,10 @@ class Job: NSObject, NSCoding {
     var purposeOfVisit: String?
     var inAttendance: [Person]?
     var distribution: [Person]?
+    
+    var jobNumber: String?
+    var reportNumber: Int?
+    
         
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -84,6 +96,8 @@ class Job: NSObject, NSCoding {
         static let purposeOfVisit = "purposeOfVisit"
         static let inAttendance = "inAttendance"
         static let distribution = "distribution"
+        static let jobNumber = "jobNumber"
+        static let reportNumber = "reportNumber"
     }
     
     //MARK: Initialization
@@ -104,6 +118,8 @@ class Job: NSObject, NSCoding {
         self.purposeOfVisit = ""
         self.inAttendance = []
         self.distribution = []
+        self.jobNumber = ""
+        self.reportNumber = 0
     }
     
     

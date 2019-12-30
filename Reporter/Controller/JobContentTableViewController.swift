@@ -16,6 +16,8 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     //MARK: Properties
     // The job passed in when the user selects a job
     var job: Job?
+    var jobLocationName: String?
+    var jobDescription: String?
     var previousJob: Job?
     var content: [JobContentItem] = []
     var callback: ((_ job: Job) -> Void)?
@@ -198,12 +200,20 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
                 if (selectedJob!.distribution!.count == 0) {
                     selectedJob!.distribution = previousJob!.distribution
                 }
+                if (selectedJob!.jobNumber == "") {
+                    selectedJob!.jobNumber = previousJob!.jobNumber
+                }
+                if (selectedJob!.reportNumber == 0) {
+                    selectedJob!.reportNumber = previousJob!.reportNumber! + 1
+                }
             }
             // Set the controllers meta data before segue
             metaDataViewController.issuedBy = selectedJob!.issuedBy
             metaDataViewController.purposeOfVisit = selectedJob!.purposeOfVisit
             metaDataViewController.attendance = selectedJob!.inAttendance
             metaDataViewController.distribution = selectedJob!.distribution
+            metaDataViewController.jobNumber = selectedJob!.jobNumber
+            metaDataViewController.reportNumber = selectedJob!.reportNumber
             
             
         default:
@@ -287,7 +297,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         
         print("Weather: " + (self.job?.weather?.precipitationType ?? ""))
         
-        let pdfBuilder = PDFBuilder(job: job!)
+        let pdfBuilder = PDFBuilder(job: job!, jobLocationName: self.jobLocationName!, jobDescription: self.jobDescription!)
         let reportDataPDF = pdfBuilder.buildPDF()
         
         let composeMailViewController = MFMailComposeViewController()

@@ -13,6 +13,8 @@ class PDFBuilder {
     
     //MARK: Data Properties
     var job: Job
+    var jobLocationName: String
+    var jobDescription: String
     
     //MARK: Page Properties
     let topMargin: CGFloat = 18.0
@@ -37,19 +39,22 @@ class PDFBuilder {
     let paragraphFont = UIFont(name: "Helvetica", size: 12)
     let paragraphBackupFont = UIFont.systemFont(ofSize: 12, weight: .regular)
     
-    init(job: Job) {
+    init(job: Job, jobLocationName: String, jobDescription: String) {
         self.job = job
+        self.jobLocationName = jobLocationName
+        self.jobDescription = jobDescription
     }
     
     func buildPDF() -> Data {
         
         /*
-          SET PAGE CONTENT PROPERTIES
+          SET PAGE CONTENT PROPERTIESiop;[']
+         
          */
-        let locationTitle = "UTMB Hospital" // Temp hardcode until fix
-        let jobDescription = "Modernization and Facade Replacement" // Temp hard code unti fix
-        let jobNumber = "UTMB 59562" //temp hardcode until fix
-        let reportNumber = "Daily Field Report 12" //Temp hardcode until fix
+        let locationTitle = self.jobLocationName
+        let jobDescription = self.jobDescription
+        let jobNumber = self.job.jobNumber!
+        let reportNumber = "Daily Field Report " + String(self.job.reportNumber!)
         
         let dayOfVisit = "Day of Visit: " + self.job.date
         
