@@ -39,6 +39,7 @@
 		D9B6FA1623B1226600582268 /* MetaDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B6FA1523B1226600582268 /* MetaDataViewController.swift */; };
 		D9E3C004238E3D6F00D54D1D /* LongDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */; };
 		D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */; };
+		D9EE6B6623B8403800B682B6 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE6B6523B8403800B682B6 /* NewLocationViewController.swift */; };
 		D9FA428723A19BD000952434 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA428623A19BD000952434 /* DatePickerViewController.swift */; };
 		D9FA428A23A1F25600952434 /* report_template.html in Resources */ = {isa = PBXBuildFile; fileRef = D9FA428923A1F25600952434 /* report_template.html */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		D9B6FA1523B1226600582268 /* MetaDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataViewController.swift; sourceTree = "<group>"; };
 		D9E3C003238E3D6F00D54D1D /* LongDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongDescriptionViewController.swift; sourceTree = "<group>"; };
 		D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAdditions.swift; sourceTree = "<group>"; };
+		D9EE6B6523B8403800B682B6 /* NewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
 		D9FA428623A19BD000952434 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		D9FA428923A1F25600952434 /* report_template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = report_template.html; path = ../../../../Downloads/report_template.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,9 +176,6 @@
 				D91C2105238A1E15005463E1 /* AppDelegate.swift */,
 				D91C2107238A1E15005463E1 /* SceneDelegate.swift */,
 				D91C210B238A1E15005463E1 /* Main.storyboard */,
-				D921548123B6AAB1008F31BF /* JobLocation.swift */,
-				D921547D23B6A957008F31BF /* JobLocationTableViewCell.swift */,
-				D921547F23B6AA36008F31BF /* JobLocationTableViewController.swift */,
 				D91C210E238A1E17005463E1 /* Assets.xcassets */,
 				D91C2110238A1E17005463E1 /* LaunchScreen.storyboard */,
 				D91C2113238A1E17005463E1 /* Info.plist */,
@@ -196,6 +195,7 @@
 		D93350CB23B532EE004402C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D921548123B6AAB1008F31BF /* JobLocation.swift */,
 				D96129D023B65D4B00B78B88 /* JobCount.swift */,
 				D91C2129238A24D8005463E1 /* Job.swift */,
 				D9466465238F7DEA0004C062 /* ShapeView.swift */,
@@ -212,7 +212,9 @@
 		D93350CC23B5337E004402C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D921547F23B6AA36008F31BF /* JobLocationTableViewController.swift */,
 				D91C2109238A1E15005463E1 /* JobTableViewController.swift */,
+				D9EE6B6523B8403800B682B6 /* NewLocationViewController.swift */,
 				D9FA428623A19BD000952434 /* DatePickerViewController.swift */,
 				D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */,
 				D91C212B238A5931005463E1 /* JobContentViewController.swift */,
@@ -230,6 +232,7 @@
 				D90EC1A723B51138003DA073 /* DistributionTableViewCell.swift */,
 				D91C2127238A2416005463E1 /* JobTableViewCell.swift */,
 				D91C212F238A6D35005463E1 /* JobContentTableViewCell.swift */,
+				D921547D23B6A957008F31BF /* JobLocationTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				D90EC1A823B51138003DA073 /* DistributionTableViewCell.swift in Sources */,
 				D94B09C7239162C90070021C /* Arrow.swift in Sources */,
 				D91C212E238A5E31005463E1 /* JobContentItem.swift in Sources */,
+				D9EE6B6623B8403800B682B6 /* NewLocationViewController.swift in Sources */,
 				D96129D123B65D4B00B78B88 /* JobCount.swift in Sources */,
 				D91C2106238A1E15005463E1 /* AppDelegate.swift in Sources */,
 				D91C2108238A1E15005463E1 /* SceneDelegate.swift in Sources */,

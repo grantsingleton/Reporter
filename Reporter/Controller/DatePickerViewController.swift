@@ -43,8 +43,7 @@ class DatePickerViewController: UIViewController, UINavigationControllerDelegate
         // Get the String date
         let date = datePicker.date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .none
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMd")
         let dateString = dateFormatter.string(from: date)
         
         // Get the weather date

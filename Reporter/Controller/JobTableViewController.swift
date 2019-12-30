@@ -13,9 +13,9 @@ class JobTableViewController: UITableViewController {
     
     //MARK: Properties
     
-    var jobs = [Job]()
-    var jobCount: JobCount!
     var jobLocation: JobLocation!
+    var callback: ((_ jobLocation: JobLocation) -> Void)?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,25 +23,8 @@ class JobTableViewController: UITableViewController {
         
         // remove this for now since the left button item should be back to location
         //navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.title = jobLocation!.jobLocationName
         
-        self.jobCount = JobCount(count: 0)
-        self.jobs = []
-        
-        //get a saved job count
-        if let count = loadJobCount() {
-            self.jobCount = count
-            print("Job Count: " + String(count.count))
-        }
-        
-        // If there are saved jobs, then load them
-        if (jobCount.count > 0) {
-            
-            if let savedJobs = loadJobs() {
-                jobs += savedJobs
-            } else {
-                // do nothing
-            }
-        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,7 +34,7 @@ class JobTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // need as many rows as there are jobs
-        return jobs.count
+        return jobLocation.jobs.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,7 +45,7 @@ class JobTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of JobTableViewCell")
         }
         
-        let job = jobs[indexPath.row]
+        let job = jobLocation.jobs[indexPath.row]
         
         cell.jobLabel.text = job.date
         
@@ -71,9 +54,9 @@ class JobTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            jobs.remove(at: indexPath.row)
-            saveJobs()
+            jobLocation.jobs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            self.callback?(self.jobLocation)
         } else if editingStyle == .insert {
             
         }
@@ -101,9 +84,6 @@ class JobTableViewController: UITableViewController {
             guard let jobContentTableViewController = segue.destination as? JobContentTableViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
-            jobContentTableViewController.callback = { (job) -> Void in
-                self.saveExistingJob(job: job)
-            }
          
             // get the cell that was selected by the user
             guard let selectedJobCell = sender as? JobTableViewCell else {
@@ -116,11 +96,18 @@ class JobTableViewController: UITableViewController {
             }
             
             // this is the job that was selected by the user
-            let selectedJob = jobs[indexPath.row]
+            let selectedJob = jobLocation.jobs[indexPath.row]
+            
+            jobContentTableViewController.callback = { (job) -> Void in
+                //self.saveExistingJob(job: job)
+                // Add a callback to job locations
+                self.jobLocation.jobs[indexPath.row] = job
+                self.callback?(self.jobLocation)
+            }
             
             // If the selected job isnt the first job in the list then pass the previous job in so we can get the meta data
             if (indexPath.row > 0) {
-                let previousJob = jobs[indexPath.row - 1]
+                let previousJob = jobLocation.jobs[indexPath.row - 1]
                 jobContentTableViewController.previousJob = previousJob
             }
             // pass this selected job into the jobContentTableView by setting its member variable "job" to selectedJob
@@ -136,97 +123,28 @@ class JobTableViewController: UITableViewController {
         if let sourceViewController = sender.source as? DatePickerViewController, let job = sourceViewController.job {
             // update existing item if it was an edit
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                jobs[selectedIndexPath.row] = job
-                saveJob(job: job, index: selectedIndexPath.row)
+                jobLocation.jobs[selectedIndexPath.row] = job
+                //saveJob(job: job, index: selectedIndexPath.row)
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                
+                // Save the edited Job
+                self.callback?(self.jobLocation)
             }
             else {
                 // Add a new job content item
-                let newIndexPath = IndexPath(row: jobs.count, section: 0)
-                jobs.append(job)
-                saveJob(job: job, index: jobs.count - 1)
+                let newIndexPath = IndexPath(row: jobLocation.jobs.count, section: 0)
+                jobLocation.jobs.append(job)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
-            }
-        }
-    }
-
-    //MARK: Storage Methods
-    private func saveExistingJob(job: Job) -> Void {
-        
-        // Replace the outdated job with the new one
-        for index in 0..<jobs.count {
-            if jobs[index].date == job.date {
-                saveJob(job: job, index: index)
-            }
-        }
-    
-    }
-    
-    private func saveJob(job: Job, index: Int) {
-        
-        
-        // give the job its own ArchiveURL inside the documents "jobs" folder
-        let JobArchiveURL = Job.DocumentsDirectory.appendingPathComponent("Job" + String(index))
-        
-        let isSuccesfulSave = NSKeyedArchiver.archiveRootObject(job, toFile: JobArchiveURL.path)
-        
-        if isSuccesfulSave {
-            // update jobCount if this is a new job
-            if (index + 1 > self.jobCount.count) {
-                self.jobCount.count = index + 1
-                saveJobCount()
-            }
-            os_log("Job succesfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Job failed to save...", log: OSLog.default, type: .error)
-        }
-        
-    }
-    
-    private func saveJobs() {
-        
-        var index = 0
-        for job in self.jobs {
-            saveJob(job: job, index: index)
-            index += 1
-        }
-        // reset job count
-        self.jobCount.count = self.jobs.count
-        saveJobCount()
-    }
-    
-    private func loadJobs() -> [Job]? {
-        
-        var jobList: [Job] = []
-        
-        for index in 0..<self.jobCount.count {
-            
-            //Get the url for this job
-            let jobURL = Job.DocumentsDirectory.appendingPathComponent("Job" + String(index))
-            
-            // Read this job from memory
-            let newJob = NSKeyedUnarchiver.unarchiveObject(withFile: jobURL.path) as? Job
-            
-            // Add the job to the job list
-            jobList.append(newJob!)
-        }
-        return jobList
-    }
-    
-    private func loadJobCount() -> JobCount? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: JobCount.ArchiveURL.path) as? JobCount
-    }
-    
-    private func saveJobCount() {
                 
-        let isSuccesfulSave = NSKeyedArchiver.archiveRootObject(self.jobCount!, toFile: JobCount.ArchiveURL.path)
-        
-        if isSuccesfulSave {
-            os_log("JobCount succesfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("JobCount failed to save...", log: OSLog.default, type: .error)
+                // Save the new job
+                self.callback?(self.jobLocation)
+            }
         }
     }
 
+
+    
+    
+    
 }
 

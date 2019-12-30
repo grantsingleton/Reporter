@@ -814,10 +814,10 @@
             </objects>
             <point key="canvasLocation" x="6576.8000000000002" y="-546.47676161919048"/>
         </scene>
-        <!--View Controller-->
+        <!--New Location View Controller-->
         <scene sceneID="S6b-Uz-6h3">
             <objects>
-                <viewController id="AOy-T4-J1F" sceneMemberID="viewController">
+                <viewController id="AOy-T4-J1F" customClass="NewLocationViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jbi-v3-06c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -852,11 +852,24 @@
                         <viewLayoutGuide key="safeArea" id="DGV-GI-tMX"/>
                     </view>
                     <navigationItem key="navigationItem" id="yxE-Cf-sTR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bsf-Gj-gco"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xXh-4d-Z7K"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bsf-Gj-gco">
+                            <connections>
+                                <action selector="cancel:" destination="AOy-T4-J1F" id="B5y-60-Dmz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xXh-4d-Z7K">
+                            <connections>
+                                <segue destination="vh4-j8-noV" kind="unwind" unwindAction="unwindToJobLocationTableViewWithSender:" id="egN-5N-dzm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="jobLocationTextField" destination="lQf-21-SdL" id="u2H-aW-rv2"/>
+                        <outlet property="saveButton" destination="xXh-4d-Z7K" id="IeE-bM-HH4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q47-F3-NUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="vh4-j8-noV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1311" y="-777"/>
         </scene>

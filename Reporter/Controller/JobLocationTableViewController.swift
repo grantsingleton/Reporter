@@ -16,14 +16,13 @@ class JobLocationTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleLocations()
-/*
+
         if let savedLocations = loadLocations() {
-            self.locations = savedLocations
+            locations += savedLocations
         } else {
             loadSampleLocations()
         }
-        */
+    
     }
 
     // MARK: - Table view data source
@@ -76,6 +75,25 @@ class JobLocationTableViewController: UITableViewController {
         }    
     }
     
+    //MARK: Unwind
+    @IBAction func unwindToJobLocationTableView(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? NewLocationViewController, let returnedJobLocation = sourceViewController.jobLocation {
+            
+            //update existing location if it was an edit
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                locations[selectedIndexPath.row].jobLocationName = returnedJobLocation.jobLocationName
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else { // Add new Job Location
+                let newIndexPath = IndexPath(row: locations.count, section: 0)
+                locations.append(returnedJobLocation)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+            saveLocations()
+        }
+    }
+    
 
     /*
     // Override to support rearranging the table view.
@@ -123,6 +141,11 @@ class JobLocationTableViewController: UITableViewController {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
+            jobTableViewController.callback = { (jobLocation) -> Void in
+                self.locations[indexPath.row] = jobLocation
+                self.saveLocations()
+            }
+            
             // this is the location that was selected by the user
             let selectedLocation = locations[indexPath.row]
             
@@ -135,33 +158,26 @@ class JobLocationTableViewController: UITableViewController {
     }
     
     
+    
     //MARK: Storage Methods
     private func saveLocations() {
         
-        do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: locations, requiringSecureCoding: false)
-            try data.write(to: JobLocation.ArhiveURL)
-        } catch {
-            print("Couldn't save Job Locations")
+        let isSuccesfulSave = NSKeyedArchiver.archiveRootObject(locations, toFile: JobLocation.ArhiveURL.path)
+        if isSuccesfulSave {
+            os_log("Locations successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save locations...", log: OSLog.default, type: .error)
         }
     }
     
     private func loadLocations() -> [JobLocation]? {
         
-        do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: locations, requiringSecureCoding: false)
-            if let loadedLocations = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [JobLocation] {
-                return loadedLocations
-            }
-        } catch {
-            print("Couldn't load Job Locations")
-        }
-        return []
+        return NSKeyedUnarchiver.unarchiveObject(withFile: JobLocation.ArhiveURL.path) as? [JobLocation]
     }
     
     func loadSampleLocations() {
         
-        let location = JobLocation(jobLocationName: "UTMB Hospital")
+        let location = JobLocation(jobLocationName: "UTMB Hospital", jobs: [])
         
         locations += [location]
         
