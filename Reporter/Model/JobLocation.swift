@@ -14,6 +14,7 @@ class JobLocation: NSObject, NSCoding {
     //MARK: NSCoding
     func encode(with coder: NSCoder) {
         coder.encode(jobLocationName, forKey: PropertyKey.jobLocationName)
+        coder.encode(jobDescription, forKey: PropertyKey.jobDescription)
         coder.encode(jobs, forKey: PropertyKey.jobs)
     }
     
@@ -29,15 +30,20 @@ class JobLocation: NSObject, NSCoding {
             return nil
         }
         
-        self.init(jobLocationName: jobLocationName, jobs: jobs)
+        let jobDescription = coder.decodeObject(forKey: PropertyKey.jobDescription) as? String ?? ""
+        
+        self.init(jobLocationName: jobLocationName, jobDescription: jobDescription, jobs: jobs)
     }
     
     //MARK: Properties
     var jobLocationName: String
+    var jobDescription: String
+    
     var jobs: [Job]
     
     struct PropertyKey {
         static let jobLocationName = "jobLocationName"
+        static let jobDescription = "jobDescription"
         static let jobs = "jobs"
     }
     
@@ -45,8 +51,9 @@ class JobLocation: NSObject, NSCoding {
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArhiveURL = DocumentsDirectory.appendingPathComponent("Locations")
     
-    init(jobLocationName: String, jobs: [Job]) {
+    init(jobLocationName: String, jobDescription: String, jobs: [Job]) {
         self.jobLocationName = jobLocationName
+        self.jobDescription = jobDescription
         self.jobs = jobs
     }
     

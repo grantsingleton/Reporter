@@ -76,6 +76,26 @@ class JobLocationTableViewController: UITableViewController {
     }
     
     //MARK: Unwind
+    
+    @IBAction func unwindFromJobLocationMetaDataViewController(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? NewLocationViewController, let returnedJobLocation = sourceViewController.jobLocation {
+            
+            //update existing location if it was an edit
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                locations[selectedIndexPath.row].jobLocationName = returnedJobLocation.jobLocationName
+                locations[selectedIndexPath.row].jobDescription = returnedJobLocation.jobDescription
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else { // Add new Job Location
+                let newIndexPath = IndexPath(row: locations.count, section: 0)
+                locations.append(returnedJobLocation)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+            saveLocations()
+        }
+    }
+    
     @IBAction func unwindToJobLocationTableView(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? NewLocationViewController, let returnedJobLocation = sourceViewController.jobLocation {
@@ -83,6 +103,7 @@ class JobLocationTableViewController: UITableViewController {
             //update existing location if it was an edit
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 locations[selectedIndexPath.row].jobLocationName = returnedJobLocation.jobLocationName
+                locations[selectedIndexPath.row].jobDescription = returnedJobLocation.jobDescription
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else { // Add new Job Location
@@ -144,6 +165,7 @@ class JobLocationTableViewController: UITableViewController {
             jobTableViewController.callback = { (jobLocation) -> Void in
                 self.locations[indexPath.row] = jobLocation
                 self.saveLocations()
+                self.tableView.reloadRows(at: [indexPath], with: .none)
             }
             
             // this is the location that was selected by the user
@@ -177,7 +199,7 @@ class JobLocationTableViewController: UITableViewController {
     
     func loadSampleLocations() {
         
-        let location = JobLocation(jobLocationName: "UTMB Hospital", jobs: [])
+        let location = JobLocation(jobLocationName: "UTMB Hospital", jobDescription: "", jobs: [])
         
         locations += [location]
         

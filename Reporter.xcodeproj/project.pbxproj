@@ -175,6 +175,8 @@
 				D93350CE23B533DB004402C9 /* Utility */,
 				D91C2105238A1E15005463E1 /* AppDelegate.swift */,
 				D91C2107238A1E15005463E1 /* SceneDelegate.swift */,
+				D91C2109238A1E15005463E1 /* JobTableViewController.swift */,
+				D9EE6B6523B8403800B682B6 /* NewLocationViewController.swift */,
 				D91C210B238A1E15005463E1 /* Main.storyboard */,
 				D91C210E238A1E17005463E1 /* Assets.xcassets */,
 				D91C2110238A1E17005463E1 /* LaunchScreen.storyboard */,
@@ -213,8 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				D921547F23B6AA36008F31BF /* JobLocationTableViewController.swift */,
-				D91C2109238A1E15005463E1 /* JobTableViewController.swift */,
-				D9EE6B6523B8403800B682B6 /* NewLocationViewController.swift */,
 				D9FA428623A19BD000952434 /* DatePickerViewController.swift */,
 				D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */,
 				D91C212B238A5931005463E1 /* JobContentViewController.swift */,

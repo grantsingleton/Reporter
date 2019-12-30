@@ -13,6 +13,7 @@ class NewLocationViewController: UIViewController, UITextFieldDelegate, UINaviga
     
     //MARK: Properties
     @IBOutlet weak var jobLocationTextField: UITextField!
+    @IBOutlet weak var jobDescriptionTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var jobLocation: JobLocation?
@@ -24,6 +25,7 @@ class NewLocationViewController: UIViewController, UITextFieldDelegate, UINaviga
         
         if let jobLocation = jobLocation {
             jobLocationTextField.text = jobLocation.jobLocationName
+            jobDescriptionTextField.text = jobLocation.jobDescription
         }
 
     }
@@ -40,8 +42,9 @@ class NewLocationViewController: UIViewController, UITextFieldDelegate, UINaviga
         }
         
         let jobLocationName = jobLocationTextField.text ?? ""
+        let jobDescription = jobDescriptionTextField.text ?? ""
         
-        jobLocation = JobLocation(jobLocationName: jobLocationName, jobs: [])
+        jobLocation = JobLocation(jobLocationName: jobLocationName, jobDescription: jobDescription, jobs: [])
     }
     
     //MARK: Cancel Method

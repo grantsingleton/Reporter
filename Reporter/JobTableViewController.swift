@@ -78,6 +78,15 @@ class JobTableViewController: UITableViewController {
         case "AddNewJob":
             os_log("Adding a new job.", log: OSLog.default, type: .debug)
             
+        case "EditLocation":
+            
+            guard let editLocationViewController = segue.destination as? NewLocationViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            editLocationViewController.jobLocation = self.jobLocation
+            
+            
         case "SeeJobContent":
             
             // get the view controller that we are moving to
@@ -115,6 +124,19 @@ class JobTableViewController: UITableViewController {
         
         default:
             fatalError("Unexpected Segue Identifier: \(String(describing: segue.identifier))")
+        }
+    }
+    
+    //MARK: Unwind
+    @IBAction func unwindFromJobLocationMetaDataViewController(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? NewLocationViewController, let returnedJobLocation = sourceViewController.jobLocation {
+            
+            self.jobLocation.jobLocationName = returnedJobLocation.jobLocationName
+            self.jobLocation.jobDescription = returnedJobLocation.jobDescription
+            
+            // Save the edited Job
+            self.callback?(self.jobLocation)
         }
     }
     
