@@ -116,8 +116,11 @@ class JobTableViewController: UITableViewController {
             
             // If the selected job isnt the first job in the list then pass the previous job in so we can get the meta data
             if (indexPath.row > 0) {
+                print("PASSING PREVIOUS JOB")
                 let previousJob = jobLocation.jobs[indexPath.row - 1]
                 jobContentTableViewController.previousJob = previousJob
+            } else {
+                jobContentTableViewController.previousJob = nil
             }
             // pass this selected job into the jobContentTableView by setting its member variable "job" to selectedJob
             jobContentTableViewController.job = selectedJob
@@ -136,6 +139,9 @@ class JobTableViewController: UITableViewController {
             
             self.jobLocation.jobLocationName = returnedJobLocation.jobLocationName
             self.jobLocation.jobDescription = returnedJobLocation.jobDescription
+            
+            // set the new navigation title in case the Job location name was changed
+            navigationItem.title = returnedJobLocation.jobLocationName
             
             // Save the edited Job
             self.callback?(self.jobLocation)

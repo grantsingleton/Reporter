@@ -22,6 +22,9 @@ class NewLocationViewController: UIViewController, UITextFieldDelegate, UINaviga
         super.viewDidLoad()
         
         jobLocationTextField.delegate = self
+        jobDescriptionTextField.delegate = self
+        
+        saveButtonState()
         
         if let jobLocation = jobLocation {
             jobLocationTextField.text = jobLocation.jobLocationName
@@ -50,7 +53,16 @@ class NewLocationViewController: UIViewController, UITextFieldDelegate, UINaviga
     //MARK: Cancel Method
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
-        dismiss(animated: true, completion: nil)
+        let isPresentingInAddNewLocationMode = presentingViewController is UINavigationController
+        if isPresentingInAddNewLocationMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The NewLocationViewController is not inside a navigation controller")
+        }
 
     }
     
@@ -65,6 +77,14 @@ class NewLocationViewController: UIViewController, UITextFieldDelegate, UINaviga
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        saveButton.isEnabled = true
+        saveButtonState()
+    }
+    
+    func saveButtonState() {
+        if (!(jobLocationTextField.text?.isEmpty ?? false) && !(jobDescriptionTextField.text?.isEmpty ?? false)) {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
     }
 }

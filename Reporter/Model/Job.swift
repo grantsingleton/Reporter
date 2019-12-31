@@ -50,7 +50,7 @@ class Job: NSObject, NSCoding {
         
         let jobNumber = coder.decodeObject(forKey: PropertyKey.jobNumber) as? String
         
-        let reportNumber = coder.decodeInteger(forKey: PropertyKey.reportNumber)
+        let reportNumber = coder.decodeObject(forKey: PropertyKey.reportNumber) as? Int ?? 0
         
         // Set the meta data
         self.issuedBy = issuedBy

@@ -491,17 +491,17 @@
             <objects>
                 <viewController id="Ute-k4-Kfx" customClass="MetaDataViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xkF-wE-Wnd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="978"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1230"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kn7-TN-tzV">
-                                <rect key="frame" x="0.0" y="44" width="375" height="934"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="1186"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-cf-5xm" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="934"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="1186.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5eT-LM-5qK">
-                                                <rect key="frame" x="0.0" y="8" width="375" height="912"/>
+                                                <rect key="frame" x="0.0" y="8" width="375" height="1164.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issued by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujl-59-9eu">
                                                         <rect key="frame" x="148.5" y="0.0" width="78" height="34"/>
@@ -711,6 +711,15 @@
                                                             </tableViewCell>
                                                         </prototypes>
                                                     </tableView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-4l-gwK">
+                                                        <rect key="frame" x="136.5" y="920" width="102.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Yxf-FT-cfs">
+                                                        <rect key="frame" x="27.5" y="948.5" width="320" height="216"/>
+                                                    </datePicker>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="gdf-D9-QDI" firstAttribute="leading" secondItem="5eT-LM-5qK" secondAttribute="leading" constant="20" id="32l-J9-fNR"/>
@@ -782,12 +791,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="375" height="978"/>
+                    <size key="freeformSize" width="375" height="1230"/>
                     <connections>
                         <outlet property="addDistributionButton" destination="WWJ-3w-VcF" id="AVG-qF-RKT"/>
                         <outlet property="addInAttendanceButton" destination="CHn-aE-7De" id="Dye-97-BsH"/>
                         <outlet property="attendanceFromTextField" destination="dH2-RR-8uf" id="hVJ-ac-x81"/>
                         <outlet property="attendanceNameTextField" destination="Z6x-Lc-kiU" id="0iK-qx-MHg"/>
+                        <outlet property="datePicker" destination="Yxf-FT-cfs" id="3ps-Rq-uxA"/>
                         <outlet property="distributionFromTextField" destination="eII-xW-ph7" id="X6c-vq-YP1"/>
                         <outlet property="distributionNameTextField" destination="G4Q-gq-493" id="6Ve-b9-wnu"/>
                         <outlet property="distributionTableView" destination="Jqw-hw-5Cw" id="NTG-cT-WyR"/>
@@ -802,7 +812,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMk-Xh-cnA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="rlL-zI-qR7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1997.5999999999999" y="899.55022488755628"/>
+            <point key="canvasLocation" x="1998" y="1276"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SwQ-tp-xiM">
@@ -866,8 +876,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6AQ-8R-YgB">
-                                <rect key="frame" x="0.0" y="44" width="375" height="109"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="7t8-Wa-etz">
+                                <rect key="frame" x="0.0" y="44" width="375" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-2L-lia">
                                         <rect key="frame" x="136" y="0.0" width="103" height="20.5"/>
@@ -876,35 +886,36 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Example (&quot;UTMB Hospital&quot;)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQf-21-SdL">
-                                        <rect key="frame" x="20" y="20.5" width="335" height="34"/>
+                                        <rect key="frame" x="20" y="27.5" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description of Work:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibe-y7-aAj">
-                                        <rect key="frame" x="109.5" y="54.5" width="156.5" height="20.5"/>
+                                        <rect key="frame" x="109.5" y="68.5" width="156.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Example (&quot;Modernization and Facade Replacement&quot;)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LZj-CN-Hpz">
-                                        <rect key="frame" x="20" y="75" width="335" height="34"/>
+                                        <rect key="frame" x="20" y="96" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="lQf-21-SdL" secondAttribute="trailing" constant="20" id="4AQ-cR-Rh8"/>
-                                    <constraint firstItem="LZj-CN-Hpz" firstAttribute="leading" secondItem="6AQ-8R-YgB" secondAttribute="leading" constant="20" id="5Te-3Q-DjA"/>
-                                    <constraint firstItem="lQf-21-SdL" firstAttribute="leading" secondItem="6AQ-8R-YgB" secondAttribute="leading" constant="20" id="CbG-uT-nTv"/>
-                                    <constraint firstAttribute="trailing" secondItem="LZj-CN-Hpz" secondAttribute="trailing" constant="20" id="HR6-zM-OBz"/>
+                                    <constraint firstAttribute="trailing" secondItem="LZj-CN-Hpz" secondAttribute="trailing" constant="20" id="2AW-wM-9Zn"/>
+                                    <constraint firstAttribute="trailing" secondItem="lQf-21-SdL" secondAttribute="trailing" constant="20" id="DxW-0P-EHL"/>
+                                    <constraint firstItem="LZj-CN-Hpz" firstAttribute="leading" secondItem="7t8-Wa-etz" secondAttribute="leading" constant="20" id="agE-MQ-WS6"/>
+                                    <constraint firstItem="lQf-21-SdL" firstAttribute="leading" secondItem="7t8-Wa-etz" secondAttribute="leading" constant="20" id="m5L-kj-FXi"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6AQ-8R-YgB" firstAttribute="top" secondItem="DGV-GI-tMX" secondAttribute="top" id="CsR-Qv-JrQ"/>
-                            <constraint firstItem="DGV-GI-tMX" firstAttribute="trailing" secondItem="6AQ-8R-YgB" secondAttribute="trailing" id="IGC-8j-2DZ"/>
-                            <constraint firstItem="6AQ-8R-YgB" firstAttribute="leading" secondItem="DGV-GI-tMX" secondAttribute="leading" id="e5u-Vp-qp5"/>
+                            <constraint firstItem="7t8-Wa-etz" firstAttribute="centerX" secondItem="DGV-GI-tMX" secondAttribute="centerX" id="YGk-mD-GnU"/>
+                            <constraint firstItem="7t8-Wa-etz" firstAttribute="top" secondItem="DGV-GI-tMX" secondAttribute="top" id="aCC-cj-zE4"/>
+                            <constraint firstItem="7t8-Wa-etz" firstAttribute="leading" secondItem="DGV-GI-tMX" secondAttribute="leading" id="eFT-Wj-951"/>
+                            <constraint firstItem="DGV-GI-tMX" firstAttribute="trailing" secondItem="7t8-Wa-etz" secondAttribute="trailing" id="oRI-NY-SFP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DGV-GI-tMX"/>
                     </view>

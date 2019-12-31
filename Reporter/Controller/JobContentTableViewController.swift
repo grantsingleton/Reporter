@@ -186,7 +186,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             
             // if there is a previous report and the current report has no meta data then set the previous reports meta data to be this reports meta data
             if (previousJob != nil) {
-                
+                print("PREVIOUS JOB NOT NULL")
                 // Check if the meta data is filled out
                 if (selectedJob!.issuedBy == "") {
                     selectedJob!.issuedBy = previousJob!.issuedBy
@@ -214,6 +214,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             metaDataViewController.distribution = selectedJob!.distribution
             metaDataViewController.jobNumber = selectedJob!.jobNumber
             metaDataViewController.reportNumber = selectedJob!.reportNumber
+            metaDataViewController.jobDate = selectedJob?.date
             
             
         default:
@@ -249,12 +250,21 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             let purposeOfVisitText = sourceViewController.purposeOfVisit
             let inAttendanceList = sourceViewController.attendance
             let distributionList = sourceViewController.distribution
+            let jobNumberString = sourceViewController.jobNumber
+            let reportNumberInt = sourceViewController.reportNumber
+            let dateString = sourceViewController.jobDate
             
             // Set that data to the Job
             self.job?.issuedBy = issuedByText
             self.job?.purposeOfVisit = purposeOfVisitText
             self.job?.inAttendance = inAttendanceList
             self.job?.distribution = distributionList
+            self.job?.jobNumber = jobNumberString
+            self.job?.reportNumber = reportNumberInt
+            self.job?.date = dateString ?? self.job!.date
+            
+            //update navigation title in case the date was changed
+            navigationItem.title = self.job?.date
             print("SET JOB DATA")
             // Pass the job back to the jobtableviewcontroller and save it there
             callback?(self.job!)

@@ -25,6 +25,7 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var reportNumberTextField: UITextField!
     @IBOutlet weak var inAttendanceTableView: UITableView!
     @IBOutlet weak var distributionTableView: UITableView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     
     //MARK: Properties
@@ -34,6 +35,7 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
     var reportNumber: Int?
     var attendance: [Person]?
     var distribution: [Person]?
+    var jobDate: String?
     
     var attendanceList: [Person] = []
     var distributionList: [Person] = []
@@ -52,6 +54,12 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
         
         distributionTableView.dataSource = self
         distributionTableView.delegate = self
+        
+        // set the date of the date picker
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMd")
+        let date = dateFormatter.date(from: jobDate!)!
+        datePicker.setDate(date, animated: true)
 
         // Do any additional setup after loading the view.
         if let issuedBy = issuedBy {
@@ -98,9 +106,17 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
             issuedBy = issuedByTextField.text ?? ""
             purposeOfVisit = purposeOfVisitTextField.text ?? ""
             jobNumber = jobNumberTextField.text ?? ""
-            reportNumber = Int(reportNumberTextField.text ?? "0" )
+            reportNumber = Int(reportNumberTextField.text ?? "0")
             attendance = attendanceList
             distribution = distributionList
+            
+            // get the date
+            let date = datePicker.date
+            let dateFormatter = DateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("MMMd")
+            let dateString = dateFormatter.string(from: date)
+            
+            jobDate = dateString
         }
     }
     
