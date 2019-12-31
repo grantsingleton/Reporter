@@ -18,8 +18,11 @@ class WeatherInformation: NSObject, NSCoding {
     var temperatureHigh: Double
     var temperatureLow: Double
     var dewPoint: Double
-    var windSpeed: Double
-    var windBearing: Double
+    var windSpeedAvg: Double
+    var windGust: Double // FIXME
+    var windBearing: Int
+    var humidityMin: Double
+    var humidityMax: Double
     
     struct PropertyKey {
         static let precipitationType = "precipitationType"
@@ -27,8 +30,11 @@ class WeatherInformation: NSObject, NSCoding {
         static let temperatureHigh = "temperatureHigh"
         static let temperatureLow = "temperatureLow"
         static let dewPoint = "dewPoint"
-        static let windSpeed = "windSpeed"
+        static let windSpeedAvg = "windSpeedAvg"
+        static let windGust = "windGust"
         static let windBearing = "windBearing"
+        static let humidityMin = "humidityMin"
+        static let humidityMax = "humidityMax"
     }
     
     func encode(with coder: NSCoder) {
@@ -37,8 +43,11 @@ class WeatherInformation: NSObject, NSCoding {
         coder.encode(temperatureHigh, forKey: PropertyKey.temperatureHigh)
         coder.encode(temperatureLow, forKey: PropertyKey.temperatureLow)
         coder.encode(dewPoint, forKey: PropertyKey.dewPoint)
-        coder.encode(windSpeed, forKey: PropertyKey.windSpeed)
+        coder.encode(windSpeedAvg, forKey: PropertyKey.windSpeedAvg)
+        coder.encode(windGust, forKey: PropertyKey.windGust)
         coder.encode(windBearing, forKey: PropertyKey.windBearing)
+        coder.encode(humidityMin, forKey: PropertyKey.humidityMin)
+        coder.encode(humidityMax, forKey: PropertyKey.humidityMax)
     }
     
     required convenience init?(coder: NSCoder) {
@@ -53,23 +62,32 @@ class WeatherInformation: NSObject, NSCoding {
         
         let dewPoint = coder.decodeDouble(forKey: PropertyKey.dewPoint)
         
-        let windSpeed = coder.decodeDouble(forKey: PropertyKey.windSpeed)
+        let windSpeedAvg = coder.decodeDouble(forKey: PropertyKey.windSpeedAvg)
         
-        let windBearing = coder.decodeDouble(forKey: PropertyKey.windBearing)
+        let windGust = coder.decodeDouble(forKey: PropertyKey.windGust)
+        
+        let windBearing = coder.decodeInteger(forKey: PropertyKey.windBearing)
+        
+        let humidityMin = coder.decodeDouble(forKey: PropertyKey.humidityMin)
+        
+        let humidityMax = coder.decodeDouble(forKey: PropertyKey.humidityMax)
         
         
-        self.init(precipType: precipitationType, rainFall: rainFall, tempHigh: temperatureHigh, tempLow: temperatureLow, dewPoint: dewPoint, windSpeed: windSpeed, windBearing: windBearing)
+        self.init(precipType: precipitationType, rainFall: rainFall, tempHigh: temperatureHigh, tempLow: temperatureLow, dewPoint: dewPoint, windSpeedAvg: windSpeedAvg, windGust: windGust, windBearing: windBearing, humidityMin: humidityMin, humidityMax: humidityMax)
     }
     
-    init(precipType: String, rainFall: Double, tempHigh: Double, tempLow: Double, dewPoint: Double, windSpeed: Double, windBearing: Double) {
+    init(precipType: String, rainFall: Double, tempHigh: Double, tempLow: Double, dewPoint: Double, windSpeedAvg: Double, windGust: Double, windBearing: Int, humidityMin: Double, humidityMax: Double) {
         
         self.precipitationType = precipType
         self.rainFall = rainFall
         self.temperatureHigh = tempHigh
         self.temperatureLow = tempLow
         self.dewPoint = dewPoint
-        self.windSpeed = windSpeed
+        self.windSpeedAvg = windSpeedAvg
+        self.windGust = windGust
         self.windBearing = windBearing
+        self.humidityMin = humidityMin
+        self.humidityMax = humidityMax
     }
     
     init(weatherData: WeatherData) {
@@ -79,8 +97,11 @@ class WeatherInformation: NSObject, NSCoding {
         self.temperatureHigh = weatherData.temperatureHigh
         self.temperatureLow = weatherData.temperatureLow
         self.dewPoint = weatherData.dewPoint
-        self.windSpeed = weatherData.windSpeed
+        self.windSpeedAvg = weatherData.windSpeedAvg
+        self.windGust = weatherData.windGust
         self.windBearing = weatherData.windBearing
+        self.humidityMin = weatherData.humidityMin
+        self.humidityMax = weatherData.humidityMax
     }
     
 }

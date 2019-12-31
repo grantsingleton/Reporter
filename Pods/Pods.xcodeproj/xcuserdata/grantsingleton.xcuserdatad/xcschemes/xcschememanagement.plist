@@ -4,35 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
+		<key>Floaty.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>DarkSkyKit.xcscheme</key>
+		<key>Pods-Reporter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Pods-Reporter.xcscheme</key>
+		<key>Pods-ReporterTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>Pods-ReporterTests.xcscheme</key>
+		<key>SimplePDF.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>SimplePDF.xcscheme</key>
+		<key>WXKDarkSky.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

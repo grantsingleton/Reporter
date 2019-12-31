@@ -1,24 +1,24 @@
 PODS:
-  - Alamofire (4.9.1)
-  - DarkSkyKit (0.0.6):
-    - Alamofire (~> 4.0)
+  - Floaty (4.2.0)
   - SimplePDF (3.0.0)
+  - WXKDarkSky (3.1.0)
 
 DEPENDENCIES:
-  - DarkSkyKit
+  - Floaty (~> 4.2.0)
   - SimplePDF
+  - WXKDarkSky (~> 3.1.0)
 
 SPEC REPOS:
   trunk:
-    - Alamofire
-    - DarkSkyKit
+    - Floaty
     - SimplePDF
+    - WXKDarkSky
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  DarkSkyKit: ae500687161b11e1f352cdf261ff620fe3837cf5
+  Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   SimplePDF: 903143ede36965886997a5c1bc6b8940b082ba20
+  WXKDarkSky: dccd0a104cf79684dc08e970857358b2b10d7d94
 
-PODFILE CHECKSUM: 6a0775c14df3bc740fa80a00fcc7529ebd8db19f
+PODFILE CHECKSUM: 197185c991a4bce9295bfb7354628a7fb3fa7ff3
 
 COCOAPODS: 1.8.4

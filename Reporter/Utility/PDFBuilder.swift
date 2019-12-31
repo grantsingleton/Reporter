@@ -90,8 +90,22 @@ class PDFBuilder {
         
         
         /*
-         ***FIXME**** Add dynamic weather date here when you get to that point
+         Temperature Low/High (°F) 00/00
+         Rain (inches) 0.00”
+         Humidity Min/Max 00/00
+         Wind Speed (MPH)  Direction Avg/Gust
          */
+        /*
+         WEATHER
+         */
+        let lowTemp = self.job.weather?.temperatureLow
+        let highTemp = self.job.weather?.temperatureHigh
+        let rainfall = self.job.weather?.rainFall
+        let minHumidity = self.job.weather?.humidityMin
+        let maxHumidity = self.job.weather?.humidityMax
+        let windDirection = self.job.weather?.windBearing
+        let avgWindSpeed = self.job.weather?.windSpeedAvg
+        let windGust = self.job.weather?.windGust
 
         
         
@@ -141,6 +155,24 @@ class PDFBuilder {
             
             // Issued By Title
             bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + verticalSpace, title: issuedBy, font: (smallTitleFont ?? smallTitleBackupFont))
+            
+            
+            
+            
+            
+            /*
+                DRAW IN ATTENDANCE AND WEATHER HERE
+             */
+            
+            
+            
+            /*
+                DRAW DISTRIBUTION HERE
+             */
+            
+            
+            
+            
             
             //MARK: Purpose of Visit
             // Purpose Title

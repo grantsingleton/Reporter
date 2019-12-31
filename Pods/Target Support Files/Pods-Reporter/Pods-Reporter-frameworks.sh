@@ -161,14 +161,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/DarkSkyKit/DarkSkyKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SimplePDF/SimplePDF.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WXKDarkSky/WXKDarkSky.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/DarkSkyKit/DarkSkyKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SimplePDF/SimplePDF.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WXKDarkSky/WXKDarkSky.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

@@ -10,8 +10,9 @@ import UIKit
 import os.log
 import MessageUI
 import CoreLocation
+import Floaty
 
-class JobContentTableViewController: UITableViewController, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, CLLocationManagerDelegate {
+class JobContentTableViewController: UITableViewController, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, CLLocationManagerDelegate, FloatyDelegate {
     
     //MARK: Properties
     // The job passed in when the user selects a job
@@ -25,6 +26,9 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     var deviceLocation: CLLocationCoordinate2D?
     var weatherInformation: WeatherInformation?
     var weatherData: WeatherData?
+    
+    // floating action button
+    var fab = Floaty()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +56,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             locationManager.startUpdatingLocation()
         }
         
+        layoutFloatingActionButton()
     }
 
 
@@ -330,5 +335,37 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         weatherData = WeatherData(coordinates: self.deviceLocation!, weatherDate: self.job!.weatherDate)
         
     }
+    
+    //MARK: UI Components
+    func layoutFloatingActionButton() {
+        
+        let item = FloatyItem()
+        item.buttonColor = UIColor.blue
+        item.circleShadowColor = UIColor.red
+        item.titleShadowColor = UIColor.blue
+        item.title = "Add Content"
+        item.handler = { item in
+            // Add handler here
+            
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            //performSegue(withIdentifier: "mySegueID", sender: nil)
+        }
+        
+        fab.addItem(item: item)
+        
+        fab.sticky = true
+        
+        fab.paddingX = 40
+        fab.paddingY = 40
+        
+        fab.fabDelegate = self
+        
+        print(tableView!.frame)
+        
+        self.tableView.addSubview(fab)
+                
+    }
 
+    
 }

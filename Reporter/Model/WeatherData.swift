@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import DarkSkyKit
+import WXKDarkSky
 import CoreLocation
 import os.log
 
@@ -20,8 +20,11 @@ class WeatherData {
     var temperatureHigh: Double = 0.0
     var temperatureLow: Double = 0.0
     var dewPoint: Double = 0.0
-    var windSpeed: Double = 0.0
-    var windBearing: Double = 0.0
+    var windSpeedAvg: Double = 0.0
+    var windGust: Double = 0.0
+    var windBearing: Int = 0
+    var humidityMin: Double
+    var humidityMax: Double
     var weatherDate: Date
     
     let dispatchGroup = DispatchGroup()
@@ -37,54 +40,68 @@ class WeatherData {
         self.temperatureHigh = 0.0
         self.temperatureLow = 0.0
         self.dewPoint = 0.0
-        self.windSpeed = 0.0
-        self.windBearing = 0.0
+        self.windSpeedAvg = 0.0
+        self.windGust = 0.0
+        self.windBearing = 0
+        self.humidityMin = 0.0
+        self.humidityMax = 0.0
         
-        let darkSkyConfig = Configuration(token: "99c234c1ba74ab4b1d68041b623e3089", units: .us, exclude: .alerts, lang: "EN")
-        let forecastClient = DarkSkyKit(configuration: darkSkyConfig)
-        
-        getWeatherAsync(forecastClient: forecastClient)
+        getWeatherAsync()
         
     }
     
-    func getWeatherAsync(forecastClient: DarkSkyKit) {
+    func getWeatherAsync() {
         
-        //forecastClient.timeMachine(latitude: self.coordinates.latitude, longitude: self.coordinates.longitude, date: self.weatherDate) { result in
-        forecastClient.current(latitude: self.coordinates.latitude, longitude: self.coordinates.longitude) { result in
-            
-            switch result {
+        let darkSkyRequest = DarkSkyRequest(key: "99c234c1ba74ab4b1d68041b623e3089")
+        let requestPoint = DarkSkyRequest.Point(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        let options = DarkSkyRequest.Options(exclude: [.minutely, .alerts], extendHourly: false, language: .english, units: .imperial)
+        
+        darkSkyRequest.loadData(point: requestPoint, time: self.weatherDate, options: options) { (response, error) in
+            if let error = error {
+                print("Weather fetch error encountered: \(error.localizedDescription)")
+            } else if let response = response {
                 
-            case .success(let forecast):
-                // Manage weather data using the Forecast model. Ex:
-                if let todaysWeather = forecast.daily?.first {
-                    
+                if let todaysWeather = response.daily?.data[0] {
                     self.precipitationType = todaysWeather.precipType ?? ""
-                    print("FROM async func " + self.precipitationType)
-                    self.temperatureHigh = todaysWeather.temperatureMax ?? 0.0
-                    self.temperatureLow = todaysWeather.temperatureMin ?? 0.0
+                    self.temperatureHigh = todaysWeather.temperatureHigh ?? 0.0
+                    self.temperatureLow = todaysWeather.temperatureLow ?? 0.0
                     self.dewPoint = todaysWeather.dewPoint ?? 0.0
-                    self.windSpeed = todaysWeather.windSpeed ?? 0.0
-                    self.windBearing = todaysWeather.windBearing ?? 0.0
+                    self.windBearing = todaysWeather.windBearing ?? 0
                     
-                    print("High temp: " + String(self.temperatureHigh ))
-                    print("Low temp: " + String(self.temperatureLow ))
-                    print("Precip type: " + (self.precipitationType ))
+                    // Calculate the rainfall, average wind speed, min & max humidity
+                    let rangeMin = 0
+                    let rangeMax = 17
+                    var rainFallSum = 0.0;
+                    var windSpeedSum = 0.0
+                    var humidityArray: [Double] = []
                     
-                    // Calculate the rainfall
-                    if let hourlyWeather = forecast.hourly {
-                        // Sum precipitation intensity from midnight to 5PM
-                        var rainFallSum = 0.0;
-                        for index in 0...17 {
+                    if let hourlyWeather = response.hourly?.data {
+                        for index in rangeMin...rangeMax {
+                            // Sum precipitation intensity from midnight to 5PM
                             rainFallSum += hourlyWeather[index].precipIntensity ?? 0.0
+                            windSpeedSum += hourlyWeather[index].windSpeed ?? 0.0
+                            humidityArray.append(hourlyWeather[index].humidity ?? 2.0)
+                            
                         }
+                        self.windSpeedAvg = windSpeedSum / Double((rangeMax - rangeMin + 1))
                         self.rainFall = rainFallSum
-                        print("Rainfall (inches): " + String(self.rainFall ))
+                        // calculate min and max humidity
+                        var max = 1.0
+                        var min = 0.0
+                        for number in humidityArray {
+                            if (number <= 1) {
+                                if (number > max) {
+                                    max = number
+                                }
+                                if (number < min) {
+                                    min = number
+                                }
+                            }
+                        }
+                        self.humidityMin = min
+                        self.humidityMax = max
                     }
                 }
-                
-            case .failure(let error):
-                // Manage error case
-                print("Unable to fetch weather data: \(error)")
             }
         }
     }

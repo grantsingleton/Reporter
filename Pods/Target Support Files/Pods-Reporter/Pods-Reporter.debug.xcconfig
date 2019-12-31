@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/DarkSkyKit" "${PODS_CONFIGURATION_BUILD_DIR}/SimplePDF"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Floaty" "${PODS_CONFIGURATION_BUILD_DIR}/SimplePDF" "${PODS_CONFIGURATION_BUILD_DIR}/WXKDarkSky"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DarkSkyKit/DarkSkyKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SimplePDF/SimplePDF.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Floaty/Floaty.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SimplePDF/SimplePDF.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/WXKDarkSky/WXKDarkSky.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "DarkSkyKit" -framework "SimplePDF"
+OTHER_LDFLAGS = $(inherited) -framework "Floaty" -framework "Foundation" -framework "SimplePDF" -framework "UIKit" -framework "WXKDarkSky"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
