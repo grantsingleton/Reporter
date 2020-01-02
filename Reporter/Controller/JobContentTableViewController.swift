@@ -28,7 +28,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     var weatherData: WeatherData?
     
     // floating action button
-    var fab = Floaty()
+    var fab = Floaty(frame: CGRect(x: 0, y: 0, width: 56, height: 56))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -338,23 +338,20 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     
     //MARK: UI Components
     func layoutFloatingActionButton() {
-        
+                
         let item = FloatyItem()
-        item.buttonColor = UIColor.blue
-        item.circleShadowColor = UIColor.red
-        item.titleShadowColor = UIColor.blue
-        item.title = "Add Content"
         item.handler = { item in
             // Add handler here
-            
+            print("HANDLE")
             // use the following function to seque
             // "mysegueID is the name of the segue defined in the storyboard"
-            //performSegue(withIdentifier: "mySegueID", sender: nil)
+            self.performSegue(withIdentifier: "AddContent", sender: self)
         }
         
         fab.addItem(item: item)
         
         fab.sticky = true
+        fab.handleFirstItemDirectly = true
         
         fab.paddingX = 40
         fab.paddingY = 40
@@ -363,7 +360,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         
         print(tableView!.frame)
         
-        self.tableView.addSubview(fab)
+        self.view.addSubview(fab)
                 
     }
 

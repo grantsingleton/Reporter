@@ -204,6 +204,9 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
             
             attendanceNameTextField.text = ""
             attendanceFromTextField.text = ""
+            
+            attendanceNameTextField.resignFirstResponder()
+            attendanceFromTextField.resignFirstResponder()
         }
     }
     
@@ -218,6 +221,9 @@ class MetaDataViewController: UIViewController, UITableViewDataSource, UITableVi
             
             distributionNameTextField.text = ""
             distributionFromTextField.text = ""
+            
+            distributionNameTextField.resignFirstResponder()
+            distributionFromTextField.resignFirstResponder()
         }
     }
     

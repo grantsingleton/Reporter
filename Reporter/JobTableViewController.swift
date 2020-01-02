@@ -8,14 +8,17 @@
 
 import UIKit
 import os.log
+import Floaty
 
-class JobTableViewController: UITableViewController {
+class JobTableViewController: UITableViewController, FloatyDelegate {
     
     //MARK: Properties
     
     var jobLocation: JobLocation!
     var callback: ((_ jobLocation: JobLocation) -> Void)?
-
+    
+    // floating action button
+    var fab = Floaty(frame: CGRect(x: 0, y: 0, width: 56, height: 56))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,7 @@ class JobTableViewController: UITableViewController {
         //navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.title = jobLocation!.jobLocationName
         
+        layoutFloatingActionButton()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -173,8 +177,33 @@ class JobTableViewController: UITableViewController {
     }
 
 
-    
-    
+    //MARK: UI Components
+     func layoutFloatingActionButton() {
+                 
+         let item = FloatyItem()
+         item.handler = { item in
+             // Add handler here
+             print("HANDLE")
+             // use the following function to seque
+             // "mysegueID is the name of the segue defined in the storyboard"
+             self.performSegue(withIdentifier: "AddNewJob", sender: self)
+         }
+         
+         fab.addItem(item: item)
+         
+         fab.sticky = true
+         fab.handleFirstItemDirectly = true
+     
+         fab.paddingX = 40
+         fab.paddingY = 40
+         
+         fab.fabDelegate = self
+         
+         print(tableView!.frame)
+         
+         self.view.addSubview(fab)
+                 
+     }
     
 }
 

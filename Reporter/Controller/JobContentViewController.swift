@@ -8,8 +8,9 @@
 
 import UIKit
 import os.log
+import Floaty
 
-class JobContentViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class JobContentViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FloatyDelegate {
 
     
     //MARK: Properties
@@ -17,6 +18,9 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var severitySelector: UISegmentedControl!
+    
+    // floating action button
+    var fab = Floaty()
     
     
     // The job which was selected, if one was selected
@@ -47,6 +51,7 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
         
         updateSaveButtonState()
+        layoutFloatingActionButton()
     }
     
 
@@ -65,10 +70,8 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
         switch(segue.identifier ?? "") {
         
         case "AddDescription":
-            guard let navigation = segue.destination as? UINavigationController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            guard let longDescriptionViewController = navigation.topViewController as? LongDescriptionViewController else {
+            
+            guard let longDescriptionViewController = segue.destination as? LongDescriptionViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
@@ -76,10 +79,8 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
             longDescriptionViewController.longDescription = longDescriptionText
         
         case "EditPhoto":
-            guard let navigation = segue.destination as? UINavigationController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            guard let photoEditingViewController = navigation.topViewController as? PhotoEditingViewController else {
+
+            guard let photoEditingViewController = segue.destination as? PhotoEditingViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
@@ -286,5 +287,46 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
             severitySelector.selectedSegmentIndex = 2
         }
     }
+    
+    //MARK: UI Components
+    func layoutFloatingActionButton() {
         
+        let editItem = FloatyItem()
+        editItem.buttonColor = UIColor.blue
+        editItem.circleShadowColor = UIColor.red
+        editItem.titleShadowColor = UIColor.blue
+        editItem.title = "Edit Photo"
+        editItem.handler = { item in
+            // Add handler here
+            print("HANDLE")
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            self.performSegue(withIdentifier: "EditPhoto", sender: self)
+        }
+        
+        let descriptionItem = FloatyItem()
+        descriptionItem.buttonColor = UIColor.blue
+        descriptionItem.circleShadowColor = UIColor.red
+        descriptionItem.titleShadowColor = UIColor.blue
+        descriptionItem.title = "Add Description"
+        descriptionItem.handler = { item in
+            // Add handler here
+            print("HANDLE")
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            self.performSegue(withIdentifier: "AddDescription", sender: self)
+        }
+        
+        fab.addItem(item: editItem)
+        fab.addItem(item: descriptionItem)
+                
+        fab.paddingX = 40
+        fab.paddingY = 40
+        
+        fab.fabDelegate = self
+                
+        self.view.addSubview(fab)
+        
+    }
+    
 }
