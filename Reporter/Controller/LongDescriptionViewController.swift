@@ -42,7 +42,8 @@ class LongDescriptionViewController: UIViewController, UITextViewDelegate, UINav
     
     // MARK: - Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        
+        navigationController?.popViewController(animated: false)
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

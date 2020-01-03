@@ -253,6 +253,7 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBAction func unwindToJobContentView(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? LongDescriptionViewController, let longDescriptionText = sourceViewController.longDescription {
+            content?.longDescription = longDescriptionText
             longDescription = longDescriptionText
             
             if longDescription != nil {
@@ -292,9 +293,10 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
     func layoutFloatingActionButton() {
         
         let editItem = FloatyItem()
-        editItem.buttonColor = UIColor.blue
-        editItem.circleShadowColor = UIColor.red
-        editItem.titleShadowColor = UIColor.blue
+        editItem.buttonColor = UIColor.white
+        editItem.circleShadowColor = UIColor.blue
+        editItem.titleShadowColor = UIColor.black
+        editItem.icon = UIImage(named: "editPhoto")
         editItem.title = "Edit Photo"
         editItem.handler = { item in
             // Add handler here
@@ -305,9 +307,10 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
         
         let descriptionItem = FloatyItem()
-        descriptionItem.buttonColor = UIColor.blue
-        descriptionItem.circleShadowColor = UIColor.red
-        descriptionItem.titleShadowColor = UIColor.blue
+        descriptionItem.buttonColor = UIColor.white
+        descriptionItem.circleShadowColor = UIColor.blue
+        descriptionItem.titleShadowColor = UIColor.black
+        descriptionItem.icon = UIImage(named: "addDescription")
         descriptionItem.title = "Add Description"
         descriptionItem.handler = { item in
             // Add handler here

@@ -8,16 +8,19 @@
 
 import UIKit
 import os.log
+import Floaty
 
-class PhotoEditingViewController: UIViewController, UINavigationControllerDelegate {
+class PhotoEditingViewController: UIViewController, UINavigationControllerDelegate, FloatyDelegate {
     
     //MARK: Properties
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var photoView: UIImageView!
-    @IBOutlet weak var bottomToolBar: UIToolbar!
     
     // passed to this view from the job content view
     var photo: UIImage?
+    
+    // floating action button
+    var fab = Floaty()
     
     // editor selector enum
     enum SelectedEdit {
@@ -42,6 +45,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
             photoView.image = sizePhotoAndView(photo: photo)
             
         }
+        layoutFloatingActionButton()
     }
     
     //MARK: Orientation Transition
@@ -84,9 +88,8 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         print("Width: " + String(Double(self.view.frame.width)))
         print("Height: " + String(Double(self.view.frame.height)))
         
-        let toolBarHeight = self.bottomToolBar.frame.height
         let navBarHeight = self.navigationController!.navigationBar.frame.height
-        let viewHeight = self.view.frame.height - toolBarHeight - navBarHeight
+        let viewHeight = self.view.frame.height - navBarHeight
         let viewWidth = self.view.frame.width
         
         let viewHeightToWidthRatio = viewWidth / viewHeight
@@ -109,7 +112,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
             // constrained by width of superview
             width = viewWidth
             height = width * photoWidthToHeightRatio
-            originY = ((viewHeight + toolBarHeight + navBarHeight) / 2) - (height / 2) - toolBarHeight
+            originY = ((viewHeight + navBarHeight) / 2) - (height / 2)
             originX = 0.0
         }
         
@@ -155,7 +158,8 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+
+        navigationController?.popViewController(animated: false)
     }
     
     @IBAction func addCircle(_ sender: UIBarButtonItem) {
@@ -196,6 +200,108 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         if editTypeSelected == SelectedEdit.ERASER {
             sender.view?.removeFromSuperview()
         }
+    }
+    
+    
+    //MARK: UI Components
+    func layoutFloatingActionButton() {
+        
+        let circleItem = FloatyItem()
+        circleItem.buttonColor = UIColor.white
+        circleItem.circleShadowColor = UIColor.blue
+        circleItem.titleShadowColor = UIColor.black
+        circleItem.icon = UIImage(named: "circle")
+        circleItem.title = "Circle"
+        circleItem.handler = { item in
+            // Add handler here
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            self.editTypeSelected = SelectedEdit.CIRCLE
+        }
+        
+        let arrowItem = FloatyItem()
+        arrowItem.buttonColor = UIColor.white
+        arrowItem.circleShadowColor = UIColor.blue
+        arrowItem.titleShadowColor = UIColor.black
+        arrowItem.icon = UIImage(named: "arrow")
+        arrowItem.title = "Arrow"
+        arrowItem.handler = { item in
+            // Add handler here
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            self.editTypeSelected = SelectedEdit.ARROW
+        }
+        
+        let dashedItem = FloatyItem()
+        dashedItem.buttonColor = UIColor.white
+        dashedItem.circleShadowColor = UIColor.blue
+        dashedItem.titleShadowColor = UIColor.black
+        dashedItem.icon = UIImage(named: "dashed")
+        dashedItem.title = "Dashed Line"
+        dashedItem.handler = { item in
+            // Add handler here
+            print("HANDLE")
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            self.performSegue(withIdentifier: "AddDescription", sender: self)
+        }
+        
+        let lineItem = FloatyItem()
+        lineItem.buttonColor = UIColor.white
+        lineItem.circleShadowColor = UIColor.blue
+        lineItem.titleShadowColor = UIColor.black
+        lineItem.icon = UIImage(named: "line")
+        lineItem.title = "Line"
+        lineItem.handler = { item in
+            // Add handler here
+            print("HANDLE")
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            self.performSegue(withIdentifier: "AddDescription", sender: self)
+        }
+        
+        let textItem = FloatyItem()
+        textItem.buttonColor = UIColor.white
+        textItem.circleShadowColor = UIColor.blue
+        textItem.titleShadowColor = UIColor.black
+        textItem.icon = UIImage(named: "textBox")
+        textItem.title = "Text Box"
+        textItem.handler = { item in
+            // Add handler here
+            print("HANDLE")
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            self.performSegue(withIdentifier: "AddDescription", sender: self)
+        }
+        
+        let eraseItem = FloatyItem()
+        eraseItem.buttonColor = UIColor.white
+        eraseItem.circleShadowColor = UIColor.blue
+        eraseItem.titleShadowColor = UIColor.black
+        eraseItem.icon = UIImage(named: "erase")
+        eraseItem.title = "Delete Item"
+        eraseItem.handler = { item in
+            // Add handler here
+            // use the following function to seque
+            // "mysegueID is the name of the segue defined in the storyboard"
+            self.editTypeSelected = SelectedEdit.ERASER
+        }
+        
+        fab.addItem(item: circleItem)
+        fab.addItem(item: arrowItem)
+        fab.addItem(item: dashedItem)
+        fab.addItem(item: lineItem)
+        fab.addItem(item: textItem)
+        fab.addItem(item: eraseItem)
+                
+        fab.paddingX = 40
+        fab.paddingY = 40
+        
+        fab.fabDelegate = self
+        fab.isDraggable = true
+        
+        self.view.addSubview(fab)
+        
     }
 
 }
