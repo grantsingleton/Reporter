@@ -280,6 +280,35 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         loadWeather()
     }
     
+    @IBAction func runReport(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        var fetchWeatherTitle = "Fetch Weather: ";
+        
+        if (job?.weather == nil) {
+            fetchWeatherTitle += "None recorded"
+        } else {
+            fetchWeatherTitle += "Weather recorded at " + "3:30" //**FIXME** hardcoded fetch time
+        }
+        
+        alert.addAction(UIAlertAction(title: fetchWeatherTitle, style: .default, handler: { (alert: UIAlertAction) -> Void in
+            // fetch weather
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Build Report", style: .default, handler: { (alert: UIAlertAction) -> Void in
+            // Build Report
+        }))
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+                
+        self.present(alert, animated: true)
+    }
+    
     // MARK: Email Actions
     @IBAction func emailReport(_ sender: UIBarButtonItem) {
         

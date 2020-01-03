@@ -128,11 +128,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Content" id="K5k-xn-w8c">
-                        <barButtonItem key="rightBarButtonItem" image="line.horizontal.3" catalog="system" id="tna-jy-dDp">
-                            <connections>
-                                <segue destination="Ute-k4-Kfx" kind="show" identifier="AddMetaData" id="a40-d9-rMR"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="line.horizontal.3" catalog="system" id="tna-jy-dDp">
+                                <connections>
+                                    <segue destination="Ute-k4-Kfx" kind="show" identifier="AddMetaData" id="a40-d9-rMR"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="E6k-X2-pGU">
+                                <connections>
+                                    <action selector="runReport:" destination="v27-kF-d4G" id="Mhq-eM-pry"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="QFr-ca-o9V" kind="presentation" identifier="AddContent" id="Bv7-RO-pp4"/>
@@ -324,7 +331,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5175.1999999999998" y="26.53673163418291"/>
+            <point key="canvasLocation" x="5068" y="936"/>
         </scene>
         <!--Edit Photo-->
         <scene sceneID="oh7-47-3jq">
@@ -371,7 +378,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6338" y="-648"/>
+            <point key="canvasLocation" x="6639" y="392"/>
         </scene>
         <!--Description-->
         <scene sceneID="U2n-PC-XLi">
@@ -433,7 +440,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgK-h9-xPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="db3-np-u5n" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6337" y="205"/>
+            <point key="canvasLocation" x="6639" y="1214"/>
         </scene>
         <!--Settings-->
         <scene sceneID="zkM-7v-WUL">
@@ -871,7 +878,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcD-HS-DUS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3631" y="561"/>
+            <point key="canvasLocation" x="3636" y="991"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wLA-V7-SMr">

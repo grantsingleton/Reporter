@@ -293,6 +293,8 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         fab.addItem(item: lineItem)
         fab.addItem(item: textItem)
         fab.addItem(item: eraseItem)
+        
+        fab.buttonImage = UIImage(named: "paint")
                 
         fab.paddingX = 40
         fab.paddingY = 40
