@@ -60,14 +60,12 @@ class WeatherData {
             if let error = error {
                 print("Weather fetch error encountered: \(error.localizedDescription)")
             } else if let response = response {
-                
                 if let todaysWeather = response.daily?.data[0] {
                     self.precipitationType = todaysWeather.precipType ?? ""
                     self.temperatureHigh = todaysWeather.temperatureHigh ?? 0.0
                     self.temperatureLow = todaysWeather.temperatureLow ?? 0.0
                     self.dewPoint = todaysWeather.dewPoint ?? 0.0
                     self.windBearing = todaysWeather.windBearing ?? 0
-                    
                     // Calculate the rainfall, average wind speed, min & max humidity
                     let rangeMin = 0
                     let rangeMax = 17

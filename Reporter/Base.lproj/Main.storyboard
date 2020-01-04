@@ -143,11 +143,37 @@
                     </navigationItem>
                     <connections>
                         <segue destination="QFr-ca-o9V" kind="presentation" identifier="AddContent" id="Bv7-RO-pp4"/>
+                        <segue destination="8TP-rw-hOr" kind="show" identifier="displayPDF" id="Lqw-If-CfR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPF-DG-bHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1997.5999999999999" y="26.53673163418291"/>
+        </scene>
+        <!--Report Preview View Controller-->
+        <scene sceneID="LwJ-Sf-YRl">
+            <objects>
+                <viewController id="8TP-rw-hOr" customClass="ReportPreviewViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AZc-KS-1jl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="sg5-jV-IEv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Sb0-Ie-HX9">
+                        <barButtonItem key="rightBarButtonItem" title="email" id="joI-Oh-s3F">
+                            <connections>
+                                <action selector="emailReport:" destination="8TP-rw-hOr" id="dKe-pi-Eyo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailButton" destination="joI-Oh-s3F" id="0v5-ue-cxP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dg4-BG-3Zj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3599" y="22"/>
         </scene>
         <!--Locations-->
         <scene sceneID="aAy-IB-JMY">

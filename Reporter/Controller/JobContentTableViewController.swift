@@ -24,8 +24,8 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     var callback: ((_ job: Job) -> Void)?
     let locationManager = CLLocationManager()
     var deviceLocation: CLLocationCoordinate2D?
-    var weatherInformation: WeatherInformation?
     var weatherData: WeatherData?
+    var PDF: Data?
     
     // floating action button
     var fab = Floaty(frame: CGRect(x: 0, y: 0, width: 56, height: 56))
@@ -176,7 +176,6 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             let selectedContent = content[indexPath.row]
             contentDetailViewController.content = selectedContent
             
-        //MARK: **FIX META SEGUE**
         case "AddMetaData":
             print("Adding Meta Data to Job Content item")
             
@@ -221,6 +220,15 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             metaDataViewController.reportNumber = selectedJob!.reportNumber
             metaDataViewController.jobDate = selectedJob?.date
             
+        case "displayPDF":
+            print("Displaying PDF")
+            
+            guard let reportPreviewViewController = segue.destination as? ReportPreviewViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            // pass the PDF data
+            reportPreviewViewController.PDF = self.PDF ?? Data()
             
         default:
             fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")
@@ -276,28 +284,48 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         }
     }
 
-    @IBAction func fetchWeather(_ sender: UIBarButtonItem) {
-        loadWeather()
-    }
     
     @IBAction func runReport(_ sender: UIBarButtonItem) {
         
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        // Set title depending on status of weather
         
         var fetchWeatherTitle = "Fetch Weather: ";
-        
-        if (job?.weather == nil) {
-            fetchWeatherTitle += "None recorded"
-        } else {
+
+        if (isWeatherInformationLoaded()) {
             fetchWeatherTitle += "Weather recorded at " + "3:30" //**FIXME** hardcoded fetch time
+        } else {
+            if (isWeatherLoaded()) {
+                job?.weather = WeatherInformation(weatherData: self.weatherData!)
+                callback?(self.job!)
+                
+                fetchWeatherTitle += "Weather recorded at " + "3:30" //**FIXME** hardcoded fetch tim
+            } else {
+                fetchWeatherTitle += "None recorded"
+            }
         }
+        
+        // present the action sheet
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
         
         alert.addAction(UIAlertAction(title: fetchWeatherTitle, style: .default, handler: { (alert: UIAlertAction) -> Void in
             // fetch weather
+            self.loadWeather()
         }))
         
         alert.addAction(UIAlertAction(title: "Build Report", style: .default, handler: { (alert: UIAlertAction) -> Void in
             // Build Report
+            let reportData = self.buildReport()
+            // Present a preview of the report
+            if (reportData.isEmpty) {
+                // Do nothing
+            } else {
+                // present preview
+                self.PDF = reportData
+                self.performSegue(withIdentifier: "displayPDF", sender: self)
+
+            }
         }))
         
         if let popoverController = alert.popoverPresentationController {
@@ -309,7 +337,38 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         self.present(alert, animated: true)
     }
     
-    // MARK: Email Actions
+    // MARK: Report Actions
+    func buildReport() -> Data {
+        
+        if job == nil {
+            print("There is no job to run a report for")
+            return Data()
+        }
+        
+        if job?.content.count == 0 {
+            print("No content to run report on")
+            return Data()
+        }
+        
+        if (!isWeatherInformationLoaded()) {
+            // If the weather hasn't been fetched this session, fetch it. Otherwise set WeatherInformation to WeatherData
+            if (!isWeatherLoaded()) {
+                print("Weather has not been fetched")
+                loadWeather()
+                return Data()
+            } else {
+                job?.weather = WeatherInformation(weatherData: weatherData!)
+            }
+        }
+        
+        let pdfBuilder = PDFBuilder(job: job!, jobLocationName: self.jobLocationName!, jobDescription: self.jobDescription!)
+        
+        let reportPDFData = pdfBuilder.buildPDF()
+        
+        return reportPDFData
+        
+    }
+    
     @IBAction func emailReport(_ sender: UIBarButtonItem) {
         
         if !MFMailComposeViewController.canSendMail() {
@@ -360,9 +419,19 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     }
     
     func loadWeather() {
-        
+
         weatherData = WeatherData(coordinates: self.deviceLocation!, weatherDate: self.job!.weatherDate)
+    
+    }
+    
+    func isWeatherLoaded() -> Bool {
         
+        return weatherData != nil ? true : false
+    }
+    
+    func isWeatherInformationLoaded() -> Bool {
+        
+        return job?.weather != nil ? true : false
     }
     
     //MARK: UI Components
