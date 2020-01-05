@@ -53,6 +53,8 @@ class ReportPreviewViewController: UIViewController, MFMailComposeViewController
         pdfView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
+        pdfView.autoScales = true
+        
         pdfView.document = PDFDocument(data: PDF)
     }
     

@@ -292,7 +292,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         var fetchWeatherTitle = "Fetch Weather: ";
 
         if (isWeatherInformationLoaded()) {
-            fetchWeatherTitle += "Weather recorded at " + "3:30" //**FIXME** hardcoded fetch time
+            fetchWeatherTitle += "Already Fetched"
         } else {
             if (isWeatherLoaded()) {
                 job?.weather = WeatherInformation(weatherData: self.weatherData!)
@@ -327,6 +327,12 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
 
             }
         }))
+        
+        // cancel button (for iphone only, wont show up on ipad)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(alert:UIAlertAction!) -> Void in
+            print("user canceled run report action sheet")
+        }))
+
         
         if let popoverController = alert.popoverPresentationController {
             popoverController.sourceView = self.view
