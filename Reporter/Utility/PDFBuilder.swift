@@ -274,7 +274,7 @@ class PDFBuilder {
         
         // calculate the scaled height and width to use
         let scaledWidth = image.size.width * aspectRatio
-        let scaledHeight = image.size.width * aspectRatio
+        let scaledHeight = image.size.height * aspectRatio
         
         // calculate horizontal offset to center the image
         let imageX = (pageRect.width - scaledWidth) / 2.0
@@ -300,7 +300,7 @@ class PDFBuilder {
         
         // calculate the scaled height and width to use
         let scaledWidth = image.size.width * aspectRatio
-        let scaledHeight = image.size.width * aspectRatio
+        let scaledHeight = image.size.height * aspectRatio
         
         // calculate horizontal offset to center the image
         let imageX = (pageRect.width - scaledWidth) / 2.0

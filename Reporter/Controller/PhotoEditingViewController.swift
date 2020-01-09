@@ -9,6 +9,7 @@
 import UIKit
 import os.log
 import Floaty
+import Drawsana
 
 class PhotoEditingViewController: UIViewController, UINavigationControllerDelegate, FloatyDelegate {
     
@@ -18,6 +19,17 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     
     // passed to this view from the job content view
     var photo: UIImage?
+    
+    // Initialize drawing view. The CGRect for this view will be updated according to photo dimensions
+    let drawingView = DrawsanaView()
+    
+    // The tools used for drawing
+    let arrowTool = ArrowTool()
+    let ellipseTool = EllipseTool()
+    let lineTool = LineTool()
+    let dashLineTool = DashedLineTool()
+    let rectTool = RectTool()
+
     
     // floating action button
     var fab = Floaty()
@@ -38,14 +50,21 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         // set background color
         self.view.backgroundColor = UIColor.black
-        
+                
         // Do any additional setup after loading the view.
         if let photo = photo {
             
             photoView.image = sizePhotoAndView(photo: photo)
-            
+            view.addSubview(drawingView)
         }
         layoutFloatingActionButton()
+        
+        drawingView.userSettings.strokeWidth = 5
+        drawingView.userSettings.strokeColor = .red
+        drawingView.userSettings.fillColor = .clear
+        drawingView.userSettings.fontSize = 24
+        drawingView.userSettings.fontName = "Marker Felt"
+        
     }
     
     //MARK: Orientation Transition
@@ -75,10 +94,11 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         // The following is for saving the image with the markups as a new image
         // It renders the entire photoView and its subviews as an image
-        let renderer = UIGraphicsImageRenderer(size: photoView!.bounds.size)
-        let editedImage = renderer.image { ctx in
+        //let renderer = UIGraphicsImageRenderer(size: photoView!.bounds.size)
+        /*let editedImage = renderer.image { ctx in
             photoView!.drawHierarchy(in: photoView!.bounds, afterScreenUpdates: true)
-        }
+        }*/
+        let editedImage = drawingView.render(over: photoView.image)
         
         photo = editedImage
     }
@@ -125,6 +145,11 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         photoView.frame = CGRect(x: originX, y: originY, width: width, height: height)
         //photoView.layer.borderWidth = 5
         //photoView.layer.borderColor = UIColor.red.cgColor
+        
+        // layout DrawsanaView same as PhotoView
+        drawingView.frame = CGRect(x: originX, y: originY, width: width, height: height)
+        drawingView.layer.borderWidth = 5
+        drawingView.layer.borderColor = UIColor.red.cgColor
         
         return newPhoto!
     }
@@ -213,10 +238,19 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         circleItem.icon = UIImage(named: "circle")
         circleItem.title = "Circle"
         circleItem.handler = { item in
-            // Add handler here
-            // use the following function to seque
-            // "mysegueID is the name of the segue defined in the storyboard"
-            self.editTypeSelected = SelectedEdit.CIRCLE
+            // Switch to ellipse tool
+            self.drawingView.set(tool: self.ellipseTool)
+        }
+        
+        let rectangleItem = FloatyItem()
+        rectangleItem.buttonColor = UIColor.white
+        rectangleItem.circleShadowColor = UIColor.blue
+        rectangleItem.titleShadowColor = UIColor.black
+        rectangleItem.icon = UIImage(named: "rectangle")
+        rectangleItem.title = "Rectangle"
+        rectangleItem.handler = { item in
+            // Switch to ellipse tool
+            self.drawingView.set(tool: self.rectTool)
         }
         
         let arrowItem = FloatyItem()
@@ -226,10 +260,8 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         arrowItem.icon = UIImage(named: "arrow")
         arrowItem.title = "Arrow"
         arrowItem.handler = { item in
-            // Add handler here
-            // use the following function to seque
-            // "mysegueID is the name of the segue defined in the storyboard"
-            self.editTypeSelected = SelectedEdit.ARROW
+            // Switch to arrow tool
+            self.drawingView.set(tool: self.arrowTool)
         }
         
         let dashedItem = FloatyItem()
@@ -239,11 +271,8 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         dashedItem.icon = UIImage(named: "dashed")
         dashedItem.title = "Dashed Line"
         dashedItem.handler = { item in
-            // Add handler here
-            print("HANDLE")
-            // use the following function to seque
-            // "mysegueID is the name of the segue defined in the storyboard"
-            self.performSegue(withIdentifier: "AddDescription", sender: self)
+            // Switch to dashed line tool
+            self.drawingView.set(tool: self.dashLineTool)
         }
         
         let lineItem = FloatyItem()
@@ -253,11 +282,8 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         lineItem.icon = UIImage(named: "line")
         lineItem.title = "Line"
         lineItem.handler = { item in
-            // Add handler here
-            print("HANDLE")
-            // use the following function to seque
-            // "mysegueID is the name of the segue defined in the storyboard"
-            self.performSegue(withIdentifier: "AddDescription", sender: self)
+            // Switch to line tool
+            self.drawingView.set(tool: self.lineTool)
         }
         
         let textItem = FloatyItem()
@@ -267,11 +293,8 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         textItem.icon = UIImage(named: "textBox")
         textItem.title = "Text Box"
         textItem.handler = { item in
-            // Add handler here
-            print("HANDLE")
-            // use the following function to seque
-            // "mysegueID is the name of the segue defined in the storyboard"
-            self.performSegue(withIdentifier: "AddDescription", sender: self)
+            // Switch to text tool
+            
         }
         
         let eraseItem = FloatyItem()
@@ -288,6 +311,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         }
         
         fab.addItem(item: circleItem)
+        fab.addItem(item: rectangleItem)
         fab.addItem(item: arrowItem)
         fab.addItem(item: dashedItem)
         fab.addItem(item: lineItem)

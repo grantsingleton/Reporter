@@ -298,7 +298,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
                 job?.weather = WeatherInformation(weatherData: self.weatherData!)
                 callback?(self.job!)
                 
-                fetchWeatherTitle += "Weather recorded at " + "3:30" //**FIXME** hardcoded fetch tim
+                fetchWeatherTitle += "Already Fetched"
             } else {
                 fetchWeatherTitle += "None recorded"
             }

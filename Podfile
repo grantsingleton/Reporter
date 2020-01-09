@@ -7,6 +7,7 @@ target 'Reporter' do
   pod 'SimplePDF'
   pod 'WXKDarkSky', '~> 3.1.0'
   pod 'Floaty', '~> 4.2.0'
+  pod 'Drawsana', '~> 0.9'
   # Pods for Reporter
 
   target 'ReporterTests' do
