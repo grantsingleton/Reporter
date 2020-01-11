@@ -11,7 +11,8 @@ import os.log
 import Floaty
 import Drawsana
 
-class PhotoEditingViewController: UIViewController, UINavigationControllerDelegate, FloatyDelegate {
+class PhotoEditingViewController: UIViewController, UINavigationControllerDelegate, FloatyDelegate, TextToolDelegate, SelectionToolDelegate {
+
     
     //MARK: Properties
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -29,12 +30,17 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     let lineTool = LineTool()
     let dashLineTool = DashedLineTool()
     let rectTool = RectTool()
+    let eraserTool = EraserTool()
+    lazy var textTool = { return TextTool(delegate: self) }()
+    lazy var selectionTool = { return SelectionTool(delegate: self) }()
 
     
     // Editing tool floating action button
     var toolFloaty = Floaty()
     let eraseItem = FloatyItem()
     let textItem = FloatyItem()
+    let imageItem = FloatyItem()
+    let selectItem = FloatyItem()
     let lineItem = FloatyItem()
     let dashedItem = FloatyItem()
     let arrowItem = FloatyItem()
@@ -73,17 +79,18 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         
         // layout the floating action buttons
-        let fabWidth: CGFloat = 56
-        let margin: CGFloat = 40
+        let fabWidth: CGFloat = 78 //56
+        let sideMargin: CGFloat = 40
+        let bottomMargin: CGFloat = 60
         let viewWidth: CGFloat = self.view.frame.width
         let viewHeight: CGFloat = self.view.frame.height
         let navBarHeight: CGFloat = (self.navigationController?.navigationBar.frame.height)!
         
-        toolFloaty = Floaty(frame: CGRect(x: viewWidth - margin - fabWidth, y: viewHeight - navBarHeight - margin, width: fabWidth, height: fabWidth))
+        toolFloaty = Floaty(frame: CGRect(x: viewWidth - sideMargin - fabWidth, y: viewHeight - navBarHeight - bottomMargin, width: fabWidth, height: fabWidth))
         
-        lineWidthFloaty = Floaty(frame: CGRect(x: margin, y: viewHeight - navBarHeight - margin, width: fabWidth, height: fabWidth))
+        lineWidthFloaty = Floaty(frame: CGRect(x: sideMargin, y: viewHeight - navBarHeight - bottomMargin, width: fabWidth, height: fabWidth))
         
-        paletteFloaty = Floaty(frame: CGRect(x: (viewWidth / 2) - (fabWidth / 2), y: viewHeight - navBarHeight - margin, width: fabWidth, height: fabWidth))
+        paletteFloaty = Floaty(frame: CGRect(x: (viewWidth / 2) - (fabWidth / 2), y: viewHeight - navBarHeight - bottomMargin, width: fabWidth, height: fabWidth))
                 
         // set background color
         self.view.backgroundColor = UIColor.black
@@ -96,11 +103,12 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         }
         layoutFloatingActionButton()
         
+        // Set default drawsana settings
         drawingView.userSettings.strokeWidth = 5
         drawingView.userSettings.strokeColor = .red
         drawingView.userSettings.fillColor = .clear
         drawingView.userSettings.fontSize = 24
-        drawingView.userSettings.fontName = "Marker Felt"
+        drawingView.userSettings.fontName = "Helvetica"
         
     }
     
@@ -268,76 +276,98 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     //MARK: UI Components
     func layoutFloatingActionButton() {
         
+        
+        /*
+         Configure Tool Floaty Items
+         */
         circleItem.buttonColor = UIColor.white
         circleItem.circleShadowColor = UIColor.blue
         circleItem.titleShadowColor = UIColor.black
         circleItem.icon = UIImage(named: "circle")
-        circleItem.title = "Circle"
         circleItem.handler = { item in
             // Switch to ellipse tool
             self.drawingView.set(tool: self.ellipseTool)
+            self.toolFloaty.buttonImage = UIImage(named: "circle")
         }
         
         rectangleItem.buttonColor = UIColor.white
         rectangleItem.circleShadowColor = UIColor.blue
         rectangleItem.titleShadowColor = UIColor.black
         rectangleItem.icon = UIImage(named: "rectangle")
-        rectangleItem.title = "Rectangle"
         rectangleItem.handler = { item in
             // Switch to ellipse tool
             self.drawingView.set(tool: self.rectTool)
+            self.toolFloaty.buttonImage = UIImage(named: "rectangle")
         }
         
         arrowItem.buttonColor = UIColor.white
         arrowItem.circleShadowColor = UIColor.blue
         arrowItem.titleShadowColor = UIColor.black
         arrowItem.icon = UIImage(named: "arrow")
-        arrowItem.title = "Arrow"
         arrowItem.handler = { item in
             // Switch to arrow tool
             self.drawingView.set(tool: self.arrowTool)
+            self.toolFloaty.buttonImage = UIImage(named: "arrow")
         }
         
         dashedItem.buttonColor = UIColor.white
         dashedItem.circleShadowColor = UIColor.blue
         dashedItem.titleShadowColor = UIColor.black
         dashedItem.icon = UIImage(named: "dashed")
-        dashedItem.title = "Dashed Line"
         dashedItem.handler = { item in
             // Switch to dashed line tool
             self.drawingView.set(tool: self.dashLineTool)
+            self.toolFloaty.buttonImage = UIImage(named: "dashed")
         }
         
         lineItem.buttonColor = UIColor.white
         lineItem.circleShadowColor = UIColor.blue
         lineItem.titleShadowColor = UIColor.black
         lineItem.icon = UIImage(named: "line")
-        lineItem.title = "Line"
         lineItem.handler = { item in
             // Switch to line tool
             self.drawingView.set(tool: self.lineTool)
+            self.toolFloaty.buttonImage = UIImage(named: "line")
         }
         
         textItem.buttonColor = UIColor.white
         textItem.circleShadowColor = UIColor.blue
         textItem.titleShadowColor = UIColor.black
         textItem.icon = UIImage(named: "textBox")
-        textItem.title = "Text Box"
         textItem.handler = { item in
             // Switch to text tool
-            
+            self.drawingView.set(tool: self.textTool)
+            self.toolFloaty.buttonImage = UIImage(named: "textBox")
+        }
+        
+        imageItem.buttonColor = UIColor.white
+        imageItem.circleShadowColor = UIColor.blue
+        imageItem.titleShadowColor = UIColor.black
+        imageItem.icon = UIImage(named: "addImage")
+        imageItem.handler = { item in
+            // Switch to add image tool
+            //self.drawingView.set(tool: self.textTool)
+            self.toolFloaty.buttonImage = UIImage(named: "addImage")
         }
         
         eraseItem.buttonColor = UIColor.white
         eraseItem.circleShadowColor = UIColor.blue
         eraseItem.titleShadowColor = UIColor.black
         eraseItem.icon = UIImage(named: "erase")
-        eraseItem.title = "Delete Item"
         eraseItem.handler = { item in
-            // Add handler here
-            // use the following function to seque
-            // "mysegueID is the name of the segue defined in the storyboard"
-            self.editTypeSelected = SelectedEdit.ERASER
+            // switch to eraser
+            self.drawingView.set(tool: self.eraserTool)
+            self.toolFloaty.buttonImage = UIImage(named: "erase")
+        }
+        
+        selectItem.buttonColor = UIColor.white
+        selectItem.circleShadowColor = UIColor.blue
+        selectItem.titleShadowColor = UIColor.black
+        selectItem.icon = UIImage(named: "select")
+        selectItem.handler = { item in
+            // switch to selection tool
+            self.drawingView.set(tool: self.selectionTool)
+            self.toolFloaty.buttonImage = UIImage(named: "select")
         }
         
         toolFloaty.addItem(item: circleItem)
@@ -346,7 +376,104 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         toolFloaty.addItem(item: dashedItem)
         toolFloaty.addItem(item: lineItem)
         toolFloaty.addItem(item: textItem)
+        toolFloaty.addItem(item: imageItem)
         toolFloaty.addItem(item: eraseItem)
+        toolFloaty.addItem(item: selectItem)
+        
+        /*
+         Configure palette Floaty Items
+         */
+        redItem.buttonColor = UIColor.red
+        redItem.circleShadowColor = UIColor.white
+        redItem.handler = { item in
+            self.drawingView.userSettings.strokeColor = .red
+            self.paletteFabColor(color: .red)
+        }
+        
+        blueItem.buttonColor = UIColor.blue
+        blueItem.circleShadowColor = UIColor.white
+        blueItem.handler = { item in
+            self.drawingView.userSettings.strokeColor = .blue
+            self.paletteFabColor(color: .blue)
+        }
+        
+        yellowItem.buttonColor = UIColor.yellow
+        yellowItem.circleShadowColor = UIColor.white
+        yellowItem.handler = { item in
+            self.drawingView.userSettings.strokeColor = .yellow
+            self.paletteFabColor(color: .yellow)
+
+        }
+        
+        greenItem.buttonColor = UIColor.green
+        greenItem.circleShadowColor = UIColor.white
+        greenItem.handler = { item in
+            self.drawingView.userSettings.strokeColor = .green
+            self.paletteFabColor(color: .green)
+
+        }
+        
+        orangeItem.buttonColor = UIColor.orange
+        orangeItem.circleShadowColor = UIColor.white
+        orangeItem.handler = { item in
+            self.drawingView.userSettings.strokeColor = .orange
+            self.paletteFabColor(color: .orange)
+
+        }
+        
+        blackItem.buttonColor = UIColor.black
+        blackItem.circleShadowColor = UIColor.white
+        blackItem.handler = { item in
+            self.drawingView.userSettings.strokeColor = .black
+            self.paletteFabColor(color: .darkGray)
+        }
+        
+        whiteItem.buttonColor = UIColor.white
+        whiteItem.circleShadowColor = UIColor.white
+        whiteItem.handler = { item in
+            self.drawingView.userSettings.strokeColor = .white
+            self.paletteFabColor(color: .white)
+        }
+        
+        paletteFloaty.addItem(item: redItem)
+        paletteFloaty.addItem(item: blueItem)
+        paletteFloaty.addItem(item: yellowItem)
+        paletteFloaty.addItem(item: greenItem)
+        paletteFloaty.addItem(item: orangeItem)
+        paletteFloaty.addItem(item: blackItem)
+        paletteFloaty.addItem(item: whiteItem)
+                
+        /*
+         Configure width floaty item
+         */
+        minWidthItem.buttonColor = UIColor.white
+        minWidthItem.circleShadowColor = UIColor.black
+        minWidthItem.icon = UIImage(named: "thinLine")
+        minWidthItem.handler = { item in
+            self.drawingView.userSettings.strokeWidth = 3
+            self.lineWidthFloaty.buttonImage = UIImage(named: "thinLine")
+        }
+        
+        mediumWidthItem.buttonColor = UIColor.white
+        mediumWidthItem.circleShadowColor = UIColor.black
+        mediumWidthItem.icon = UIImage(named: "mediumLine")
+        mediumWidthItem.handler = { item in
+            self.drawingView.userSettings.strokeWidth = 5
+            self.lineWidthFloaty.buttonImage = UIImage(named: "mediumLine")
+        }
+        
+        maxWidthItem.buttonColor = UIColor.white
+        maxWidthItem.circleShadowColor = UIColor.black
+        maxWidthItem.icon = UIImage(named: "thickLine")
+        maxWidthItem.handler = { item in
+            self.drawingView.userSettings.strokeWidth = 7
+            self.lineWidthFloaty.buttonImage = UIImage(named: "thickLine")
+        }
+        
+        lineWidthFloaty.addItem(item: minWidthItem)
+        lineWidthFloaty.addItem(item: mediumWidthItem)
+        lineWidthFloaty.addItem(item: maxWidthItem)
+
         
         toolFloaty.buttonImage = UIImage(named: "paint")
         lineWidthFloaty.buttonImage = UIImage(named: "lineWidth")
@@ -363,12 +490,114 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         toolFloaty.friendlyTap = true
         lineWidthFloaty.friendlyTap = true
         paletteFloaty.friendlyTap = true
-
         
         self.view.addSubview(toolFloaty)
         self.view.addSubview(lineWidthFloaty)
         self.view.addSubview(paletteFloaty)
         
+    }
+    
+    func paletteFabColor(color: UIColor) {
+       
+        paletteFloaty.selectedColor = color
+        paletteFloaty.buttonColor = color
+    }
+    
+    //MARK: Text Tool Delegate Functions
+    func textToolPointForNewText(tappedPoint: CGPoint) -> CGPoint {
+        return tappedPoint
+    }
+    
+    func textToolDidTapAway(tappedPoint: CGPoint) {
+        drawingView.set(tool: self.selectionTool)
+    }
+    
+    func textToolWillUseEditingView(_ editingView: TextShapeEditingView) {
+        // This example implementation of `textToolWillUseEditingView` shows how you
+        // can customize the appearance of the text tool
+        //
+        // Important note: each handle's layer.anchorPoint is set to a non-0.5,0.5
+        // value, so the positions are offset from where AutoLayout puts them.
+        // That's why `halfButtonSize` is added and subtracted depending on which
+        // control is being configured.
+        //
+        // The anchor point is changed so that the controls can be scaled correctly
+        // in `textToolDidUpdateEditingViewTransform`.
+        let makeView: (UIImage?) -> UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = .white
+            view.layer.cornerRadius = 6
+            view.layer.borderWidth = 1
+            view.layer.borderColor = UIColor.white.cgColor
+            view.layer.shadowColor = UIColor.black.cgColor
+            view.layer.shadowOffset = CGSize(width: 1, height: 1)
+            view.layer.shadowRadius = 3
+            view.layer.shadowOpacity = 0.5
+            if let image = $0 {
+                view.frame = CGRect(origin: .zero, size: CGSize(width: 16, height: 16))
+                let imageView = UIImageView(image: image)
+                imageView.translatesAutoresizingMaskIntoConstraints = true
+                imageView.frame = view.bounds.insetBy(dx: 4, dy: 4)
+                imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                imageView.contentMode = .scaleAspectFit
+                imageView.tintColor = .white
+                view.addSubview(imageView)
+            }
+            return view
+        }
+        
+        let buttonSize: CGFloat = 36
+        let halfButtonSize = buttonSize / 2
+        
+        let deleteImage = UIImage(named: "delete")
+        let widthImage = UIImage(named: "changeWidth")
+        let resizeImage = UIImage(named: "resizeRotate")
+        
+        editingView.addControl(dragActionType: .delete, view: makeView(deleteImage)) { (textView, deleteControlView) in
+            deleteControlView.layer.anchorPoint = CGPoint(x: 1, y: 1)
+            NSLayoutConstraint.activate([
+                deleteControlView.widthAnchor.constraint(equalToConstant: buttonSize),
+                deleteControlView.heightAnchor.constraint(equalToConstant: buttonSize),
+                deleteControlView.rightAnchor.constraint(equalTo: textView.leftAnchor, constant: halfButtonSize),
+                deleteControlView.bottomAnchor.constraint(equalTo: textView.topAnchor, constant: -3 + halfButtonSize),
+            ])
+        }
+        
+        editingView.addControl(dragActionType: .resizeAndRotate, view: makeView(resizeImage)) { (textView, resizeAndRotateControlView) in
+            resizeAndRotateControlView.layer.anchorPoint = CGPoint(x: 0, y: 0)
+            NSLayoutConstraint.activate([
+                resizeAndRotateControlView.widthAnchor.constraint(equalToConstant: buttonSize),
+                resizeAndRotateControlView.heightAnchor.constraint(equalToConstant: buttonSize),
+                resizeAndRotateControlView.leftAnchor.constraint(equalTo: textView.rightAnchor, constant: 5 - halfButtonSize),
+                resizeAndRotateControlView.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 4 - halfButtonSize),
+            ])
+        }
+        
+        editingView.addControl(dragActionType: .changeWidth, view: makeView(widthImage)) { (textView, changeWidthControlView) in
+            changeWidthControlView.layer.anchorPoint = CGPoint(x: 0, y: 1)
+            NSLayoutConstraint.activate([
+                changeWidthControlView.widthAnchor.constraint(equalToConstant: buttonSize),
+                changeWidthControlView.heightAnchor.constraint(equalToConstant: buttonSize),
+                changeWidthControlView.leftAnchor.constraint(equalTo: textView.rightAnchor, constant: 5 - halfButtonSize),
+                changeWidthControlView.bottomAnchor.constraint(equalTo: textView.topAnchor, constant: -4 + halfButtonSize),
+            ])
+        }
+    }
+    
+    func textToolDidUpdateEditingViewTransform(_ editingView: TextShapeEditingView, transform: ShapeTransform) {
+        for control in editingView.controls {
+            control.view.transform = CGAffineTransform(scaleX: 1/transform.scale, y: 1/transform.scale)
+        }
+    }
+    
+    //MARK: Selection tool delegate functions
+    func selectionToolDidTapOnAlreadySelectedShape(_ shape: ShapeSelectable) {
+        if shape as? TextShape != nil {
+            drawingView.set(tool: textTool, shape: shape)
+        } else {
+            drawingView.toolSettings.selectedShape = nil
+        }
     }
 
 }
