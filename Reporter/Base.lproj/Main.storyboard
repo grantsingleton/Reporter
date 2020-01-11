@@ -359,7 +359,7 @@
             </objects>
             <point key="canvasLocation" x="5068" y="936"/>
         </scene>
-        <!--Edit Photo-->
+        <!--Markup-->
         <scene sceneID="oh7-47-3jq">
             <objects>
                 <viewController id="awn-mq-y9e" customClass="PhotoEditingViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
@@ -379,21 +379,35 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="pfL-gW-dVB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Photo" id="hB1-6m-dZB">
+                    <navigationItem key="navigationItem" title="Markup" id="hB1-6m-dZB">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="95z-GR-qRN">
                             <connections>
                                 <action selector="cancel:" destination="awn-mq-y9e" id="tFJ-ja-VH9"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UrY-Zm-mzd">
-                            <connections>
-                                <segue destination="rVB-Nf-4mZ" kind="unwind" unwindAction="unwindToJobContentViewWithSender:" id="KKR-XQ-fRE"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="UrY-Zm-mzd">
+                                <connections>
+                                    <segue destination="rVB-Nf-4mZ" kind="unwind" unwindAction="unwindToJobContentViewWithSender:" id="KKR-XQ-fRE"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="arrow.uturn.right.circle" catalog="system" id="JPP-gE-Nvp">
+                                <connections>
+                                    <action selector="redo:" destination="awn-mq-y9e" id="kCO-8o-d9F"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="arrow.uturn.left.circle" catalog="system" id="9gb-jk-5Ex">
+                                <connections>
+                                    <action selector="undo:" destination="awn-mq-y9e" id="Ayi-Bp-Mtj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="photoView" destination="DFr-ue-v44" id="5Kj-dU-wUv"/>
+                        <outlet property="redoButton" destination="JPP-gE-Nvp" id="5Cx-Gn-gQb"/>
                         <outlet property="saveButton" destination="UrY-Zm-mzd" id="Dxm-6G-RDM"/>
+                        <outlet property="undoButton" destination="9gb-jk-5Ex" id="Mr3-WB-yIZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEi-ZB-Rei" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -945,6 +959,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.uturn.left.circle" catalog="system" width="64" height="60"/>
+        <image name="arrow.uturn.right.circle" catalog="system" width="64" height="60"/>
         <image name="defaultPhoto" width="540" height="540"/>
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="plus" catalog="system" width="64" height="56"/>

@@ -11,18 +11,27 @@ import os.log
 import Floaty
 import Drawsana
 
-class PhotoEditingViewController: UIViewController, UINavigationControllerDelegate, FloatyDelegate, TextToolDelegate, SelectionToolDelegate {
-
+class PhotoEditingViewController: UIViewController, UINavigationControllerDelegate, FloatyDelegate, TextToolDelegate, SelectionToolDelegate, DrawingOperationStackDelegate {
     
     //MARK: Properties
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var photoView: UIImageView!
+    
+    //MARK: Editing Buttons
+    @IBOutlet weak var undoButton: UIBarButtonItem!
+    @IBOutlet weak var redoButton: UIBarButtonItem!
     
     // passed to this view from the job content view
     var photo: UIImage?
     
     // Initialize drawing view. The CGRect for this view will be updated according to photo dimensions
     let drawingView = DrawsanaView()
+    
+    // font selection
+    var fontButton = UIButton()
+    var fontView = UIView()
+    var selectedFont: String = "Helvetica"
+    var fontSize: Float = 18
     
     // The tools used for drawing
     let arrowTool = ArrowTool()
@@ -33,7 +42,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     let eraserTool = EraserTool()
     lazy var textTool = { return TextTool(delegate: self) }()
     lazy var selectionTool = { return SelectionTool(delegate: self) }()
-
+    
     
     // Editing tool floating action button
     var toolFloaty = Floaty()
@@ -65,18 +74,14 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     
     // editor selector enum
     enum SelectedEdit {
-        case CIRCLE, ARROW, ERASER, NONE
+        case CIRCLE, RECTANGLE, DASHED, LINE, TEXT, IMAGE, SELECT, ARROW, ERASER, NONE
     }
     
-    var editTypeSelected: SelectedEdit?
+    var editTypeSelected: SelectedEdit = .NONE
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        // initialize selected edit to none
-        editTypeSelected = SelectedEdit.NONE
-        
         
         // layout the floating action buttons
         let fabWidth: CGFloat = 78 //56
@@ -107,8 +112,14 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         drawingView.userSettings.strokeWidth = 5
         drawingView.userSettings.strokeColor = .red
         drawingView.userSettings.fillColor = .clear
-        drawingView.userSettings.fontSize = 24
+        drawingView.userSettings.fontSize = 18
         drawingView.userSettings.fontName = "Helvetica"
+        
+        drawingView.operationStack.delegate = self
+        
+        undoButton.isEnabled = false
+        redoButton.isEnabled = false
+        saveButton.isEnabled = false
         
     }
     
@@ -200,76 +211,9 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     }
 
     
-    //MARK: Actions
-    @IBAction func didTap(_ sender: UITapGestureRecognizer) {
-        
-        let tapPoint = sender.location(in: self.photoView)
-        
-        switch editTypeSelected {
-        case .CIRCLE:
-            print("DRaw Circle")
-            drawCircle(tapPoint: tapPoint)
-            
-        case .ARROW:
-            
-            drawArrow(tapPoint: tapPoint)
-            
-        case .ERASER:
-            
-            print("handled by shapeviews own tapGR action")
-            
-        case .NONE:
-            
-            print("Do nothing, no edit selected")
-            
-        default:
-            print("Do nothing")
-        }
-    }
-    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
 
         navigationController?.popViewController(animated: false)
-    }
-    
-    @IBAction func addCircle(_ sender: UIBarButtonItem) {
-        editTypeSelected = SelectedEdit.CIRCLE
-    }
-    
-    @IBAction func addArrow(_ sender: UIBarButtonItem) {
-        editTypeSelected = SelectedEdit.ARROW
-    }
-    
-    @IBAction func deleteItem(_ sender: UIBarButtonItem) {
-        editTypeSelected = SelectedEdit.ERASER
-    }
-    
-    //Mark: Private Methods
-    private func drawCircle(tapPoint: CGPoint) {
-        
-        let shapeView = Circle(origin: tapPoint)
-        
-        self.photoView!.addSubview(shapeView)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhotoEditingViewController.didTapShape(_:)))
-        shapeView.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    private func drawArrow(tapPoint: CGPoint) {
-        
-        let shapeView = Arrow(origin: tapPoint)
-        
-        self.photoView!.addSubview(shapeView)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhotoEditingViewController.didTapShape(_:)))
-        shapeView.addGestureRecognizer(tapGestureRecognizer)
-    }
-
-    
-    @IBAction func didTapShape(_ sender: UIPinchGestureRecognizer) {
-        if editTypeSelected == SelectedEdit.ERASER {
-            sender.view?.removeFromSuperview()
-        }
     }
     
     
@@ -286,8 +230,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         circleItem.icon = UIImage(named: "circle")
         circleItem.handler = { item in
             // Switch to ellipse tool
+            self.checkForFontButton()
             self.drawingView.set(tool: self.ellipseTool)
             self.toolFloaty.buttonImage = UIImage(named: "circle")
+            self.editTypeSelected = .CIRCLE
         }
         
         rectangleItem.buttonColor = UIColor.white
@@ -296,8 +242,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         rectangleItem.icon = UIImage(named: "rectangle")
         rectangleItem.handler = { item in
             // Switch to ellipse tool
+            self.checkForFontButton()
             self.drawingView.set(tool: self.rectTool)
             self.toolFloaty.buttonImage = UIImage(named: "rectangle")
+            self.editTypeSelected = .RECTANGLE
         }
         
         arrowItem.buttonColor = UIColor.white
@@ -306,8 +254,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         arrowItem.icon = UIImage(named: "arrow")
         arrowItem.handler = { item in
             // Switch to arrow tool
+            self.checkForFontButton()
             self.drawingView.set(tool: self.arrowTool)
             self.toolFloaty.buttonImage = UIImage(named: "arrow")
+            self.editTypeSelected = .ARROW
         }
         
         dashedItem.buttonColor = UIColor.white
@@ -316,8 +266,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         dashedItem.icon = UIImage(named: "dashed")
         dashedItem.handler = { item in
             // Switch to dashed line tool
+            self.checkForFontButton()
             self.drawingView.set(tool: self.dashLineTool)
             self.toolFloaty.buttonImage = UIImage(named: "dashed")
+            self.editTypeSelected = .DASHED
         }
         
         lineItem.buttonColor = UIColor.white
@@ -326,8 +278,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         lineItem.icon = UIImage(named: "line")
         lineItem.handler = { item in
             // Switch to line tool
+            self.checkForFontButton()
             self.drawingView.set(tool: self.lineTool)
             self.toolFloaty.buttonImage = UIImage(named: "line")
+            self.editTypeSelected = .LINE
         }
         
         textItem.buttonColor = UIColor.white
@@ -338,6 +292,9 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
             // Switch to text tool
             self.drawingView.set(tool: self.textTool)
             self.toolFloaty.buttonImage = UIImage(named: "textBox")
+            self.editTypeSelected = .TEXT
+            // Place and configure font selection button
+            self.placeFontButton()
         }
         
         imageItem.buttonColor = UIColor.white
@@ -346,8 +303,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         imageItem.icon = UIImage(named: "addImage")
         imageItem.handler = { item in
             // Switch to add image tool
+            self.checkForFontButton()
             //self.drawingView.set(tool: self.textTool)
             self.toolFloaty.buttonImage = UIImage(named: "addImage")
+            self.editTypeSelected = .IMAGE
         }
         
         eraseItem.buttonColor = UIColor.white
@@ -356,8 +315,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         eraseItem.icon = UIImage(named: "erase")
         eraseItem.handler = { item in
             // switch to eraser
+            self.checkForFontButton()
             self.drawingView.set(tool: self.eraserTool)
             self.toolFloaty.buttonImage = UIImage(named: "erase")
+            self.editTypeSelected = .ERASER
         }
         
         selectItem.buttonColor = UIColor.white
@@ -366,8 +327,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         selectItem.icon = UIImage(named: "select")
         selectItem.handler = { item in
             // switch to selection tool
+            self.checkForFontButton()
             self.drawingView.set(tool: self.selectionTool)
             self.toolFloaty.buttonImage = UIImage(named: "select")
+            self.editTypeSelected = .SELECT
         }
         
         toolFloaty.addItem(item: circleItem)
@@ -491,6 +454,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         lineWidthFloaty.friendlyTap = true
         paletteFloaty.friendlyTap = true
         
+        toolFloaty.openAnimationType = .slideUp
+        paletteFloaty.openAnimationType = .slideUp
+        lineWidthFloaty.openAnimationType = .slideUp
+        
         self.view.addSubview(toolFloaty)
         self.view.addSubview(lineWidthFloaty)
         self.view.addSubview(paletteFloaty)
@@ -552,7 +519,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         let deleteImage = UIImage(named: "delete")
         let widthImage = UIImage(named: "changeWidth")
-        let resizeImage = UIImage(named: "resizeRotate")
+        //let resizeImage = UIImage(named: "resizeRotate")
         
         editingView.addControl(dragActionType: .delete, view: makeView(deleteImage)) { (textView, deleteControlView) in
             deleteControlView.layer.anchorPoint = CGPoint(x: 1, y: 1)
@@ -563,7 +530,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
                 deleteControlView.bottomAnchor.constraint(equalTo: textView.topAnchor, constant: -3 + halfButtonSize),
             ])
         }
-        
+        /*
         editingView.addControl(dragActionType: .resizeAndRotate, view: makeView(resizeImage)) { (textView, resizeAndRotateControlView) in
             resizeAndRotateControlView.layer.anchorPoint = CGPoint(x: 0, y: 0)
             NSLayoutConstraint.activate([
@@ -572,7 +539,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
                 resizeAndRotateControlView.leftAnchor.constraint(equalTo: textView.rightAnchor, constant: 5 - halfButtonSize),
                 resizeAndRotateControlView.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 4 - halfButtonSize),
             ])
-        }
+        } */
         
         editingView.addControl(dragActionType: .changeWidth, view: makeView(widthImage)) { (textView, changeWidthControlView) in
             changeWidthControlView.layer.anchorPoint = CGPoint(x: 0, y: 1)
@@ -595,9 +562,199 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     func selectionToolDidTapOnAlreadySelectedShape(_ shape: ShapeSelectable) {
         if shape as? TextShape != nil {
             drawingView.set(tool: textTool, shape: shape)
+            placeFontButton()
         } else {
             drawingView.toolSettings.selectedShape = nil
         }
     }
+    
+    //MARK: Drawing Operation Stack Delegate
+    func drawingOperationStackDidUndo(_ operationStack: DrawingOperationStack, operation: DrawingOperation) {
+        applyUndoViewState()
+    }
+    
+    func drawingOperationStackDidRedo(_ operationStack: DrawingOperationStack, operation: DrawingOperation) {
+        applyUndoViewState()
+    }
+    
+    func drawingOperationStackDidApply(_ operationStack: DrawingOperationStack, operation: DrawingOperation) {
+        applyUndoViewState()
+        
+    }
+    
+    //MARK: Editing Buttons
+    @IBAction func undo(_ sender: UIBarButtonItem) {
+        drawingView.operationStack.undo()
+    }
+    
+    @IBAction func redo(_ sender: UIBarButtonItem) {
+        drawingView.operationStack.redo()
+    }
+    
+    // Update button states to reflect undo stack
+    private func applyUndoViewState() {
+        
+        undoButton.isEnabled = drawingView.operationStack.canUndo
+        redoButton.isEnabled = drawingView.operationStack.canRedo
+        
+        saveButton.isEnabled = drawingView.operationStack.canUndo
+        
+    }
+    
+    private func placeFontButton() {
+        
+        let navBarHeight: CGFloat = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
+        (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        
+        let buttonWidth: CGFloat = 150
+        let buttonHeight: CGFloat = 40
+        
+        fontButton = UIButton(frame: CGRect(x: 0, y: navBarHeight, width: buttonWidth, height: buttonHeight))
+        
+        fontButton.backgroundColor = .white
+        fontButton.titleLabel?.font = UIFont(name: selectedFont, size: 18)
+        fontButton.setTitle(selectedFont, for: .normal)
+        fontButton.setTitleColor(.black, for: .normal)
+        fontButton.layer.cornerRadius = 5
+        fontButton.layer.borderWidth = 1
+        fontButton.layer.borderColor = UIColor.black.cgColor
+        fontButton.layer.shadowColor = UIColor.white.cgColor
+        fontButton.addTarget(self, action: #selector(fontChange(sender:)), for: .touchUpInside)
+    
+        self.view.addSubview(fontButton)
+    }
+    
+    @objc func fontChange(sender: UIButton) {
+        
+        let buttonHeight: CGFloat = 40
+        
+        let viewHeight: CGFloat = buttonHeight * 4
+        
+        fontView = UIView(frame: CGRect(x: sender.frame.origin.x, y: sender.frame.origin.y + sender.frame.height, width: sender.frame.width, height: viewHeight))
+        
+        fontView.clipsToBounds = true
+        fontView.backgroundColor = .white
+        fontView.layer.cornerRadius = 5
+        fontView.layer.shadowColor = UIColor.white.cgColor
+                
+        /*
+         Helvetica Font Button
+         */
+        let helveticaButton = UIButton(frame: CGRect(x: 0, y: 0, width: fontView.frame.width, height: buttonHeight))
+        
+        helveticaButton.setTitle("Helvetica", for: .normal)
+        helveticaButton.setTitleColor(.black, for: .normal)
+        helveticaButton.titleLabel?.font = UIFont(name: "Helvetica", size: 18)
+        
+        if (selectedFont == "Helvetica") {
+            helveticaButton.backgroundColor = .lightGray
+        } else {
+            helveticaButton.backgroundColor = .white
+        }
+        
+        helveticaButton.addTarget(self, action: #selector(fontHelvetica(sender:)), for: .touchUpInside)
+        
+        /*
+         Georgia Font Button
+         */
+        let georgiaButton = UIButton(frame: CGRect(x: 0, y: buttonHeight, width: fontView.frame.width, height: buttonHeight))
+        
+        georgiaButton.setTitle("Georgia", for: .normal)
+        georgiaButton.setTitleColor(.black, for: .normal)
+        georgiaButton.titleLabel?.font = UIFont(name: "Georgia", size: 18)
+        
+        if (selectedFont == "Georgia") {
+            georgiaButton.backgroundColor = .lightGray
+        } else {
+            georgiaButton.backgroundColor = .white
+        }
+        
+        georgiaButton.addTarget(self, action: #selector(fontGeorgia(sender:)), for: .touchUpInside)
+        
+        /*
+         Noteworthy Font Button
+         */
+        let noteworthyButton = UIButton(frame: CGRect(x: 0, y: buttonHeight * 2, width: fontView.frame.width, height: buttonHeight))
+        
+        noteworthyButton.setTitle("Noteworthy", for: .normal)
+        noteworthyButton.setTitleColor(.black, for: .normal)
+        noteworthyButton.titleLabel?.font = UIFont(name: "Noteworthy", size: 18)
+        
+        if (selectedFont == "Noteworthy") {
+            noteworthyButton.backgroundColor = .lightGray
+        } else {
+            noteworthyButton.backgroundColor = .white
+        }
+        
+        noteworthyButton.addTarget(self, action: #selector(fontNoteworthy(sender:)), for: .touchUpInside)
+        
+        let fontSizeSlider = UISlider(frame: CGRect(x: 0, y: buttonHeight * 3, width: fontView.frame.width, height: buttonHeight))
+        fontSizeSlider.minimumValue = 10
+        fontSizeSlider.maximumValue = 36
+        fontSizeSlider.isContinuous = true
+        fontSizeSlider.tintColor = .green
+        fontSizeSlider.setValue(fontSize, animated: true)
+        fontSizeSlider.addTarget(self, action: #selector(fontSizeDidChange(sender:)), for: .valueChanged)
+        
+        fontView.addSubview(helveticaButton)
+        fontView.addSubview(georgiaButton)
+        fontView.addSubview(noteworthyButton)
+        fontView.addSubview(fontSizeSlider)
+        
+        self.view.addSubview(fontView)
 
+    }
+    
+    @objc func fontHelvetica(sender: UIButton) {
+        
+        fontView.removeFromSuperview()
+        selectedFont = "Helvetica"
+        changeFont(font: "Helvetica")
+        updateFontButton(fontName: "Helvetica")
+    }
+    
+    @objc func fontGeorgia(sender: UIButton) {
+        
+        fontView.removeFromSuperview()
+        selectedFont = "Georgia"
+        changeFont(font: "Georgia")
+        updateFontButton(fontName: "Georgia")
+
+    }
+    
+    @objc func fontNoteworthy(sender: UIButton) {
+        
+        fontView.removeFromSuperview()
+        selectedFont = "Noteworthy"
+        changeFont(font: "Noteworthy")
+        updateFontButton(fontName: "Noteworthy")
+    }
+    
+    func changeFont(font: String) {
+        
+        drawingView.userSettings.fontName = font
+    }
+    
+    func updateFontButton(fontName: String) {
+        
+        fontButton.setTitle(fontName, for: .normal)
+        fontButton.titleLabel?.font = UIFont(name: fontName, size: 18)
+    }
+    
+    func removeFontButton() {
+        fontButton.removeFromSuperview()
+        fontButton.isHidden = true
+    }
+    
+    func checkForFontButton() {
+        if (editTypeSelected == .TEXT) {
+            removeFontButton()
+        }
+    }
+    
+    @objc func fontSizeDidChange(sender: UISlider) {
+        
+    }
 }
+
+

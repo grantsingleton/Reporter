@@ -1,12 +1,14 @@
 PODS:
   - Drawsana (0.9.2)
   - Floaty (4.2.0)
+  - iOSDropDown (0.3.4)
   - SimplePDF (3.0.0)
   - WXKDarkSky (3.1.0)
 
 DEPENDENCIES:
   - Drawsana (~> 0.9)
   - Floaty (~> 4.2.0)
+  - iOSDropDown
   - SimplePDF
   - WXKDarkSky (~> 3.1.0)
 
@@ -14,15 +16,17 @@ SPEC REPOS:
   trunk:
     - Drawsana
     - Floaty
+    - iOSDropDown
     - SimplePDF
     - WXKDarkSky
 
 SPEC CHECKSUMS:
   Drawsana: e6c738958804d69769b034019bc274fa58a56d10
   Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   SimplePDF: 903143ede36965886997a5c1bc6b8940b082ba20
   WXKDarkSky: dccd0a104cf79684dc08e970857358b2b10d7d94
 
-PODFILE CHECKSUM: e0b6ae26bd7ed84dcdafa25bb6ca3a0bf66e579e
+PODFILE CHECKSUM: 1658875536edd14788563ca4570218fb49fbe980
 
 COCOAPODS: 1.8.4

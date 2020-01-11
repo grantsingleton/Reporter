@@ -3,3 +3,4 @@ ${BUILT_PRODUCTS_DIR}/Drawsana/Drawsana.framework
 ${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework
 ${BUILT_PRODUCTS_DIR}/SimplePDF/SimplePDF.framework
 ${BUILT_PRODUCTS_DIR}/WXKDarkSky/WXKDarkSky.framework
+${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework

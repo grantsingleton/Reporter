@@ -7,87 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E7604E32EC45A31D6E87238EA616B6 /* SelectionTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2E3E5EFE2B94B2E21406275B2979F /* SelectionTool.swift */; };
+		00E7604E32EC45A31D6E87238EA616B6 /* SelectionTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828012B747E2AA0C8A5ACF3B8A64E714 /* SelectionTool.swift */; };
 		0168FC1AA5F5719998A90AE08F7A8C51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		051D18F9B2BE3F71B8105FFECC14303C /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18529621C2B9069209023006B0536E /* Shape.swift */; };
-		06B20013EA2CA2F6444A726EC2AA736C /* PenTool_EraserTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2282A53604D4D276670A3CB93B10026 /* PenTool_EraserTool.swift */; };
-		07406E081B6EA1B4838C920053459B90 /* DrawingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17363DD3675CD1D851F84D8CDB1C5E22 /* DrawingOperations.swift */; };
-		0E5B5F3E163A7E6B66122A1EFC1DBE29 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1585F98F410893988CE7634266850E42 /* Options.swift */; };
+		051D18F9B2BE3F71B8105FFECC14303C /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D213C64B91DF13ECC0B8CBF80D5578F /* Shape.swift */; };
+		06B20013EA2CA2F6444A726EC2AA736C /* PenTool_EraserTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7D852EE3454875544B651AC3513F4 /* PenTool_EraserTool.swift */; };
+		07406E081B6EA1B4838C920053459B90 /* DrawingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551B8344EFF11A8E68375E1EA1CF5B5 /* DrawingOperations.swift */; };
+		0E5B5F3E163A7E6B66122A1EFC1DBE29 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE91C86FD34C4E39A2E08A587F57B4 /* Options.swift */; };
 		0EDC14699EE4C5EC8BF5EAF630EAA17D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		13376CDD58EDE4937B8F4A0D7CB9A275 /* Pods-Reporter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 056A1FFFAEA87F0D452EDF84776E05BC /* Pods-Reporter-dummy.m */; };
-		1645F17588CFEC35711EE84AD8E4FCDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		1DA685F508CD8674A55F779C141B9884 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B217A5F71A668458612AC0A588DC91A1 /* UserSettings.swift */; };
-		1E986E5DD1B1339952FFF315A09DA4E1 /* DrawingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27D0C91A417E0CCA4B0C63FB4435267 /* DrawingTool.swift */; };
-		1FE2D19EF790109C3C32CEBBD18D4984 /* UIView+Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56B4B9D6A51815DBF964E581EF11A0 /* UIView+Draggable.swift */; };
-		220BC19D4BD2BB7222311EB373678D40 /* ToolOperationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD5CF723070F6B806E2187701E7AAEE /* ToolOperationContext.swift */; };
-		2BC86CEE8FF4DFDDFAE091C7027C5A32 /* Pods-Reporter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB8C93A24CA177699F1384880781F95 /* Pods-Reporter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39CC38779B3593A7C5A067041E789B5D /* Floaty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FBC04B744F81E93A205E59A37EBA5D /* Floaty-dummy.m */; };
-		3D1E5C65B3548E42DB348B476B47449B /* Drawsana-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491CD574D302C29BFCADE9097589238 /* Drawsana-dummy.m */; };
-		44CCA04578D5A5DE93804050FC7A0555 /* RectShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8679F66860E70E85FC757FF983008A /* RectShape.swift */; };
-		45E3EE05887448C17F956D8D1B94CE6F /* PenShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E74A01D5431B8B86367644B3B3AF4 /* PenShape.swift */; };
-		460F73F8B3CEE613A2452E426E1BFDC0 /* DrawsanaUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6098B64A1A70578B0E49C66CEDD6D382 /* DrawsanaUtilities.swift */; };
-		4A011B9E6DF00804E718A2D1097F7411 /* CGRect+DrawsanaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75CC6C878708B224D18481A3DFA5E09 /* CGRect+DrawsanaExtensions.swift */; };
-		4B7636DC2D55B68DB2D4D697753EEA72 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43B748CA55C8DAD06168D06C12E338 /* Units.swift */; };
-		51829199572D010BFA1D947636F9F5A2 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDB8A38F2BE1D31C7AD2B7B3D026ED4 /* Error.swift */; };
-		5A6EC20BBBD120A64EAE618F118E1477 /* TextShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE339CDE8AF6B8B623E3769E3048D /* TextShape.swift */; };
-		5A99474CFF562C945E789BC99F3F9832 /* DragHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74214B623B6888BD52C2FF1B2D78E7 /* DragHandler.swift */; };
+		1DA685F508CD8674A55F779C141B9884 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D6135E7923D4414F96E2E0B64717C /* UserSettings.swift */; };
+		1E986E5DD1B1339952FFF315A09DA4E1 /* DrawingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E65F41EB02A021A7FAB86C78DF05F64 /* DrawingTool.swift */; };
+		1FE2D19EF790109C3C32CEBBD18D4984 /* UIView+Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02C702A4C233FCF31F157FA22392CC /* UIView+Draggable.swift */; };
+		220BC19D4BD2BB7222311EB373678D40 /* ToolOperationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9E106472D71C057F09E961DC183BA /* ToolOperationContext.swift */; };
+		39CC38779B3593A7C5A067041E789B5D /* Floaty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F145AEE133F8949B3641FB1CE6457 /* Floaty-dummy.m */; };
+		3D1E5C65B3548E42DB348B476B47449B /* Drawsana-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C013A0FCA0887B0E950359BB12A5387D /* Drawsana-dummy.m */; };
+		44CCA04578D5A5DE93804050FC7A0555 /* RectShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF902EAEF9A756960BC651361E5536D3 /* RectShape.swift */; };
+		45E3EE05887448C17F956D8D1B94CE6F /* PenShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD15CE371F20CC8E3C0F113563BBDEC /* PenShape.swift */; };
+		460F73F8B3CEE613A2452E426E1BFDC0 /* DrawsanaUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3BE422A1ED2804253B863319413D3 /* DrawsanaUtilities.swift */; };
+		46DD08FB7D6071E99E75ECDBA47E90C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
+		4A011B9E6DF00804E718A2D1097F7411 /* CGRect+DrawsanaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F87AA2F411FCA488677F6A9AFB6AB /* CGRect+DrawsanaExtensions.swift */; };
+		4B7636DC2D55B68DB2D4D697753EEA72 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D25090E5D8273F0A15CBDF86270F9E /* Units.swift */; };
+		51829199572D010BFA1D947636F9F5A2 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2802216D913A65F2E3E755C4E8A677 /* Error.swift */; };
+		587E93F4C22AC55CB97D17E80765A1C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		5A6EC20BBBD120A64EAE618F118E1477 /* TextShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07195E85C1A4D243DDA2CCCC58415497 /* TextShape.swift */; };
+		5A99474CFF562C945E789BC99F3F9832 /* DragHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D2AF4EC5D667627BFD562AF05DC607 /* DragHandler.swift */; };
 		5D07F928A96206A23E9988E447DBC3C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
-		60A34DF8FB0ACF5572CDEB3BBC37D5D8 /* WXKDarkSky-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C286BE96D36F3F0D9B8BAC9746559D73 /* WXKDarkSky-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		670C102854C4C649A98001709C342E18 /* SimplePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B54CBC4962DF9CDE24873DB0E9E1DD /* SimplePDF.swift */; };
-		6A2F136CC06B047188F944FE881C48CE /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A1920C4C2546982EDEBB06479AB6F4 /* FloatyViewController.swift */; };
-		6A432CB5AEC2B1C2D4AC81820E643A4C /* ShapeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F559A9FD626E51F73A0DE1A502C7C /* ShapeTransform.swift */; };
-		6AE177F6B072E1135F393A7549BEEE0F /* Date+unixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E2BFD1FD46F13889C5A17DDEC3734 /* Date+unixTime.swift */; };
-		7059E651EA43387843F102A47BB0D842 /* Drawsana-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 000428DB12B29381A7302459B7760B73 /* Drawsana-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60A34DF8FB0ACF5572CDEB3BBC37D5D8 /* WXKDarkSky-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CBD55BD4248ECCF79ED27DB3D92C587 /* WXKDarkSky-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		670C102854C4C649A98001709C342E18 /* SimplePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B79502F48DCC532BEC38483ED698A /* SimplePDF.swift */; };
+		6762724102132C861217B911E70056ED /* iOSDropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C2A8A7E81B2BEBB8D0487E0DAD6BB9 /* iOSDropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A2F136CC06B047188F944FE881C48CE /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E47D4752309255ADA1F9F23E57A919 /* FloatyViewController.swift */; };
+		6A432CB5AEC2B1C2D4AC81820E643A4C /* ShapeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB244377D01B0580517255CD8D417D9 /* ShapeTransform.swift */; };
+		6ADFB626C34AA35AC883469526699F8D /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44805B92216D66E3A7C5AB896340746F /* iOSDropDown.swift */; };
+		6AE177F6B072E1135F393A7549BEEE0F /* Date+unixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3518E13E1BAC0B1B8E4FACB9E286B88 /* Date+unixTime.swift */; };
+		7059E651EA43387843F102A47BB0D842 /* Drawsana-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF7FBAF339A5F3E582E3189C21A9C2D /* Drawsana-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75FE11DFBF179C9C86B43366E424169C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		76FBDDD3E3C35166649659B294B07575 /* ImmediatePanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822AC58E0EDC1974A36AC4FD891DA183 /* ImmediatePanGestureRecognizer.swift */; };
-		7799003E3B5407C18D864B49ECCF4D8E /* CGPoint+DrawsanaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30DD78281FE39209947F2F36F91507 /* CGPoint+DrawsanaExtensions.swift */; };
-		785D1803FB7A64A2EB30C694EE4D0BC0 /* DataBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D3DC0949F51D39E2C256B930E90B78 /* DataBlock.swift */; };
-		7990BB65A06ACB9FE3744FE6E55E5167 /* EllipseShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E631AF6EDBAF795F19776823813955 /* EllipseShape.swift */; };
-		7FBCC40FDDA97C9D9AD3DC2249373912 /* KeyedDecodingContainer+DrawsanaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3393E067D6C1AA289525B95432B02E5 /* KeyedDecodingContainer+DrawsanaExtensions.swift */; };
-		88E85EABDDCF4BADEC2764C923026BBB /* ArrowTool_EllipseTool_LineTool_RectTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F5C3EAB8D085C6CF376E435B5E0D54 /* ArrowTool_EllipseTool_LineTool_RectTool.swift */; };
-		8B5B9DDC3B91551F32FB7775219D5EFF /* DrawingToolForShapeWithTwoPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF89D26D11BFCC3731BEA55CBAFD58 /* DrawingToolForShapeWithTwoPoints.swift */; };
-		8C40574E60CBD4DD5A0DE79C5D3F39D3 /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F050F1B5E43A6E71E1EA6B4F89FD20FF /* FloatyWindow.swift */; };
-		8E81DCC864B08EADB6405EE39DD225A8 /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1160FBDB3C45AA72AB51C52394459C /* Floaty.swift */; };
-		9069F5F4A46AF14A3C6002334E4D7B38 /* SimplePDF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 949184F87B55BFA163F6CE274BC45246 /* SimplePDF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		918B43743DEFE45A81A431672441D941 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E2046A5202F224ED1013149EA0EF0 /* Point.swift */; };
-		91DBD42C0C1D86F5E1417C6A7F8D36F9 /* DrawingOperationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FDB9154A01550E47455D121A5B84C0 /* DrawingOperationStack.swift */; };
-		9CE0684E8A1017DE187E7AB8F56E3419 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48087911FB42985E73CB4EE8838B2E /* Language.swift */; };
-		9E43857AB7CB555F792C32BCDFBD07D6 /* LineShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FADCC3A9CFCFE8D6CF067C9ECEB99A /* LineShape.swift */; };
-		9F9357CCF00223C4D0F8DA5400D4981A /* WXKDarkSky-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BB05986BEA93C5C9059FA87184F71A /* WXKDarkSky-dummy.m */; };
-		A5CB0F6DC679C1D480B0DD3DC40A7E6C /* SimplePDF.h in Headers */ = {isa = PBXBuildFile; fileRef = 6602FC06AA7C5946DD17931E084AE0AD /* SimplePDF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76FBDDD3E3C35166649659B294B07575 /* ImmediatePanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BDB0228FFA69330F330510FC76A68 /* ImmediatePanGestureRecognizer.swift */; };
+		7799003E3B5407C18D864B49ECCF4D8E /* CGPoint+DrawsanaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC708064A4B66C3911F318A9E90036 /* CGPoint+DrawsanaExtensions.swift */; };
+		785D1803FB7A64A2EB30C694EE4D0BC0 /* DataBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7633266A879EBFD20BB769BC308DF434 /* DataBlock.swift */; };
+		7990BB65A06ACB9FE3744FE6E55E5167 /* EllipseShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE0F51EC2C098B9ACD12B5494FDB5D3 /* EllipseShape.swift */; };
+		7FBCC40FDDA97C9D9AD3DC2249373912 /* KeyedDecodingContainer+DrawsanaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FF4EEDC453DEA22CF387206BBBD65 /* KeyedDecodingContainer+DrawsanaExtensions.swift */; };
+		88E85EABDDCF4BADEC2764C923026BBB /* ArrowTool_EllipseTool_LineTool_RectTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C4B2602D3618E7C7033EB17FF3E0E3 /* ArrowTool_EllipseTool_LineTool_RectTool.swift */; };
+		8B5B9DDC3B91551F32FB7775219D5EFF /* DrawingToolForShapeWithTwoPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E8AC330996B72D42A377A383AEB33 /* DrawingToolForShapeWithTwoPoints.swift */; };
+		8C40574E60CBD4DD5A0DE79C5D3F39D3 /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662706E4E50A4B4B767C7BD1B6905D5D /* FloatyWindow.swift */; };
+		8E81DCC864B08EADB6405EE39DD225A8 /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E71A27E84FBD89948D34318BEA61C7E /* Floaty.swift */; };
+		9069F5F4A46AF14A3C6002334E4D7B38 /* SimplePDF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FE954F3CD0FD1ECDE99A0A04BB3EED7 /* SimplePDF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		918B43743DEFE45A81A431672441D941 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB4F26384D8A02603FA11F494F802A /* Point.swift */; };
+		91DBD42C0C1D86F5E1417C6A7F8D36F9 /* DrawingOperationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A93E4268F4E1F6B367392E100BCAC17 /* DrawingOperationStack.swift */; };
+		9CE0684E8A1017DE187E7AB8F56E3419 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870FD9CF66389A5F06EF284E05AB0F3 /* Language.swift */; };
+		9E43857AB7CB555F792C32BCDFBD07D6 /* LineShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71F7968E71ABA56C3D7A0AFD42AEC5 /* LineShape.swift */; };
+		9F9357CCF00223C4D0F8DA5400D4981A /* WXKDarkSky-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B88B5E56120707963CEFE11575004E28 /* WXKDarkSky-dummy.m */; };
+		A5CB0F6DC679C1D480B0DD3DC40A7E6C /* SimplePDF.h in Headers */ = {isa = PBXBuildFile; fileRef = 6386BACC3847E0E558976BAA73579A2F /* SimplePDF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6F79FDA2CA49E326BD50F05E004AEEF /* Pods-Reporter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB8C93A24CA177699F1384880781F95 /* Pods-Reporter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB678168DB6E5D7A4E08C21F91E0F23D /* Pods-ReporterTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C50E4368B3150F2186D2B0CBE40C4A3 /* Pods-ReporterTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AF49D749CAE965784D16E579C94EACB1 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A83907CD6E28C076C08A2CB8CBF435 /* FloatyDelegate.swift */; };
-		B31C16AB0294DE5286836010B13E54B8 /* UIColor+DrawsanaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF03E59C215D957FCDFD935D53DEEC0 /* UIColor+DrawsanaExtensions.swift */; };
+		AF49D749CAE965784D16E579C94EACB1 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FDAFEB857DDE4AC104C7F77496E7D /* FloatyDelegate.swift */; };
+		B31C16AB0294DE5286836010B13E54B8 /* UIColor+DrawsanaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4587EA703843B4BB8F83333B7254EADC /* UIColor+DrawsanaExtensions.swift */; };
+		B558BEA92906D3D5D1B3F3C66FAE9F34 /* Pods-Reporter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 056A1FFFAEA87F0D452EDF84776E05BC /* Pods-Reporter-dummy.m */; };
 		B5C85E25DD71D1264887071A73A1C48E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
 		C0E12ADD5C7433A3537E4970A0D694CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		C404585543BB15A332A69776F7F5B71C /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C93D785B0E11B65D00EF5808D451C17 /* FloatyItem.swift */; };
-		CCF844187199745A1DECB644BD844941 /* Floaty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB53CB929AAE20D4BC38D9FFC3D68EC /* Floaty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C312131E6526BFB7C1CB92D93D58FCC7 /* iOSDropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A66E3D0096D116CE2FB2FE82E6D89B52 /* iOSDropDown-dummy.m */; };
+		C404585543BB15A332A69776F7F5B71C /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551ED405097DAC17789808C88784823D /* FloatyItem.swift */; };
+		CCF844187199745A1DECB644BD844941 /* Floaty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E72768934B0A7F0372DF8E6CE47117CC /* Floaty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6E38A65C6A410BCB16A9D005CD9BB61 /* Pods-ReporterTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EC6B61341826ADA594FD933ADA0140 /* Pods-ReporterTests-dummy.m */; };
-		DB3C0199BBE2D7E41293F7356C081FE5 /* TextShapeEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723289CE7F1F13E89D88F1C4936F7B2A /* TextShapeEditingView.swift */; };
-		E1DF2B062F2EC56B00E1DF4A90A930BE /* DrawsanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD323D536A3AB9CF87C15B4FE6F50BB9 /* DrawsanaView.swift */; };
-		E733FE4FE70E852922804006A809F0E9 /* ToolSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B59A10AF18697E2808FFCAC2C47D57 /* ToolSettings.swift */; };
-		E9B717E630F8A70DACF6A2F8370F1681 /* DarkSkyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5300F9CCA7750887D33A87E414023B /* DarkSkyRequest.swift */; };
-		EA73D21B9A27FEF55AE9757A19FFC47C /* SimplePDF-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B836FAEBE23D320F6D1AE53EF14523B /* SimplePDF-dummy.m */; };
-		F13F62D44BCA1CF7083C6DB6F5D73B6C /* TextTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44724038E58B91C2446D3E5C106DAAF /* TextTool.swift */; };
-		F1F7BF7B9183DD8D34C7D60728A0A411 /* DarkSkyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73483C975E54B1E95490DA01A6663C0 /* DarkSkyResponse.swift */; };
-		F23A86404C2D998825C8A071885323B7 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394FE26656C5CAEE168AC6BB9CB646A9 /* FloatyManager.swift */; };
-		FA7C11BE954E03F71AA36A2FC5884347 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3DE377A3B3184BC5F42F8C17BE1091 /* Drawing.swift */; };
+		DB3C0199BBE2D7E41293F7356C081FE5 /* TextShapeEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404C28E8991AED95AD9891BEA13FD80C /* TextShapeEditingView.swift */; };
+		E1DF2B062F2EC56B00E1DF4A90A930BE /* DrawsanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89E4DCF63CE6976971E7F2E33FFDDB /* DrawsanaView.swift */; };
+		E733FE4FE70E852922804006A809F0E9 /* ToolSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C328E6CA2718861EE251D4B758E9F2 /* ToolSettings.swift */; };
+		E9B717E630F8A70DACF6A2F8370F1681 /* DarkSkyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FDF7F3C53E4E736D8DFE46D5C49576 /* DarkSkyRequest.swift */; };
+		EA73D21B9A27FEF55AE9757A19FFC47C /* SimplePDF-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45768FBE5CD1F591AA8F953B7D06B6EA /* SimplePDF-dummy.m */; };
+		F13F62D44BCA1CF7083C6DB6F5D73B6C /* TextTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29907D1CFBF8083B6B507F8C645842C0 /* TextTool.swift */; };
+		F1F7BF7B9183DD8D34C7D60728A0A411 /* DarkSkyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A5420E41C4620242C4E406AC3828D5 /* DarkSkyResponse.swift */; };
+		F23A86404C2D998825C8A071885323B7 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CA59D565052C60FF1475E00A32A7F5 /* FloatyManager.swift */; };
+		FA7C11BE954E03F71AA36A2FC5884347 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB9791FA8302853685DA6E9F7C9F7AD /* Drawing.swift */; };
+		FB1A59DAD92E574036C966A2CD221FAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1187C8BD658B73246FFCA304EAC1D485 /* PBXContainerItemProxy */ = {
+		4C34A932E56D6E1FC7F9EF1538BB4CC6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 58C11AE6223C3AA93E5419115FE034D7;
-			remoteInfo = Drawsana;
-		};
-		1FA5C07F31ABF7E95C77FC4932994D60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17587220ECAB209937F607586210A0BB;
-			remoteInfo = WXKDarkSky;
+			remoteGlobalIDString = 4A622AC352147B03D34EE70B98F592BC;
+			remoteInfo = SimplePDF;
 		};
 		4FDFC73357A23E3CFFBB1D2EE37F013E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -96,14 +94,28 @@
 			remoteGlobalIDString = AFF0580A9693C0707E9C7BD1826B06A7;
 			remoteInfo = "Pods-Reporter";
 		};
-		B0774734B6F09334072EE3F863AAB98E /* PBXContainerItemProxy */ = {
+		8DEDA92E34A958C9313721BCD52A4AB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4A622AC352147B03D34EE70B98F592BC;
-			remoteInfo = SimplePDF;
+			remoteGlobalIDString = 3C76CE6CD60B1CE55A174F03CC59AE17;
+			remoteInfo = iOSDropDown;
 		};
-		EC2AB2D3ACBA712AB6A7FEAC54B36D8D /* PBXContainerItemProxy */ = {
+		B396780A896898B2D96CAD1080973690 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58C11AE6223C3AA93E5419115FE034D7;
+			remoteInfo = Drawsana;
+		};
+		E3AA91CACAD453407128733CD66CFC42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17587220ECAB209937F607586210A0BB;
+			remoteInfo = WXKDarkSky;
+		};
+		E9629AB32BB9E7162DF56DCB9C7DB386 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -113,102 +125,110 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000428DB12B29381A7302459B7760B73 /* Drawsana-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Drawsana-umbrella.h"; sourceTree = "<group>"; };
-		03FBC04B744F81E93A205E59A37EBA5D /* Floaty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Floaty-dummy.m"; sourceTree = "<group>"; };
+		03FE91C86FD34C4E39A2E08A587F57B4 /* Options.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Options.swift; path = Sources/WXKDarkSky/Options.swift; sourceTree = "<group>"; };
 		0428967F942170B5C2CB5B45F5155F3F /* Pods-Reporter-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Reporter-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0489CE8553E8B8E93B5820D81ABA98B7 /* SimplePDF.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SimplePDF.modulemap; sourceTree = "<group>"; };
-		0491CD574D302C29BFCADE9097589238 /* Drawsana-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Drawsana-dummy.m"; sourceTree = "<group>"; };
 		056A1FFFAEA87F0D452EDF84776E05BC /* Pods-Reporter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Reporter-dummy.m"; sourceTree = "<group>"; };
-		05A901F0CF781BF63AF417DC2A5F92C2 /* SimplePDF-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SimplePDF-Info.plist"; sourceTree = "<group>"; };
+		07195E85C1A4D243DDA2CCCC58415497 /* TextShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextShape.swift; path = Drawsana/Shapes/Implementations/TextShape.swift; sourceTree = "<group>"; };
+		08FDF7F3C53E4E736D8DFE46D5C49576 /* DarkSkyRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkSkyRequest.swift; path = Sources/WXKDarkSky/DarkSkyRequest.swift; sourceTree = "<group>"; };
 		09EDF2B4518CAA010B2C0C2F3FFE65F7 /* Pods-ReporterTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ReporterTests.modulemap"; sourceTree = "<group>"; };
-		0AD2E3E5EFE2B94B2E21406275B2979F /* SelectionTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectionTool.swift; path = Drawsana/Tools/Implementations/SelectionTool.swift; sourceTree = "<group>"; };
-		0C93D785B0E11B65D00EF5808D451C17 /* FloatyItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyItem.swift; path = Sources/FloatyItem.swift; sourceTree = "<group>"; };
-		1585F98F410893988CE7634266850E42 /* Options.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Options.swift; path = Sources/WXKDarkSky/Options.swift; sourceTree = "<group>"; };
-		1714A5F6F36215353C8AC13C003EB9C1 /* Drawsana-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Drawsana-prefix.pch"; sourceTree = "<group>"; };
-		17363DD3675CD1D851F84D8CDB1C5E22 /* DrawingOperations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawingOperations.swift; path = Drawsana/Tools/DrawingOperations.swift; sourceTree = "<group>"; };
-		1C48087911FB42985E73CB4EE8838B2E /* Language.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Language.swift; path = Sources/WXKDarkSky/Language.swift; sourceTree = "<group>"; };
+		0D213C64B91DF13ECC0B8CBF80D5578F /* Shape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Shape.swift; path = Drawsana/Shapes/Shape.swift; sourceTree = "<group>"; };
+		0E9A8332EC78669FF61C49131227A3CD /* WXKDarkSky-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WXKDarkSky-Info.plist"; sourceTree = "<group>"; };
+		0EB244377D01B0580517255CD8D417D9 /* ShapeTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeTransform.swift; path = Drawsana/Shapes/ShapeTransform.swift; sourceTree = "<group>"; };
+		0EB9791FA8302853685DA6E9F7C9F7AD /* Drawing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = "Drawsana/Data model/Drawing.swift"; sourceTree = "<group>"; };
+		12325669E30F42BF47FF4B4C0D06674B /* WXKDarkSky.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WXKDarkSky.xcconfig; sourceTree = "<group>"; };
+		12A5420E41C4620242C4E406AC3828D5 /* DarkSkyResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkSkyResponse.swift; path = Sources/WXKDarkSky/DarkSkyResponse.swift; sourceTree = "<group>"; };
+		19E47D4752309255ADA1F9F23E57A919 /* FloatyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyViewController.swift; path = Sources/FloatyViewController.swift; sourceTree = "<group>"; };
+		1CBD55BD4248ECCF79ED27DB3D92C587 /* WXKDarkSky-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WXKDarkSky-umbrella.h"; sourceTree = "<group>"; };
 		21A34DFF02D4FDD44A40F48CEBEE751C /* Pods-ReporterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ReporterTests.release.xcconfig"; sourceTree = "<group>"; };
-		21BB05986BEA93C5C9059FA87184F71A /* WXKDarkSky-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WXKDarkSky-dummy.m"; sourceTree = "<group>"; };
 		23544BC445A172A25BF696D956E54421 /* Pods-ReporterTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ReporterTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		26803D795E2847CB378CCCEBADF2CEE1 /* Pods-Reporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Reporter.release.xcconfig"; sourceTree = "<group>"; };
+		2870FD9CF66389A5F06EF284E05AB0F3 /* Language.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Language.swift; path = Sources/WXKDarkSky/Language.swift; sourceTree = "<group>"; };
 		2915C263A5C5C8012A8C1E97512DC6A8 /* Floaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Floaty.framework; path = Floaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D5AE339CDE8AF6B8B623E3769E3048D /* TextShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextShape.swift; path = Drawsana/Shapes/Implementations/TextShape.swift; sourceTree = "<group>"; };
+		29907D1CFBF8083B6B507F8C645842C0 /* TextTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextTool.swift; path = "Drawsana/Tools/Implementations/Text tool/TextTool.swift"; sourceTree = "<group>"; };
+		2B4F145AEE133F8949B3641FB1CE6457 /* Floaty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Floaty-dummy.m"; sourceTree = "<group>"; };
+		2D94ADC3581E2F956E87DEAACEAFB755 /* Floaty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Floaty.modulemap; sourceTree = "<group>"; };
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		33A83907CD6E28C076C08A2CB8CBF435 /* FloatyDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyDelegate.swift; path = Sources/FloatyDelegate.swift; sourceTree = "<group>"; };
-		34B54CBC4962DF9CDE24873DB0E9E1DD /* SimplePDF.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SimplePDF.swift; path = SimplePDF/SimplePDF.swift; sourceTree = "<group>"; };
-		34E077B0DAF013ECF061CEC60576DD2A /* Drawsana.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Drawsana.xcconfig; sourceTree = "<group>"; };
+		31F53D839258A0B9CCBDA2DB484E8E9A /* Drawsana.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Drawsana.modulemap; sourceTree = "<group>"; };
+		333E8AC330996B72D42A377A383AEB33 /* DrawingToolForShapeWithTwoPoints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawingToolForShapeWithTwoPoints.swift; path = Drawsana/Tools/Implementations/DrawingToolForShapeWithTwoPoints.swift; sourceTree = "<group>"; };
+		34D2AF4EC5D667627BFD562AF05DC607 /* DragHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DragHandler.swift; path = "Drawsana/Tools/Implementations/Text tool/DragHandler.swift"; sourceTree = "<group>"; };
 		36C47EE5EB6F94ECBA69DF666C7A0639 /* Pods-Reporter-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Reporter-Info.plist"; sourceTree = "<group>"; };
-		394FE26656C5CAEE168AC6BB9CB646A9 /* FloatyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyManager.swift; path = Sources/FloatyManager.swift; sourceTree = "<group>"; };
+		38D25090E5D8273F0A15CBDF86270F9E /* Units.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Sources/WXKDarkSky/Units.swift; sourceTree = "<group>"; };
+		3A32BE04B2BE7E66EF113F6733EEA4D1 /* SimplePDF-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SimplePDF-Info.plist"; sourceTree = "<group>"; };
+		3B89E4DCF63CE6976971E7F2E33FFDDB /* DrawsanaView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawsanaView.swift; path = Drawsana/DrawsanaView.swift; sourceTree = "<group>"; };
 		3C50E4368B3150F2186D2B0CBE40C4A3 /* Pods-ReporterTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ReporterTests-umbrella.h"; sourceTree = "<group>"; };
-		3DA85EFD6EA413131BDAC0CDF7D2434C /* Drawsana.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Drawsana.modulemap; sourceTree = "<group>"; };
+		404C28E8991AED95AD9891BEA13FD80C /* TextShapeEditingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextShapeEditingView.swift; path = "Drawsana/Tools/Implementations/Text tool/TextShapeEditingView.swift"; sourceTree = "<group>"; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		4472710207075A633C7BC7D0B82FA628 /* Floaty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-prefix.pch"; sourceTree = "<group>"; };
-		48F5C3EAB8D085C6CF376E435B5E0D54 /* ArrowTool_EllipseTool_LineTool_RectTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArrowTool_EllipseTool_LineTool_RectTool.swift; path = Drawsana/Tools/Implementations/ArrowTool_EllipseTool_LineTool_RectTool.swift; sourceTree = "<group>"; };
-		4D9D13A47F5D20A07895AE2A47C68153 /* Floaty-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Floaty-Info.plist"; sourceTree = "<group>"; };
-		5317C58054963A8FE3FE1166CB02FD18 /* SimplePDF.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimplePDF.xcconfig; sourceTree = "<group>"; };
-		597F559A9FD626E51F73A0DE1A502C7C /* ShapeTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeTransform.swift; path = Drawsana/Shapes/ShapeTransform.swift; sourceTree = "<group>"; };
+		44805B92216D66E3A7C5AB896340746F /* iOSDropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = iOSDropDown.swift; path = iOSDropDown/Classes/iOSDropDown.swift; sourceTree = "<group>"; };
+		45768FBE5CD1F591AA8F953B7D06B6EA /* SimplePDF-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SimplePDF-dummy.m"; sourceTree = "<group>"; };
+		4587EA703843B4BB8F83333B7254EADC /* UIColor+DrawsanaExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+DrawsanaExtensions.swift"; path = "Drawsana/Helpers/Extensions/UIColor+DrawsanaExtensions.swift"; sourceTree = "<group>"; };
+		45C2A8A7E81B2BEBB8D0487E0DAD6BB9 /* iOSDropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-umbrella.h"; sourceTree = "<group>"; };
+		490A32C73A7EB3D5CDC5E6DAF6BAA132 /* Drawsana-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Drawsana-prefix.pch"; sourceTree = "<group>"; };
+		4E71A27E84FBD89948D34318BEA61C7E /* Floaty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Floaty.swift; path = Sources/Floaty.swift; sourceTree = "<group>"; };
+		551ED405097DAC17789808C88784823D /* FloatyItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyItem.swift; path = Sources/FloatyItem.swift; sourceTree = "<group>"; };
+		55664149D609E3581EFBF6ECC0FF9A21 /* iOSDropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-prefix.pch"; sourceTree = "<group>"; };
 		5BB8C93A24CA177699F1384880781F95 /* Pods-Reporter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Reporter-umbrella.h"; sourceTree = "<group>"; };
-		5C74214B623B6888BD52C2FF1B2D78E7 /* DragHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DragHandler.swift; path = "Drawsana/Tools/Implementations/Text tool/DragHandler.swift"; sourceTree = "<group>"; };
-		5D57F7F0C6B9FA2C1EF34A4052324DAA /* Floaty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Floaty.xcconfig; sourceTree = "<group>"; };
-		6098B64A1A70578B0E49C66CEDD6D382 /* DrawsanaUtilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawsanaUtilities.swift; path = Drawsana/Helpers/DrawsanaUtilities.swift; sourceTree = "<group>"; };
+		5D0ED0E311C670A60E5CBB1AD1CB8076 /* SimplePDF-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimplePDF-prefix.pch"; sourceTree = "<group>"; };
 		61D17C5C06BA7BA9259898A8AA9874F8 /* Pods_ReporterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ReporterTests.framework; path = "Pods-ReporterTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		658500526674ED2345DD8F7CF05EC12F /* WXKDarkSky.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WXKDarkSky.modulemap; sourceTree = "<group>"; };
-		6602FC06AA7C5946DD17931E084AE0AD /* SimplePDF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SimplePDF.h; path = SimplePDF/SimplePDF.h; sourceTree = "<group>"; };
-		6C43B748CA55C8DAD06168D06C12E338 /* Units.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Sources/WXKDarkSky/Units.swift; sourceTree = "<group>"; };
-		723289CE7F1F13E89D88F1C4936F7B2A /* TextShapeEditingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextShapeEditingView.swift; path = "Drawsana/Tools/Implementations/Text tool/TextShapeEditingView.swift"; sourceTree = "<group>"; };
+		6386BACC3847E0E558976BAA73579A2F /* SimplePDF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SimplePDF.h; path = SimplePDF/SimplePDF.h; sourceTree = "<group>"; };
+		662706E4E50A4B4B767C7BD1B6905D5D /* FloatyWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyWindow.swift; path = Sources/FloatyWindow.swift; sourceTree = "<group>"; };
+		6F47B88C2EEA4045B05CF359E73F6A52 /* iOSDropDown-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "iOSDropDown-Info.plist"; sourceTree = "<group>"; };
+		70C328E6CA2718861EE251D4B758E9F2 /* ToolSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToolSettings.swift; path = "Drawsana/Data model/ToolSettings.swift"; sourceTree = "<group>"; };
 		73DE2D7DB590A1C20CEC2E6178F10F39 /* Pods-Reporter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Reporter.debug.xcconfig"; sourceTree = "<group>"; };
-		7D18529621C2B9069209023006B0536E /* Shape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Shape.swift; path = Drawsana/Shapes/Shape.swift; sourceTree = "<group>"; };
-		81D3DC0949F51D39E2C256B930E90B78 /* DataBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataBlock.swift; path = Sources/WXKDarkSky/DataBlock.swift; sourceTree = "<group>"; };
-		822AC58E0EDC1974A36AC4FD891DA183 /* ImmediatePanGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImmediatePanGestureRecognizer.swift; path = Drawsana/Helpers/ImmediatePanGestureRecognizer.swift; sourceTree = "<group>"; };
+		7633266A879EBFD20BB769BC308DF434 /* DataBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataBlock.swift; path = Sources/WXKDarkSky/DataBlock.swift; sourceTree = "<group>"; };
+		76CB4F26384D8A02603FA11F494F802A /* Point.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Point.swift; path = Sources/WXKDarkSky/Point.swift; sourceTree = "<group>"; };
+		7794E2FFACE46AEBAA6A5A891B0B8555 /* WXKDarkSky-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WXKDarkSky-prefix.pch"; sourceTree = "<group>"; };
+		7A71F7968E71ABA56C3D7A0AFD42AEC5 /* LineShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineShape.swift; path = Drawsana/Shapes/Implementations/LineShape.swift; sourceTree = "<group>"; };
+		8156DF5755C162D5E27B678CC6C291CA /* SimplePDF.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimplePDF.xcconfig; sourceTree = "<group>"; };
+		828012B747E2AA0C8A5ACF3B8A64E714 /* SelectionTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectionTool.swift; path = Drawsana/Tools/Implementations/SelectionTool.swift; sourceTree = "<group>"; };
+		8580C7A460C0E84494B37895B8B33129 /* Drawsana-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Drawsana-Info.plist"; sourceTree = "<group>"; };
 		89744C114ED6BD347809EA12C13E3D13 /* Pods_Reporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Reporter.framework; path = "Pods-Reporter.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9CB7A6DB71C99B403C50AA2E043D1C /* Pods-ReporterTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ReporterTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8B836FAEBE23D320F6D1AE53EF14523B /* SimplePDF-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SimplePDF-dummy.m"; sourceTree = "<group>"; };
-		8C5300F9CCA7750887D33A87E414023B /* DarkSkyRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkSkyRequest.swift; path = Sources/WXKDarkSky/DarkSkyRequest.swift; sourceTree = "<group>"; };
-		8EF03E59C215D957FCDFD935D53DEEC0 /* UIColor+DrawsanaExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+DrawsanaExtensions.swift"; path = "Drawsana/Helpers/Extensions/UIColor+DrawsanaExtensions.swift"; sourceTree = "<group>"; };
-		93059D92FBF37F1A98F3CD5AC425038A /* SimplePDF-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimplePDF-prefix.pch"; sourceTree = "<group>"; };
-		949184F87B55BFA163F6CE274BC45246 /* SimplePDF-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimplePDF-umbrella.h"; sourceTree = "<group>"; };
-		99546C68ABF307A5ACCEF8E6E2840532 /* WXKDarkSky-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WXKDarkSky-Info.plist"; sourceTree = "<group>"; };
-		9A6AEF8FDEEED8CC49A9C7984690F673 /* Drawsana-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Drawsana-Info.plist"; sourceTree = "<group>"; };
-		9CD5CF723070F6B806E2187701E7AAEE /* ToolOperationContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToolOperationContext.swift; path = "Drawsana/Data model/ToolOperationContext.swift"; sourceTree = "<group>"; };
+		90E3BE422A1ED2804253B863319413D3 /* DrawsanaUtilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawsanaUtilities.swift; path = Drawsana/Helpers/DrawsanaUtilities.swift; sourceTree = "<group>"; };
+		94BF9096B82EC95C367D10404DF15391 /* Floaty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Floaty.xcconfig; sourceTree = "<group>"; };
+		98CA59D565052C60FF1475E00A32A7F5 /* FloatyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyManager.swift; path = Sources/FloatyManager.swift; sourceTree = "<group>"; };
+		995F87AA2F411FCA488677F6A9AFB6AB /* CGRect+DrawsanaExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGRect+DrawsanaExtensions.swift"; path = "Drawsana/Helpers/Extensions/CGRect+DrawsanaExtensions.swift"; sourceTree = "<group>"; };
+		9A77B93F3E30AF05258FFE03F0E947A3 /* Floaty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-prefix.pch"; sourceTree = "<group>"; };
+		9A93E4268F4E1F6B367392E100BCAC17 /* DrawingOperationStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawingOperationStack.swift; path = "Drawsana/Data model/DrawingOperationStack.swift"; sourceTree = "<group>"; };
+		9AF7FBAF339A5F3E582E3189C21A9C2D /* Drawsana-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Drawsana-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E2BB5A177A7C69BA934B4491A571E27 /* WXKDarkSky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WXKDarkSky.framework; path = WXKDarkSky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E65F41EB02A021A7FAB86C78DF05F64 /* DrawingTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawingTool.swift; path = Drawsana/Tools/DrawingTool.swift; sourceTree = "<group>"; };
 		9E9919BE4F71548985007187AC0FD484 /* Pods-Reporter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Reporter.modulemap"; sourceTree = "<group>"; };
-		9F3DE377A3B3184BC5F42F8C17BE1091 /* Drawing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = "Drawsana/Data model/Drawing.swift"; sourceTree = "<group>"; };
-		A8A1920C4C2546982EDEBB06479AB6F4 /* FloatyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyViewController.swift; path = Sources/FloatyViewController.swift; sourceTree = "<group>"; };
-		AA1160FBDB3C45AA72AB51C52394459C /* Floaty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Floaty.swift; path = Sources/Floaty.swift; sourceTree = "<group>"; };
-		AF30DD78281FE39209947F2F36F91507 /* CGPoint+DrawsanaExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGPoint+DrawsanaExtensions.swift"; path = "Drawsana/Helpers/Extensions/CGPoint+DrawsanaExtensions.swift"; sourceTree = "<group>"; };
-		B217A5F71A668458612AC0A588DC91A1 /* UserSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserSettings.swift; path = "Drawsana/Data model/UserSettings.swift"; sourceTree = "<group>"; };
-		B73483C975E54B1E95490DA01A6663C0 /* DarkSkyResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkSkyResponse.swift; path = Sources/WXKDarkSky/DarkSkyResponse.swift; sourceTree = "<group>"; };
-		B75CC6C878708B224D18481A3DFA5E09 /* CGRect+DrawsanaExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGRect+DrawsanaExtensions.swift"; path = "Drawsana/Helpers/Extensions/CGRect+DrawsanaExtensions.swift"; sourceTree = "<group>"; };
+		9FE954F3CD0FD1ECDE99A0A04BB3EED7 /* SimplePDF-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimplePDF-umbrella.h"; sourceTree = "<group>"; };
+		A1FC708064A4B66C3911F318A9E90036 /* CGPoint+DrawsanaExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGPoint+DrawsanaExtensions.swift"; path = "Drawsana/Helpers/Extensions/CGPoint+DrawsanaExtensions.swift"; sourceTree = "<group>"; };
+		A66E3D0096D116CE2FB2FE82E6D89B52 /* iOSDropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iOSDropDown-dummy.m"; sourceTree = "<group>"; };
+		AE1D6135E7923D4414F96E2E0B64717C /* UserSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserSettings.swift; path = "Drawsana/Data model/UserSettings.swift"; sourceTree = "<group>"; };
+		AF2802216D913A65F2E3E755C4E8A677 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Sources/WXKDarkSky/Error.swift; sourceTree = "<group>"; };
+		B49B79502F48DCC532BEC38483ED698A /* SimplePDF.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SimplePDF.swift; path = SimplePDF/SimplePDF.swift; sourceTree = "<group>"; };
+		B4C4B2602D3618E7C7033EB17FF3E0E3 /* ArrowTool_EllipseTool_LineTool_RectTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArrowTool_EllipseTool_LineTool_RectTool.swift; path = Drawsana/Tools/Implementations/ArrowTool_EllipseTool_LineTool_RectTool.swift; sourceTree = "<group>"; };
+		B88B5E56120707963CEFE11575004E28 /* WXKDarkSky-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WXKDarkSky-dummy.m"; sourceTree = "<group>"; };
+		B907C4C72B08437053C195007C6668A8 /* WXKDarkSky.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WXKDarkSky.modulemap; sourceTree = "<group>"; };
+		B9F9E106472D71C057F09E961DC183BA /* ToolOperationContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToolOperationContext.swift; path = "Drawsana/Data model/ToolOperationContext.swift"; sourceTree = "<group>"; };
 		BB39E9999AED768616AB170C09A4A352 /* Drawsana.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Drawsana.framework; path = Drawsana.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC56B4B9D6A51815DBF964E581EF11A0 /* UIView+Draggable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Draggable.swift"; path = "Sources/UIView+Draggable.swift"; sourceTree = "<group>"; };
-		BD323D536A3AB9CF87C15B4FE6F50BB9 /* DrawsanaView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawsanaView.swift; path = Drawsana/DrawsanaView.swift; sourceTree = "<group>"; };
-		BFB53CB929AAE20D4BC38D9FFC3D68EC /* Floaty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-umbrella.h"; sourceTree = "<group>"; };
-		C0F1D55AD762FE61D49FE263BF1FCC2A /* WXKDarkSky.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WXKDarkSky.xcconfig; sourceTree = "<group>"; };
-		C286BE96D36F3F0D9B8BAC9746559D73 /* WXKDarkSky-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WXKDarkSky-umbrella.h"; sourceTree = "<group>"; };
-		C3393E067D6C1AA289525B95432B02E5 /* KeyedDecodingContainer+DrawsanaExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KeyedDecodingContainer+DrawsanaExtensions.swift"; path = "Drawsana/Helpers/Extensions/KeyedDecodingContainer+DrawsanaExtensions.swift"; sourceTree = "<group>"; };
-		C44724038E58B91C2446D3E5C106DAAF /* TextTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextTool.swift; path = "Drawsana/Tools/Implementations/Text tool/TextTool.swift"; sourceTree = "<group>"; };
-		CBB19BF4344753D8B177DF67DBD59988 /* Floaty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Floaty.modulemap; sourceTree = "<group>"; };
-		CD6E2BFD1FD46F13889C5A17DDEC3734 /* Date+unixTime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Date+unixTime.swift"; path = "Sources/WXKDarkSky/Date+unixTime.swift"; sourceTree = "<group>"; };
+		BF902EAEF9A756960BC651361E5536D3 /* RectShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RectShape.swift; path = Drawsana/Shapes/Implementations/RectShape.swift; sourceTree = "<group>"; };
+		C013A0FCA0887B0E950359BB12A5387D /* Drawsana-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Drawsana-dummy.m"; sourceTree = "<group>"; };
+		C64B433353E0F3ECBBF0C3B1570DCEBE /* iOSDropDown.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.xcconfig; sourceTree = "<group>"; };
+		CAD15CE371F20CC8E3C0F113563BBDEC /* PenShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PenShape.swift; path = Drawsana/Shapes/Implementations/PenShape.swift; sourceTree = "<group>"; };
+		CC927C325F5FF78BF80A96D560E08C3E /* Drawsana.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Drawsana.xcconfig; sourceTree = "<group>"; };
 		CF14FF04E150F3239FB56D2D4BB8CDFD /* Pods-Reporter-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Reporter-acknowledgements.plist"; sourceTree = "<group>"; };
-		CF8679F66860E70E85FC757FF983008A /* RectShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RectShape.swift; path = Drawsana/Shapes/Implementations/RectShape.swift; sourceTree = "<group>"; };
-		D2282A53604D4D276670A3CB93B10026 /* PenTool_EraserTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PenTool_EraserTool.swift; path = Drawsana/Tools/Implementations/PenTool_EraserTool.swift; sourceTree = "<group>"; };
-		D27E74A01D5431B8B86367644B3B3AF4 /* PenShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PenShape.swift; path = Drawsana/Shapes/Implementations/PenShape.swift; sourceTree = "<group>"; };
-		D7B59A10AF18697E2808FFCAC2C47D57 /* ToolSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToolSettings.swift; path = "Drawsana/Data model/ToolSettings.swift"; sourceTree = "<group>"; };
+		D06FDAFEB857DDE4AC104C7F77496E7D /* FloatyDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyDelegate.swift; path = Sources/FloatyDelegate.swift; sourceTree = "<group>"; };
+		D551B8344EFF11A8E68375E1EA1CF5B5 /* DrawingOperations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawingOperations.swift; path = Drawsana/Tools/DrawingOperations.swift; sourceTree = "<group>"; };
+		D8664CF3F6FD5C8B8F4328F1CA882B0C /* iOSDropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSDropDown.modulemap; sourceTree = "<group>"; };
 		D91795F5DF155C9EBB3E94A34957B330 /* SimplePDF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SimplePDF.framework; path = SimplePDF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96058BC995EE2C8A027B89ACD00CBF4 /* Pods-ReporterTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ReporterTests-Info.plist"; sourceTree = "<group>"; };
-		D9E631AF6EDBAF795F19776823813955 /* EllipseShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EllipseShape.swift; path = Drawsana/Shapes/Implementations/EllipseShape.swift; sourceTree = "<group>"; };
 		DB87A8BD1EE5C356FB79C63325D55CFE /* Pods-Reporter-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Reporter-frameworks.sh"; sourceTree = "<group>"; };
-		DCDB8A38F2BE1D31C7AD2B7B3D026ED4 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Sources/WXKDarkSky/Error.swift; sourceTree = "<group>"; };
+		DBE0F51EC2C098B9ACD12B5494FDB5D3 /* EllipseShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EllipseShape.swift; path = Drawsana/Shapes/Implementations/EllipseShape.swift; sourceTree = "<group>"; };
+		DC02C702A4C233FCF31F157FA22392CC /* UIView+Draggable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Draggable.swift"; path = "Sources/UIView+Draggable.swift"; sourceTree = "<group>"; };
+		E04AE9EF0C73CAF08801889FA7F60031 /* Floaty-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Floaty-Info.plist"; sourceTree = "<group>"; };
 		E12A7565C257998748682C9B3CBBC86E /* Pods-ReporterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ReporterTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E27D0C91A417E0CCA4B0C63FB4435267 /* DrawingTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawingTool.swift; path = Drawsana/Tools/DrawingTool.swift; sourceTree = "<group>"; };
-		E28FACCDEA388DAC0F458872166CFA08 /* WXKDarkSky-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WXKDarkSky-prefix.pch"; sourceTree = "<group>"; };
-		E7FDB9154A01550E47455D121A5B84C0 /* DrawingOperationStack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawingOperationStack.swift; path = "Drawsana/Data model/DrawingOperationStack.swift"; sourceTree = "<group>"; };
-		EAAF89D26D11BFCC3731BEA55CBAFD58 /* DrawingToolForShapeWithTwoPoints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawingToolForShapeWithTwoPoints.swift; path = Drawsana/Tools/Implementations/DrawingToolForShapeWithTwoPoints.swift; sourceTree = "<group>"; };
-		F050F1B5E43A6E71E1EA6B4F89FD20FF /* FloatyWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyWindow.swift; path = Sources/FloatyWindow.swift; sourceTree = "<group>"; };
-		F1FADCC3A9CFCFE8D6CF067C9ECEB99A /* LineShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineShape.swift; path = Drawsana/Shapes/Implementations/LineShape.swift; sourceTree = "<group>"; };
+		E72768934B0A7F0372DF8E6CE47117CC /* Floaty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-umbrella.h"; sourceTree = "<group>"; };
 		F2EC6B61341826ADA594FD933ADA0140 /* Pods-ReporterTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ReporterTests-dummy.m"; sourceTree = "<group>"; };
-		F32E2046A5202F224ED1013149EA0EF0 /* Point.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Point.swift; path = Sources/WXKDarkSky/Point.swift; sourceTree = "<group>"; };
+		F30FF4EEDC453DEA22CF387206BBBD65 /* KeyedDecodingContainer+DrawsanaExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KeyedDecodingContainer+DrawsanaExtensions.swift"; path = "Drawsana/Helpers/Extensions/KeyedDecodingContainer+DrawsanaExtensions.swift"; sourceTree = "<group>"; };
+		F3518E13E1BAC0B1B8E4FACB9E286B88 /* Date+unixTime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Date+unixTime.swift"; path = "Sources/WXKDarkSky/Date+unixTime.swift"; sourceTree = "<group>"; };
+		FA5DCE31218ACA3A60CA0CA5219A5EBA /* SimplePDF.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SimplePDF.modulemap; sourceTree = "<group>"; };
+		FBF7D852EE3454875544B651AC3513F4 /* PenTool_EraserTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PenTool_EraserTool.swift; path = Drawsana/Tools/Implementations/PenTool_EraserTool.swift; sourceTree = "<group>"; };
+		FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iOSDropDown.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF0BDB0228FFA69330F330510FC76A68 /* ImmediatePanGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImmediatePanGestureRecognizer.swift; path = Drawsana/Helpers/ImmediatePanGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +237,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0E12ADD5C7433A3537E4970A0D694CD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25DF5A9AC595EB65396B0F7FD3EC355F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB1A59DAD92E574036C966A2CD221FAB /* Foundation.framework in Frameworks */,
+				46DD08FB7D6071E99E75ECDBA47E90C1 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +274,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BAB72D9459B7DB0AF94A415D6CE197BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				587E93F4C22AC55CB97D17E80765A1C5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE868DA807BC1C7433E1582E8C991527 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,42 +290,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF73843148C409FABD61BF18C02A0F7F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1645F17588CFEC35711EE84AD8E4FCDC /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C4821BCB86DFAF1E0FC3D2FCB0F7F6A /* Support Files */ = {
+		10452A3816ADC7FA93E4B7913DE841D8 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CBB19BF4344753D8B177DF67DBD59988 /* Floaty.modulemap */,
-				5D57F7F0C6B9FA2C1EF34A4052324DAA /* Floaty.xcconfig */,
-				03FBC04B744F81E93A205E59A37EBA5D /* Floaty-dummy.m */,
-				4D9D13A47F5D20A07895AE2A47C68153 /* Floaty-Info.plist */,
-				4472710207075A633C7BC7D0B82FA628 /* Floaty-prefix.pch */,
-				BFB53CB929AAE20D4BC38D9FFC3D68EC /* Floaty-umbrella.h */,
+				D8664CF3F6FD5C8B8F4328F1CA882B0C /* iOSDropDown.modulemap */,
+				C64B433353E0F3ECBBF0C3B1570DCEBE /* iOSDropDown.xcconfig */,
+				A66E3D0096D116CE2FB2FE82E6D89B52 /* iOSDropDown-dummy.m */,
+				6F47B88C2EEA4045B05CF359E73F6A52 /* iOSDropDown-Info.plist */,
+				55664149D609E3581EFBF6ECC0FF9A21 /* iOSDropDown-prefix.pch */,
+				45C2A8A7E81B2BEBB8D0487E0DAD6BB9 /* iOSDropDown-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Floaty";
-			sourceTree = "<group>";
-		};
-		13E7E1E87409A0159BBBA31CA0FD0677 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BB39E9999AED768616AB170C09A4A352 /* Drawsana.framework */,
-				2915C263A5C5C8012A8C1E97512DC6A8 /* Floaty.framework */,
-				89744C114ED6BD347809EA12C13E3D13 /* Pods_Reporter.framework */,
-				61D17C5C06BA7BA9259898A8AA9874F8 /* Pods_ReporterTests.framework */,
-				D91795F5DF155C9EBB3E94A34957B330 /* SimplePDF.framework */,
-				9E2BB5A177A7C69BA934B4491A571E27 /* WXKDarkSky.framework */,
-			);
-			name = Products;
+			path = "../Target Support Files/iOSDropDown";
 			sourceTree = "<group>";
 		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
@@ -299,82 +315,122 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2523F6D04FD683D10DC3C939E6BF47D6 /* Floaty */ = {
+		1CCE7C9F066167F8D926B03DB0E8DB6E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA1160FBDB3C45AA72AB51C52394459C /* Floaty.swift */,
-				33A83907CD6E28C076C08A2CB8CBF435 /* FloatyDelegate.swift */,
-				0C93D785B0E11B65D00EF5808D451C17 /* FloatyItem.swift */,
-				394FE26656C5CAEE168AC6BB9CB646A9 /* FloatyManager.swift */,
-				A8A1920C4C2546982EDEBB06479AB6F4 /* FloatyViewController.swift */,
-				F050F1B5E43A6E71E1EA6B4F89FD20FF /* FloatyWindow.swift */,
-				BC56B4B9D6A51815DBF964E581EF11A0 /* UIView+Draggable.swift */,
-				0C4821BCB86DFAF1E0FC3D2FCB0F7F6A /* Support Files */,
-			);
-			name = Floaty;
-			path = Floaty;
-			sourceTree = "<group>";
-		};
-		2721D674F321132A70DDA5E4ACBF1C34 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				658500526674ED2345DD8F7CF05EC12F /* WXKDarkSky.modulemap */,
-				C0F1D55AD762FE61D49FE263BF1FCC2A /* WXKDarkSky.xcconfig */,
-				21BB05986BEA93C5C9059FA87184F71A /* WXKDarkSky-dummy.m */,
-				99546C68ABF307A5ACCEF8E6E2840532 /* WXKDarkSky-Info.plist */,
-				E28FACCDEA388DAC0F458872166CFA08 /* WXKDarkSky-prefix.pch */,
-				C286BE96D36F3F0D9B8BAC9746559D73 /* WXKDarkSky-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/WXKDarkSky";
-			sourceTree = "<group>";
-		};
-		3D330BB30E02B28C9BE8773F0CD2A727 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0489CE8553E8B8E93B5820D81ABA98B7 /* SimplePDF.modulemap */,
-				5317C58054963A8FE3FE1166CB02FD18 /* SimplePDF.xcconfig */,
-				8B836FAEBE23D320F6D1AE53EF14523B /* SimplePDF-dummy.m */,
-				05A901F0CF781BF63AF417DC2A5F92C2 /* SimplePDF-Info.plist */,
-				93059D92FBF37F1A98F3CD5AC425038A /* SimplePDF-prefix.pch */,
-				949184F87B55BFA163F6CE274BC45246 /* SimplePDF-umbrella.h */,
+				FA5DCE31218ACA3A60CA0CA5219A5EBA /* SimplePDF.modulemap */,
+				8156DF5755C162D5E27B678CC6C291CA /* SimplePDF.xcconfig */,
+				45768FBE5CD1F591AA8F953B7D06B6EA /* SimplePDF-dummy.m */,
+				3A32BE04B2BE7E66EF113F6733EEA4D1 /* SimplePDF-Info.plist */,
+				5D0ED0E311C670A60E5CBB1AD1CB8076 /* SimplePDF-prefix.pch */,
+				9FE954F3CD0FD1ECDE99A0A04BB3EED7 /* SimplePDF-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SimplePDF";
 			sourceTree = "<group>";
 		};
-		46B664FBAE9B1A720AFD50388EDDF903 /* SimplePDF */ = {
+		5667B8C627F3C7135FDAC1F874D6A3FB /* WXKDarkSky */ = {
 			isa = PBXGroup;
 			children = (
-				6602FC06AA7C5946DD17931E084AE0AD /* SimplePDF.h */,
-				34B54CBC4962DF9CDE24873DB0E9E1DD /* SimplePDF.swift */,
-				3D330BB30E02B28C9BE8773F0CD2A727 /* Support Files */,
+				08FDF7F3C53E4E736D8DFE46D5C49576 /* DarkSkyRequest.swift */,
+				12A5420E41C4620242C4E406AC3828D5 /* DarkSkyResponse.swift */,
+				7633266A879EBFD20BB769BC308DF434 /* DataBlock.swift */,
+				F3518E13E1BAC0B1B8E4FACB9E286B88 /* Date+unixTime.swift */,
+				AF2802216D913A65F2E3E755C4E8A677 /* Error.swift */,
+				2870FD9CF66389A5F06EF284E05AB0F3 /* Language.swift */,
+				03FE91C86FD34C4E39A2E08A587F57B4 /* Options.swift */,
+				76CB4F26384D8A02603FA11F494F802A /* Point.swift */,
+				38D25090E5D8273F0A15CBDF86270F9E /* Units.swift */,
+				D27C53856C2922CA9091D68E3E332D9D /* Support Files */,
+			);
+			name = WXKDarkSky;
+			path = WXKDarkSky;
+			sourceTree = "<group>";
+		};
+		669994D3EC2877CBE06A3D4B57F33019 /* Drawsana */ = {
+			isa = PBXGroup;
+			children = (
+				B4C4B2602D3618E7C7033EB17FF3E0E3 /* ArrowTool_EllipseTool_LineTool_RectTool.swift */,
+				A1FC708064A4B66C3911F318A9E90036 /* CGPoint+DrawsanaExtensions.swift */,
+				995F87AA2F411FCA488677F6A9AFB6AB /* CGRect+DrawsanaExtensions.swift */,
+				34D2AF4EC5D667627BFD562AF05DC607 /* DragHandler.swift */,
+				0EB9791FA8302853685DA6E9F7C9F7AD /* Drawing.swift */,
+				D551B8344EFF11A8E68375E1EA1CF5B5 /* DrawingOperations.swift */,
+				9A93E4268F4E1F6B367392E100BCAC17 /* DrawingOperationStack.swift */,
+				9E65F41EB02A021A7FAB86C78DF05F64 /* DrawingTool.swift */,
+				333E8AC330996B72D42A377A383AEB33 /* DrawingToolForShapeWithTwoPoints.swift */,
+				90E3BE422A1ED2804253B863319413D3 /* DrawsanaUtilities.swift */,
+				3B89E4DCF63CE6976971E7F2E33FFDDB /* DrawsanaView.swift */,
+				DBE0F51EC2C098B9ACD12B5494FDB5D3 /* EllipseShape.swift */,
+				FF0BDB0228FFA69330F330510FC76A68 /* ImmediatePanGestureRecognizer.swift */,
+				F30FF4EEDC453DEA22CF387206BBBD65 /* KeyedDecodingContainer+DrawsanaExtensions.swift */,
+				7A71F7968E71ABA56C3D7A0AFD42AEC5 /* LineShape.swift */,
+				CAD15CE371F20CC8E3C0F113563BBDEC /* PenShape.swift */,
+				FBF7D852EE3454875544B651AC3513F4 /* PenTool_EraserTool.swift */,
+				BF902EAEF9A756960BC651361E5536D3 /* RectShape.swift */,
+				828012B747E2AA0C8A5ACF3B8A64E714 /* SelectionTool.swift */,
+				0D213C64B91DF13ECC0B8CBF80D5578F /* Shape.swift */,
+				0EB244377D01B0580517255CD8D417D9 /* ShapeTransform.swift */,
+				07195E85C1A4D243DDA2CCCC58415497 /* TextShape.swift */,
+				404C28E8991AED95AD9891BEA13FD80C /* TextShapeEditingView.swift */,
+				29907D1CFBF8083B6B507F8C645842C0 /* TextTool.swift */,
+				B9F9E106472D71C057F09E961DC183BA /* ToolOperationContext.swift */,
+				70C328E6CA2718861EE251D4B758E9F2 /* ToolSettings.swift */,
+				4587EA703843B4BB8F83333B7254EADC /* UIColor+DrawsanaExtensions.swift */,
+				AE1D6135E7923D4414F96E2E0B64717C /* UserSettings.swift */,
+				E941C45D093A1A708D7C3543BC595897 /* Support Files */,
+			);
+			name = Drawsana;
+			path = Drawsana;
+			sourceTree = "<group>";
+		};
+		6CD28C002E4D57D60CBB9C33B5E1B91A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB39E9999AED768616AB170C09A4A352 /* Drawsana.framework */,
+				2915C263A5C5C8012A8C1E97512DC6A8 /* Floaty.framework */,
+				FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown.framework */,
+				89744C114ED6BD347809EA12C13E3D13 /* Pods_Reporter.framework */,
+				61D17C5C06BA7BA9259898A8AA9874F8 /* Pods_ReporterTests.framework */,
+				D91795F5DF155C9EBB3E94A34957B330 /* SimplePDF.framework */,
+				9E2BB5A177A7C69BA934B4491A571E27 /* WXKDarkSky.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		742F538A5A80232DB8EE7DC7230AE7C6 /* SimplePDF */ = {
+			isa = PBXGroup;
+			children = (
+				6386BACC3847E0E558976BAA73579A2F /* SimplePDF.h */,
+				B49B79502F48DCC532BEC38483ED698A /* SimplePDF.swift */,
+				1CCE7C9F066167F8D926B03DB0E8DB6E /* Support Files */,
 			);
 			name = SimplePDF;
 			path = SimplePDF;
 			sourceTree = "<group>";
 		};
-		4BA8CA2CAE94D4785F10E05F2C8181A3 /* Support Files */ = {
+		8AD1820C418F4E8D186D9C8E06885577 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3DA85EFD6EA413131BDAC0CDF7D2434C /* Drawsana.modulemap */,
-				34E077B0DAF013ECF061CEC60576DD2A /* Drawsana.xcconfig */,
-				0491CD574D302C29BFCADE9097589238 /* Drawsana-dummy.m */,
-				9A6AEF8FDEEED8CC49A9C7984690F673 /* Drawsana-Info.plist */,
-				1714A5F6F36215353C8AC13C003EB9C1 /* Drawsana-prefix.pch */,
-				000428DB12B29381A7302459B7760B73 /* Drawsana-umbrella.h */,
+				2D94ADC3581E2F956E87DEAACEAFB755 /* Floaty.modulemap */,
+				94BF9096B82EC95C367D10404DF15391 /* Floaty.xcconfig */,
+				2B4F145AEE133F8949B3641FB1CE6457 /* Floaty-dummy.m */,
+				E04AE9EF0C73CAF08801889FA7F60031 /* Floaty-Info.plist */,
+				9A77B93F3E30AF05258FFE03F0E947A3 /* Floaty-prefix.pch */,
+				E72768934B0A7F0372DF8E6CE47117CC /* Floaty-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Drawsana";
+			path = "../Target Support Files/Floaty";
 			sourceTree = "<group>";
 		};
-		4DBC2307A7FCA55207E5AD65F7F3E445 /* Pods */ = {
+		9D1B4F0DD4EB86B45E18251C8C1DAEFD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D9DE3DFFB57C31EB5AA4B839F1DEF020 /* Drawsana */,
-				2523F6D04FD683D10DC3C939E6BF47D6 /* Floaty */,
-				46B664FBAE9B1A720AFD50388EDDF903 /* SimplePDF */,
-				B6876417DC3564FF356A44F298BF4574 /* WXKDarkSky */,
+				669994D3EC2877CBE06A3D4B57F33019 /* Drawsana */,
+				FCA456FB19E8397A3644B0DE616C84D1 /* Floaty */,
+				F3E0138AF77B08C6F8D285A9E3BB7DA2 /* iOSDropDown */,
+				742F538A5A80232DB8EE7DC7230AE7C6 /* SimplePDF */,
+				5667B8C627F3C7135FDAC1F874D6A3FB /* WXKDarkSky */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -388,70 +444,29 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		B6876417DC3564FF356A44F298BF4574 /* WXKDarkSky */ = {
-			isa = PBXGroup;
-			children = (
-				8C5300F9CCA7750887D33A87E414023B /* DarkSkyRequest.swift */,
-				B73483C975E54B1E95490DA01A6663C0 /* DarkSkyResponse.swift */,
-				81D3DC0949F51D39E2C256B930E90B78 /* DataBlock.swift */,
-				CD6E2BFD1FD46F13889C5A17DDEC3734 /* Date+unixTime.swift */,
-				DCDB8A38F2BE1D31C7AD2B7B3D026ED4 /* Error.swift */,
-				1C48087911FB42985E73CB4EE8838B2E /* Language.swift */,
-				1585F98F410893988CE7634266850E42 /* Options.swift */,
-				F32E2046A5202F224ED1013149EA0EF0 /* Point.swift */,
-				6C43B748CA55C8DAD06168D06C12E338 /* Units.swift */,
-				2721D674F321132A70DDA5E4ACBF1C34 /* Support Files */,
-			);
-			name = WXKDarkSky;
-			path = WXKDarkSky;
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				4DBC2307A7FCA55207E5AD65F7F3E445 /* Pods */,
-				13E7E1E87409A0159BBBA31CA0FD0677 /* Products */,
+				9D1B4F0DD4EB86B45E18251C8C1DAEFD /* Pods */,
+				6CD28C002E4D57D60CBB9C33B5E1B91A /* Products */,
 				B25F9A0B030849C8678856B6B77EB8EE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D9DE3DFFB57C31EB5AA4B839F1DEF020 /* Drawsana */ = {
+		D27C53856C2922CA9091D68E3E332D9D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				48F5C3EAB8D085C6CF376E435B5E0D54 /* ArrowTool_EllipseTool_LineTool_RectTool.swift */,
-				AF30DD78281FE39209947F2F36F91507 /* CGPoint+DrawsanaExtensions.swift */,
-				B75CC6C878708B224D18481A3DFA5E09 /* CGRect+DrawsanaExtensions.swift */,
-				5C74214B623B6888BD52C2FF1B2D78E7 /* DragHandler.swift */,
-				9F3DE377A3B3184BC5F42F8C17BE1091 /* Drawing.swift */,
-				17363DD3675CD1D851F84D8CDB1C5E22 /* DrawingOperations.swift */,
-				E7FDB9154A01550E47455D121A5B84C0 /* DrawingOperationStack.swift */,
-				E27D0C91A417E0CCA4B0C63FB4435267 /* DrawingTool.swift */,
-				EAAF89D26D11BFCC3731BEA55CBAFD58 /* DrawingToolForShapeWithTwoPoints.swift */,
-				6098B64A1A70578B0E49C66CEDD6D382 /* DrawsanaUtilities.swift */,
-				BD323D536A3AB9CF87C15B4FE6F50BB9 /* DrawsanaView.swift */,
-				D9E631AF6EDBAF795F19776823813955 /* EllipseShape.swift */,
-				822AC58E0EDC1974A36AC4FD891DA183 /* ImmediatePanGestureRecognizer.swift */,
-				C3393E067D6C1AA289525B95432B02E5 /* KeyedDecodingContainer+DrawsanaExtensions.swift */,
-				F1FADCC3A9CFCFE8D6CF067C9ECEB99A /* LineShape.swift */,
-				D27E74A01D5431B8B86367644B3B3AF4 /* PenShape.swift */,
-				D2282A53604D4D276670A3CB93B10026 /* PenTool_EraserTool.swift */,
-				CF8679F66860E70E85FC757FF983008A /* RectShape.swift */,
-				0AD2E3E5EFE2B94B2E21406275B2979F /* SelectionTool.swift */,
-				7D18529621C2B9069209023006B0536E /* Shape.swift */,
-				597F559A9FD626E51F73A0DE1A502C7C /* ShapeTransform.swift */,
-				2D5AE339CDE8AF6B8B623E3769E3048D /* TextShape.swift */,
-				723289CE7F1F13E89D88F1C4936F7B2A /* TextShapeEditingView.swift */,
-				C44724038E58B91C2446D3E5C106DAAF /* TextTool.swift */,
-				9CD5CF723070F6B806E2187701E7AAEE /* ToolOperationContext.swift */,
-				D7B59A10AF18697E2808FFCAC2C47D57 /* ToolSettings.swift */,
-				8EF03E59C215D957FCDFD935D53DEEC0 /* UIColor+DrawsanaExtensions.swift */,
-				B217A5F71A668458612AC0A588DC91A1 /* UserSettings.swift */,
-				4BA8CA2CAE94D4785F10E05F2C8181A3 /* Support Files */,
+				B907C4C72B08437053C195007C6668A8 /* WXKDarkSky.modulemap */,
+				12325669E30F42BF47FF4B4C0D06674B /* WXKDarkSky.xcconfig */,
+				B88B5E56120707963CEFE11575004E28 /* WXKDarkSky-dummy.m */,
+				0E9A8332EC78669FF61C49131227A3CD /* WXKDarkSky-Info.plist */,
+				7794E2FFACE46AEBAA6A5A891B0B8555 /* WXKDarkSky-prefix.pch */,
+				1CBD55BD4248ECCF79ED27DB3D92C587 /* WXKDarkSky-umbrella.h */,
 			);
-			name = Drawsana;
-			path = Drawsana;
+			name = "Support Files";
+			path = "../Target Support Files/WXKDarkSky";
 			sourceTree = "<group>";
 		};
 		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
@@ -461,6 +476,30 @@
 				312B988EF117AE4DE76A268D970131FE /* UIKit.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		E941C45D093A1A708D7C3543BC595897 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				31F53D839258A0B9CCBDA2DB484E8E9A /* Drawsana.modulemap */,
+				CC927C325F5FF78BF80A96D560E08C3E /* Drawsana.xcconfig */,
+				C013A0FCA0887B0E950359BB12A5387D /* Drawsana-dummy.m */,
+				8580C7A460C0E84494B37895B8B33129 /* Drawsana-Info.plist */,
+				490A32C73A7EB3D5CDC5E6DAF6BAA132 /* Drawsana-prefix.pch */,
+				9AF7FBAF339A5F3E582E3189C21A9C2D /* Drawsana-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Drawsana";
+			sourceTree = "<group>";
+		};
+		F3E0138AF77B08C6F8D285A9E3BB7DA2 /* iOSDropDown */ = {
+			isa = PBXGroup;
+			children = (
+				44805B92216D66E3A7C5AB896340746F /* iOSDropDown.swift */,
+				10452A3816ADC7FA93E4B7913DE841D8 /* Support Files */,
+			);
+			name = iOSDropDown;
+			path = iOSDropDown;
 			sourceTree = "<group>";
 		};
 		F5466FEBE5B8003E1443C22C66F0D075 /* Pods-ReporterTests */ = {
@@ -496,6 +535,22 @@
 			path = "Target Support Files/Pods-Reporter";
 			sourceTree = "<group>";
 		};
+		FCA456FB19E8397A3644B0DE616C84D1 /* Floaty */ = {
+			isa = PBXGroup;
+			children = (
+				4E71A27E84FBD89948D34318BEA61C7E /* Floaty.swift */,
+				D06FDAFEB857DDE4AC104C7F77496E7D /* FloatyDelegate.swift */,
+				551ED405097DAC17789808C88784823D /* FloatyItem.swift */,
+				98CA59D565052C60FF1475E00A32A7F5 /* FloatyManager.swift */,
+				19E47D4752309255ADA1F9F23E57A919 /* FloatyViewController.swift */,
+				662706E4E50A4B4B767C7BD1B6905D5D /* FloatyWindow.swift */,
+				DC02C702A4C233FCF31F157FA22392CC /* UIView+Draggable.swift */,
+				8AD1820C418F4E8D186D9C8E06885577 /* Support Files */,
+			);
+			name = Floaty;
+			path = Floaty;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -504,14 +559,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				60A34DF8FB0ACF5572CDEB3BBC37D5D8 /* WXKDarkSky-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60CD568F73EDF5FABF00257EAD5185ED /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2BC86CEE8FF4DFDDFAE091C7027C5A32 /* Pods-Reporter-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +576,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7059E651EA43387843F102A47BB0D842 /* Drawsana-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8565F7A0EB9158143B1AE13E84E235A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F79FDA2CA49E326BD50F05E004AEEF /* Pods-Reporter-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93A905842D7F38038C5AE524E9DF7789 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6762724102132C861217B911E70056ED /* iOSDropDown-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +630,24 @@
 			name = WXKDarkSky;
 			productName = WXKDarkSky;
 			productReference = 9E2BB5A177A7C69BA934B4491A571E27 /* WXKDarkSky.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3C76CE6CD60B1CE55A174F03CC59AE17 /* iOSDropDown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A476A331E996DC82BDA1CD0E8A43F8B6 /* Build configuration list for PBXNativeTarget "iOSDropDown" */;
+			buildPhases = (
+				93A905842D7F38038C5AE524E9DF7789 /* Headers */,
+				51ADBD82176C61B9136F2C18746D6E55 /* Sources */,
+				25DF5A9AC595EB65396B0F7FD3EC355F /* Frameworks */,
+				4F2761F0F0D962265232D9EE899A184E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOSDropDown;
+			productName = iOSDropDown;
+			productReference = FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		45F5FB08615992CE1990AAF67464E800 /* Pods-ReporterTests */ = {
@@ -626,20 +707,21 @@
 		};
 		AFF0580A9693C0707E9C7BD1826B06A7 /* Pods-Reporter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3727F4D8D01C69F037D49E4BAE7801F1 /* Build configuration list for PBXNativeTarget "Pods-Reporter" */;
+			buildConfigurationList = F932416119024CA01BB08A88B2E016F9 /* Build configuration list for PBXNativeTarget "Pods-Reporter" */;
 			buildPhases = (
-				60CD568F73EDF5FABF00257EAD5185ED /* Headers */,
-				3DB567379DFED2A8FE7DA18F65DE8A40 /* Sources */,
-				FF73843148C409FABD61BF18C02A0F7F /* Frameworks */,
-				167A958890141522C35A9143DCFCEE93 /* Resources */,
+				8565F7A0EB9158143B1AE13E84E235A3 /* Headers */,
+				69CD16F3C63D4BCED8C7F6BBA87BDA7D /* Sources */,
+				BAB72D9459B7DB0AF94A415D6CE197BF /* Frameworks */,
+				44ECA389D99117F300E38DE1F628DE40 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3846C59F00A2210BB2A8AAA858B9BDD4 /* PBXTargetDependency */,
-				5729100D3757BBA515BAA3ADA8DC0F8D /* PBXTargetDependency */,
-				72AF5F4AC82DAA7C1BECE48CFB0CB71F /* PBXTargetDependency */,
-				3E6EBC7DC331E3B408533D104371967C /* PBXTargetDependency */,
+				E084B388F75941548B939A482C8B05F4 /* PBXTargetDependency */,
+				2035DD03AFCE4091018BA36D5C2F4DC4 /* PBXTargetDependency */,
+				513720628F0C368FA1E2070013492DA4 /* PBXTargetDependency */,
+				3051CD530A911BA94EEB6C1D4DFDA38D /* PBXTargetDependency */,
+				91F477FEA66D6E29077FEAA1251C7560 /* PBXTargetDependency */,
 			);
 			name = "Pods-Reporter";
 			productName = "Pods-Reporter";
@@ -682,12 +764,13 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 13E7E1E87409A0159BBBA31CA0FD0677 /* Products */;
+			productRefGroup = 6CD28C002E4D57D60CBB9C33B5E1B91A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				58C11AE6223C3AA93E5419115FE034D7 /* Drawsana */,
 				D2A775A88EA787684F2905BCB73F96D1 /* Floaty */,
+				3C76CE6CD60B1CE55A174F03CC59AE17 /* iOSDropDown */,
 				AFF0580A9693C0707E9C7BD1826B06A7 /* Pods-Reporter */,
 				45F5FB08615992CE1990AAF67464E800 /* Pods-ReporterTests */,
 				4A622AC352147B03D34EE70B98F592BC /* SimplePDF */,
@@ -697,14 +780,21 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		167A958890141522C35A9143DCFCEE93 /* Resources */ = {
+		1E6F098DFD1269AA204B413F0F472736 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1E6F098DFD1269AA204B413F0F472736 /* Resources */ = {
+		44ECA389D99117F300E38DE1F628DE40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F2761F0F0D962265232D9EE899A184E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -778,11 +868,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3DB567379DFED2A8FE7DA18F65DE8A40 /* Sources */ = {
+		51ADBD82176C61B9136F2C18746D6E55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13376CDD58EDE4937B8F4A0D7CB9A275 /* Pods-Reporter-dummy.m in Sources */,
+				C312131E6526BFB7C1CB92D93D58FCC7 /* iOSDropDown-dummy.m in Sources */,
+				6ADFB626C34AA35AC883469526699F8D /* iOSDropDown.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69CD16F3C63D4BCED8C7F6BBA87BDA7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B558BEA92906D3D5D1B3F3C66FAE9F34 /* Pods-Reporter-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,17 +937,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3846C59F00A2210BB2A8AAA858B9BDD4 /* PBXTargetDependency */ = {
+		2035DD03AFCE4091018BA36D5C2F4DC4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Drawsana;
-			target = 58C11AE6223C3AA93E5419115FE034D7 /* Drawsana */;
-			targetProxy = 1187C8BD658B73246FFCA304EAC1D485 /* PBXContainerItemProxy */;
+			name = Floaty;
+			target = D2A775A88EA787684F2905BCB73F96D1 /* Floaty */;
+			targetProxy = E9629AB32BB9E7162DF56DCB9C7DB386 /* PBXContainerItemProxy */;
 		};
-		3E6EBC7DC331E3B408533D104371967C /* PBXTargetDependency */ = {
+		3051CD530A911BA94EEB6C1D4DFDA38D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = WXKDarkSky;
 			target = 17587220ECAB209937F607586210A0BB /* WXKDarkSky */;
-			targetProxy = 1FA5C07F31ABF7E95C77FC4932994D60 /* PBXContainerItemProxy */;
+			targetProxy = E3AA91CACAD453407128733CD66CFC42 /* PBXContainerItemProxy */;
 		};
 		452A297B7EEDBA28382BBD38C4430D49 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -856,24 +955,30 @@
 			target = AFF0580A9693C0707E9C7BD1826B06A7 /* Pods-Reporter */;
 			targetProxy = 4FDFC73357A23E3CFFBB1D2EE37F013E /* PBXContainerItemProxy */;
 		};
-		5729100D3757BBA515BAA3ADA8DC0F8D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Floaty;
-			target = D2A775A88EA787684F2905BCB73F96D1 /* Floaty */;
-			targetProxy = EC2AB2D3ACBA712AB6A7FEAC54B36D8D /* PBXContainerItemProxy */;
-		};
-		72AF5F4AC82DAA7C1BECE48CFB0CB71F /* PBXTargetDependency */ = {
+		513720628F0C368FA1E2070013492DA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SimplePDF;
 			target = 4A622AC352147B03D34EE70B98F592BC /* SimplePDF */;
-			targetProxy = B0774734B6F09334072EE3F863AAB98E /* PBXContainerItemProxy */;
+			targetProxy = 4C34A932E56D6E1FC7F9EF1538BB4CC6 /* PBXContainerItemProxy */;
+		};
+		91F477FEA66D6E29077FEAA1251C7560 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iOSDropDown;
+			target = 3C76CE6CD60B1CE55A174F03CC59AE17 /* iOSDropDown */;
+			targetProxy = 8DEDA92E34A958C9313721BCD52A4AB4 /* PBXContainerItemProxy */;
+		};
+		E084B388F75941548B939A482C8B05F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Drawsana;
+			target = 58C11AE6223C3AA93E5419115FE034D7 /* Drawsana */;
+			targetProxy = B396780A896898B2D96CAD1080973690 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0A0E3BAB144D078C653ED1D85BA334FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0F1D55AD762FE61D49FE263BF1FCC2A /* WXKDarkSky.xcconfig */;
+			baseConfigurationReference = 12325669E30F42BF47FF4B4C0D06674B /* WXKDarkSky.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -947,7 +1052,7 @@
 		};
 		1BA237DE26EA0D79AF66E7AB57482CEC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D57F7F0C6B9FA2C1EF34A4052324DAA /* Floaty.xcconfig */;
+			baseConfigurationReference = 94BF9096B82EC95C367D10404DF15391 /* Floaty.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -982,9 +1087,84 @@
 			};
 			name = Release;
 		};
+		232D6AC5A0769201FCBD8133C3DC7DCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C64B433353E0F3ECBBF0C3B1570DCEBE /* iOSDropDown.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/iOSDropDown/iOSDropDown-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iOSDropDown/iOSDropDown-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/iOSDropDown/iOSDropDown.modulemap";
+				PRODUCT_MODULE_NAME = iOSDropDown;
+				PRODUCT_NAME = iOSDropDown;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3A8C08D35BC3EED713C2BC397E3958AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26803D795E2847CB378CCCEBADF2CEE1 /* Pods-Reporter.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Reporter/Pods-Reporter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Reporter/Pods-Reporter.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		41A72AD52161731024F84FE21FB14877 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34E077B0DAF013ECF061CEC60576DD2A /* Drawsana.xcconfig */;
+			baseConfigurationReference = CC927C325F5FF78BF80A96D560E08C3E /* Drawsana.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1020,7 +1200,7 @@
 		};
 		4F646F7D3C96B3C5688A721099CF2047 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34E077B0DAF013ECF061CEC60576DD2A /* Drawsana.xcconfig */;
+			baseConfigurationReference = CC927C325F5FF78BF80A96D560E08C3E /* Drawsana.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1053,9 +1233,44 @@
 			};
 			name = Debug;
 		};
+		65F6A4EC6048DDEAED714D2373277408 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C64B433353E0F3ECBBF0C3B1570DCEBE /* iOSDropDown.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/iOSDropDown/iOSDropDown-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iOSDropDown/iOSDropDown-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/iOSDropDown/iOSDropDown.modulemap";
+				PRODUCT_MODULE_NAME = iOSDropDown;
+				PRODUCT_NAME = iOSDropDown;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		697F841011F79D82A43838FACA505138 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D57F7F0C6B9FA2C1EF34A4052324DAA /* Floaty.xcconfig */;
+			baseConfigurationReference = 94BF9096B82EC95C367D10404DF15391 /* Floaty.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1091,7 +1306,7 @@
 		};
 		702FF50B91EB7A1E6C9062C3EDA060C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5317C58054963A8FE3FE1166CB02FD18 /* SimplePDF.xcconfig */;
+			baseConfigurationReference = 8156DF5755C162D5E27B678CC6C291CA /* SimplePDF.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1118,6 +1333,44 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		84ADBA82090214EA8D31CB752CEBD92E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73DE2D7DB590A1C20CEC2E6178F10F39 /* Pods-Reporter.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Reporter/Pods-Reporter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Reporter/Pods-Reporter.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1188,48 +1441,9 @@
 			};
 			name = Debug;
 		};
-		B7E5A558CABDA9BB631AC4F9C94EE10A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26803D795E2847CB378CCCEBADF2CEE1 /* Pods-Reporter.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Reporter/Pods-Reporter-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Reporter/Pods-Reporter.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		B7F424B53E9CFEF3104CA3167B754855 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5317C58054963A8FE3FE1166CB02FD18 /* SimplePDF.xcconfig */;
+			baseConfigurationReference = 8156DF5755C162D5E27B678CC6C291CA /* SimplePDF.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1263,47 +1477,9 @@
 			};
 			name = Release;
 		};
-		D0FCBB05E6836640005D36E388338129 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73DE2D7DB590A1C20CEC2E6178F10F39 /* Pods-Reporter.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Reporter/Pods-Reporter-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Reporter/Pods-Reporter.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		E764AAC468602710156C5C387927C449 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0F1D55AD762FE61D49FE263BF1FCC2A /* WXKDarkSky.xcconfig */;
+			baseConfigurationReference = 12325669E30F42BF47FF4B4C0D06674B /* WXKDarkSky.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1447,15 +1623,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3727F4D8D01C69F037D49E4BAE7801F1 /* Build configuration list for PBXNativeTarget "Pods-Reporter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D0FCBB05E6836640005D36E388338129 /* Debug */,
-				B7E5A558CABDA9BB631AC4F9C94EE10A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1470,6 +1637,15 @@
 			buildConfigurations = (
 				697F841011F79D82A43838FACA505138 /* Debug */,
 				1BA237DE26EA0D79AF66E7AB57482CEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A476A331E996DC82BDA1CD0E8A43F8B6 /* Build configuration list for PBXNativeTarget "iOSDropDown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65F6A4EC6048DDEAED714D2373277408 /* Debug */,
+				232D6AC5A0769201FCBD8133C3DC7DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1497,6 +1673,15 @@
 			buildConfigurations = (
 				702FF50B91EB7A1E6C9062C3EDA060C7 /* Debug */,
 				B7F424B53E9CFEF3104CA3167B754855 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F932416119024CA01BB08A88B2E016F9 /* Build configuration list for PBXNativeTarget "Pods-Reporter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84ADBA82090214EA8D31CB752CEBD92E /* Debug */,
+				3A8C08D35BC3EED713C2BC397E3958AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
