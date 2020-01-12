@@ -11,7 +11,6 @@ import os.log
 import Floaty
 
 class JobContentViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FloatyDelegate {
-
     
     //MARK: Properties
     @IBOutlet weak var titleTextField: UITextField!
@@ -22,10 +21,11 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
     // floating action button
     var fab = Floaty()
     
-    
     // The job which was selected, if one was selected
     // Or this is constructed as part of adding a new content item
     var content: JobContentItem?
+    var photo: UIImage?
+    var editedPhoto: UIImage?
     var severity = JobContentItem.Severity.GREEN
     var longDescription: String?
     
@@ -36,7 +36,6 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let content = content {
             titleTextField.text = content.shortDescription
-            photoImageView.image = content.photo
             severity = content.status
             setSeveritySelector(severity: content.status)
             longDescription = content.longDescription
@@ -48,6 +47,14 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
             if content.photo != UIImage(named: "defaultPhoto") {
                 content.containsPhoto = true
             }
+            
+            if let editedPhoto = content.editedPhoto {
+                photoImageView.image = editedPhoto
+            } else {
+                photoImageView.image = content.photo
+            }
+            photo = content.photo
+            editedPhoto = content.editedPhoto
         }
         
         updateSaveButtonState()
@@ -84,8 +91,16 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            let photoToEdit = photoImageView.image
+            let photoToEdit = content?.editedPhoto ?? editedPhoto
+            let originalPhoto = content?.photo ?? photo
             photoEditingViewController.photo = photoToEdit
+            photoEditingViewController.originalPhoto = originalPhoto
+            
+            photoEditingViewController.callback = { () -> Void in
+                self.editedPhoto = nil
+                self.content?.editedPhoto = nil
+                self.photoImageView.image = self.photo ?? self.content?.photo
+            }
         
         default:
             guard let button = sender as? UIBarButtonItem, button == saveButton else {
@@ -94,12 +109,11 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
             }
             
             let shortDescription = titleTextField.text ?? "No description (please update)"
-            let photo = photoImageView.image
             let severityStatus = severity
             let longDescriptionText = longDescription
             
             // set the content to be passed to JobContentTableViewController after unwind segue
-            content = JobContentItem(shortDescription: shortDescription, photo: photo, status: severityStatus, severityIconPhoto: nil, longDescription: longDescriptionText)
+            content = JobContentItem(shortDescription: shortDescription, photo: photo, editedPhoto: editedPhoto, status: severityStatus, longDescription: longDescriptionText)
         }
     }
     
@@ -148,7 +162,7 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         
         photoImageView.image = selectedImage
-        self.content?.photo = selectedImage
+        self.photo = selectedImage
         
         if self.content?.photo != UIImage(named: "defaultPhoto") {
             self.content?.containsPhoto = true
@@ -260,10 +274,10 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
                 self.content?.containsLongDescription = true
             }
         }
-        else if let sourceViewController = sender.source as? PhotoEditingViewController, let editedPhoto = sourceViewController.photo {
-            content?.photo = editedPhoto
+        else if let sourceViewController = sender.source as? PhotoEditingViewController, let getEditedPhoto = sourceViewController.photo {
+            editedPhoto = getEditedPhoto
             photoImageView.image = editedPhoto
-            
+
             if content?.photo != UIImage(named: "defaultPhoto") {
                 self.content?.containsPhoto = true
             }

@@ -84,8 +84,8 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         let contentItem = content[indexPath.row]
         
         cell.shortDescriptionLabel.text = contentItem.shortDescription
-        cell.contentPhoto.image = contentItem.photo
-        cell.severityIconPhoto.image = contentItem.severityIconPhoto
+        cell.contentPhoto.image = contentItem.editedPhoto ?? contentItem.photo
+        cell.severityIconPhoto.image = severityIcon(severity: contentItem.status)
 
         return cell
     }
@@ -468,5 +468,17 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
                 
     }
 
+    //MARK: Utility
+    func severityIcon(severity: JobContentItem.Severity) -> UIImage {
+        
+        switch severity {
+        case .GREEN:
+            return UIImage(named: "greenIcon")!
+        case .YELLOW:
+            return UIImage(named: "yellowIcon")!
+        case .RED:
+            return UIImage(named: "redIcon")!
+        }
+    }
     
 }

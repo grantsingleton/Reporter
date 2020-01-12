@@ -23,6 +23,10 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     
     // passed to this view from the job content view
     var photo: UIImage?
+    var originalPhoto: UIImage?
+    
+    // Callback
+    var callback: (() -> Void)?
     
     // Initialize drawing view. The CGRect for this view will be updated according to photo dimensions
     let drawingView = DrawsanaView()
@@ -32,6 +36,9 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     var fontView = UIView()
     var selectedFont: String = "Helvetica"
     var fontSize: Float = 18
+    
+    // revert button
+    var revertButton = UIButton()
     
     // The tools used for drawing
     let arrowTool = ArrowTool()
@@ -105,6 +112,11 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
             
             photoView.image = sizePhotoAndView(photo: photo)
             view.addSubview(drawingView)
+            addRevertButton()
+        } else if let photo = originalPhoto {
+            
+            photoView.image = sizePhotoAndView(photo: photo)
+            view.addSubview(drawingView)
         }
         layoutFloatingActionButton()
         
@@ -148,12 +160,6 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
             return
         }
         
-        // The following is for saving the image with the markups as a new image
-        // It renders the entire photoView and its subviews as an image
-        //let renderer = UIGraphicsImageRenderer(size: photoView!.bounds.size)
-        /*let editedImage = renderer.image { ctx in
-            photoView!.drawHierarchy(in: photoView!.bounds, afterScreenUpdates: true)
-        }*/
         let editedImage = drawingView.render(over: photoView.image)
         
         photo = editedImage
@@ -601,19 +607,67 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
     }
     
+    private func addRevertButton() {
+        
+        //let navBarHeight: CGFloat = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
+        //(self.navigationController?.navigationBar.frame.height ?? 0.0)
+        
+        let buttonWidth: CGFloat = 100
+        let buttonHeight: CGFloat = 40
+        let xCoordinate: CGFloat = self.view.frame.width - buttonWidth
+        let navBarHeight = photoView.frame.origin.y - buttonHeight
+        
+        revertButton = UIButton(frame: CGRect(x: xCoordinate, y: navBarHeight, width: buttonWidth, height: buttonHeight))
+        
+        revertButton.backgroundColor = .clear
+        revertButton.titleLabel?.font = UIFont(name: "Noteworthy", size: 18)
+        revertButton.setTitle("Revert", for: .normal)
+        revertButton.setTitleColor(.red, for: .normal)
+        revertButton.layer.cornerRadius = 5
+        revertButton.addTarget(self, action: #selector(revertImage(sender:)), for: .touchUpInside)
+        
+        self.view.addSubview(revertButton)
+    }
+    
+    @objc func revertImage(sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Restore Original Photo", message: "This action will remove all edits and cannot be undone", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Revert", style: .destructive, handler: { (alert: UIAlertAction!) -> Void in
+            //restore original photo
+            self.photoView.image = self.originalPhoto
+            self.photo = nil
+            self.revertButton.removeFromSuperview()
+            // callback here
+            self.callback?()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(alert: UIAlertAction!) -> Void in
+            print("User cancelled revert action")
+        }))
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        self.present(alert, animated: true)
+    }
+    
     private func placeFontButton() {
         
         let navBarHeight: CGFloat = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
         (self.navigationController?.navigationBar.frame.height ?? 0.0)
         
-        let buttonWidth: CGFloat = 150
+        let buttonWidth: CGFloat = 200
         let buttonHeight: CGFloat = 40
         
-        fontButton = UIButton(frame: CGRect(x: 0, y: navBarHeight, width: buttonWidth, height: buttonHeight))
+        fontButton = UIButton(frame: CGRect(x: 0, y: navBarHeight + buttonHeight, width: buttonWidth, height: buttonHeight))
         
         fontButton.backgroundColor = .white
         fontButton.titleLabel?.font = UIFont(name: selectedFont, size: 18)
-        fontButton.setTitle(selectedFont, for: .normal)
+        fontButton.setTitle(setFontTitle(), for: .normal)
         fontButton.setTitleColor(.black, for: .normal)
         fontButton.layer.cornerRadius = 5
         fontButton.layer.borderWidth = 1
@@ -694,6 +748,8 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         fontSizeSlider.isContinuous = true
         fontSizeSlider.tintColor = .green
         fontSizeSlider.setValue(fontSize, animated: true)
+        fontSizeSlider.minimumValueImage = UIImage(named: "decrease")
+        fontSizeSlider.maximumValueImage = UIImage(named: "increase")
         fontSizeSlider.addTarget(self, action: #selector(fontSizeDidChange(sender:)), for: .valueChanged)
         
         fontView.addSubview(helveticaButton)
@@ -709,16 +765,16 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         fontView.removeFromSuperview()
         selectedFont = "Helvetica"
-        changeFont(font: "Helvetica")
-        updateFontButton(fontName: "Helvetica")
+        changeFont()
+        updateFontButton()
     }
     
     @objc func fontGeorgia(sender: UIButton) {
         
         fontView.removeFromSuperview()
         selectedFont = "Georgia"
-        changeFont(font: "Georgia")
-        updateFontButton(fontName: "Georgia")
+        changeFont()
+        updateFontButton()
 
     }
     
@@ -726,19 +782,19 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         fontView.removeFromSuperview()
         selectedFont = "Noteworthy"
-        changeFont(font: "Noteworthy")
-        updateFontButton(fontName: "Noteworthy")
+        changeFont()
+        updateFontButton()
     }
     
-    func changeFont(font: String) {
+    func changeFont() {
         
-        drawingView.userSettings.fontName = font
+        drawingView.userSettings.fontName = selectedFont
     }
     
-    func updateFontButton(fontName: String) {
+    func updateFontButton() {
         
-        fontButton.setTitle(fontName, for: .normal)
-        fontButton.titleLabel?.font = UIFont(name: fontName, size: 18)
+        fontButton.setTitle(setFontTitle(), for: .normal)
+        fontButton.titleLabel?.font = UIFont(name: selectedFont, size: 18)
     }
     
     func removeFontButton() {
@@ -754,6 +810,13 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     
     @objc func fontSizeDidChange(sender: UISlider) {
         
+        fontSize = floor(sender.value)
+        drawingView.userSettings.fontSize = CGFloat(fontSize)
+        fontButton.setTitle(setFontTitle(), for: .normal)
+    }
+    
+    func setFontTitle() -> String {
+        return selectedFont + ": " + String(Int(fontSize))
     }
 }
 

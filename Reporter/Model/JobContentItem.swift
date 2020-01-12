@@ -14,8 +14,8 @@ class JobContentItem: NSObject, NSCoding {
     func encode(with coder: NSCoder) {
         coder.encode(shortDescription, forKey: PropertyKey.shortDescription)
         coder.encode(photo, forKey: PropertyKey.photo)
+        coder.encode(editedPhoto, forKey: PropertyKey.editedPhoto)
         coder.encode(status.rawValue, forKey: PropertyKey.status)
-        coder.encode(severityIconPhoto, forKey: PropertyKey.severityIconPhoto)
         coder.encode(longDescription, forKey: PropertyKey.longDescription)
     }
     
@@ -26,11 +26,11 @@ class JobContentItem: NSObject, NSCoding {
             return nil
         }
         let photo = coder.decodeObject(forKey: PropertyKey.photo) as? UIImage
+        let editedPhoto = coder.decodeObject(forKey: PropertyKey.editedPhoto) as? UIImage
         let status = Severity(rawValue: coder.decodeInteger(forKey: PropertyKey.status) as Int)
-        let severityIconPhoto = coder.decodeObject(forKey: PropertyKey.severityIconPhoto) as? UIImage
         let longDescription = coder.decodeObject(forKey: PropertyKey.longDescription) as? String
                 
-        self.init(shortDescription: shortDescription, photo: photo, status: status, severityIconPhoto: severityIconPhoto, longDescription: longDescription)
+        self.init(shortDescription: shortDescription, photo: photo, editedPhoto: editedPhoto, status: status, longDescription: longDescription)
         
     }
     
@@ -44,8 +44,8 @@ class JobContentItem: NSObject, NSCoding {
     //MARK: Properties
     var shortDescription: String
     var photo: UIImage?
+    var editedPhoto: UIImage?
     var status: Severity
-    var severityIconPhoto: UIImage?
     var longDescription: String
     var containsPhoto: Bool
     var containsLongDescription: Bool
@@ -55,14 +55,14 @@ class JobContentItem: NSObject, NSCoding {
     struct PropertyKey {
         static let shortDescription = "shortDescription"
         static let photo = "photo"
+        static let editedPhoto = "editedPhoto"
         static let status = "status"
-        static let severityIconPhoto = "severityIconPhoto"
         static let longDescription = "longDescription"
     }
     
     
     //MARK: Initialization
-    init?(shortDescription: String, photo: UIImage?, status: Severity?, severityIconPhoto: UIImage?, longDescription: String?, containsPhoto: Bool = false, containsLongDescription: Bool = false) {
+    init?(shortDescription: String, photo: UIImage?, editedPhoto: UIImage?, status: Severity?, longDescription: String?, containsPhoto: Bool = false, containsLongDescription: Bool = false) {
         
         if shortDescription.isEmpty {
             return nil
@@ -70,19 +70,12 @@ class JobContentItem: NSObject, NSCoding {
         
         self.shortDescription = shortDescription
         self.photo = photo
+        self.editedPhoto = editedPhoto
         self.status = status ?? Severity.GREEN
         self.longDescription = longDescription ?? ""
         self.containsPhoto = containsPhoto
         self.containsLongDescription = containsLongDescription
     
-        
-        if status == Severity.GREEN {
-            self.severityIconPhoto = UIImage(named: "greenIcon")
-        } else if status == Severity.YELLOW {
-            self.severityIconPhoto = UIImage(named: "yellowIcon")
-        } else {
-            self.severityIconPhoto = UIImage(named: "redIcon")
-        }
        
         if longDescription != nil {
             self.containsLongDescription = true
