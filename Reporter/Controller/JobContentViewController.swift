@@ -28,6 +28,7 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
     var editedPhoto: UIImage?
     var severity = JobContentItem.Severity.GREEN
     var longDescription: String?
+    var revertImageCallback: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,19 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
 
     
     // MARK: - Navigation
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if (identifier != "EditPhoto") {
+            return true
+        } else {
+            if (content?.photo != nil) {
+                return true
+            } else {
+                print("Cannot segue, no photo")
+                // **FIXME** Consider putting an alert here to let the user no why they cant segue
+                return false
+            }
+        }
+    }
     // this function is called when we navigate back to JobContentTableView
     // Use this to pass new table cell back to table
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,15 +105,22 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            let photoToEdit = content?.editedPhoto ?? editedPhoto
-            let originalPhoto = content?.photo ?? photo
-            photoEditingViewController.photo = photoToEdit
-            photoEditingViewController.originalPhoto = originalPhoto
+            // if there is an edited photo, pass it to the editors edited photo
+            if let photoToEdit = content?.editedPhoto ?? self.editedPhoto {
+                photoEditingViewController.editedPhoto = photoToEdit
+                let originalPhotoToEdit = content?.photo ?? self.photo
+                photoEditingViewController.originalPhoto = originalPhotoToEdit
+            } else {
+                let photoToEdit = content?.photo ?? self.photo // if there is no edited photo then pass only the original
+                photoEditingViewController.originalPhoto = photoToEdit
+            }
             
+            // lets make a callback here to reconfigure things if "revert" was called
             photoEditingViewController.callback = { () -> Void in
                 self.editedPhoto = nil
                 self.content?.editedPhoto = nil
-                self.photoImageView.image = self.photo ?? self.content?.photo
+                self.photoImageView.image = self.content?.photo ?? self.photo
+                self.revertImageCallback!()
             }
         
         default:
@@ -274,8 +295,9 @@ class JobContentViewController: UIViewController, UITextFieldDelegate, UITextVie
                 self.content?.containsLongDescription = true
             }
         }
-        else if let sourceViewController = sender.source as? PhotoEditingViewController, let getEditedPhoto = sourceViewController.photo {
-            editedPhoto = getEditedPhoto
+        else if let sourceViewController = sender.source as? PhotoEditingViewController, let theEditedPhoto = sourceViewController.editedPhoto {
+            
+            editedPhoto = theEditedPhoto
             photoImageView.image = editedPhoto
 
             if content?.photo != UIImage(named: "defaultPhoto") {

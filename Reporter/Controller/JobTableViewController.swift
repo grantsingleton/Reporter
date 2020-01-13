@@ -15,7 +15,7 @@ class JobTableViewController: UITableViewController, FloatyDelegate {
     //MARK: Properties
     
     var jobLocation: JobLocation!
-    var callback: ((_ jobLocation: JobLocation) -> Void)?
+    var saveLocationsCallback: ((_ jobLocation: JobLocation) -> Void)?
     
     // floating action button
     var fab = Floaty(frame: CGRect(x: 0, y: 0, width: 56, height: 56))
@@ -60,7 +60,7 @@ class JobTableViewController: UITableViewController, FloatyDelegate {
         if editingStyle == .delete {
             jobLocation.jobs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            self.callback?(self.jobLocation)
+            self.saveLocationsCallback?(self.jobLocation)
         } else if editingStyle == .insert {
             
         }
@@ -111,11 +111,11 @@ class JobTableViewController: UITableViewController, FloatyDelegate {
             // this is the job that was selected by the user
             let selectedJob = jobLocation.jobs[indexPath.row]
             
-            jobContentTableViewController.callback = { (job) -> Void in
+            jobContentTableViewController.saveJobsCallback = { (job) -> Void in
                 //self.saveExistingJob(job: job)
                 // Add a callback to job locations
                 self.jobLocation.jobs[indexPath.row] = job
-                self.callback?(self.jobLocation)
+                self.saveLocationsCallback?(self.jobLocation)
             }
             
             // If the selected job isnt the first job in the list then pass the previous job in so we can get the meta data
@@ -148,7 +148,7 @@ class JobTableViewController: UITableViewController, FloatyDelegate {
             navigationItem.title = returnedJobLocation.jobLocationName
             
             // Save the edited Job
-            self.callback?(self.jobLocation)
+            self.saveLocationsCallback?(self.jobLocation)
         }
     }
     
@@ -162,7 +162,7 @@ class JobTableViewController: UITableViewController, FloatyDelegate {
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 
                 // Save the edited Job
-                self.callback?(self.jobLocation)
+                self.saveLocationsCallback?(self.jobLocation)
             }
             else {
                 // Add a new job content item
@@ -171,7 +171,7 @@ class JobTableViewController: UITableViewController, FloatyDelegate {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
                 
                 // Save the new job
-                self.callback?(self.jobLocation)
+                self.saveLocationsCallback?(self.jobLocation)
             }
         }
     }

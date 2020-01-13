@@ -22,7 +22,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var redoButton: UIBarButtonItem!
     
     // passed to this view from the job content view
-    var photo: UIImage?
+    var editedPhoto: UIImage?
     var originalPhoto: UIImage?
     
     // Callback
@@ -107,15 +107,17 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         // set background color
         self.view.backgroundColor = UIColor.black
                 
-        // Do any additional setup after loading the view.
-        if let photo = photo {
+        // Check if there is an already edited photo, set up the revert button
+        if let editedPhoto = editedPhoto {
             
-            photoView.image = sizePhotoAndView(photo: photo)
+            photoView.image = sizePhotoAndView(photo: editedPhoto)
             view.addSubview(drawingView)
             addRevertButton()
-        } else if let photo = originalPhoto {
+        }
+        // if there isnt an edited photo, then set the original to be edited and dont add revert button
+        else if let originalPhoto = originalPhoto {
             
-            photoView.image = sizePhotoAndView(photo: photo)
+            photoView.image = sizePhotoAndView(photo: originalPhoto)
             view.addSubview(drawingView)
         }
         layoutFloatingActionButton()
@@ -142,7 +144,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         DispatchQueue.main.async {
             
             // resize photo and view to new constraints
-            self.photoView.image = self.sizePhotoAndView(photo: self.photo!)
+            self.photoView.image = self.sizePhotoAndView(photo: self.editedPhoto ?? self.originalPhoto!)
             
         }
     }
@@ -162,7 +164,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         
         let editedImage = drawingView.render(over: photoView.image)
         
-        photo = editedImage
+        editedPhoto = editedImage
     }
     
     //MARK: Methods
@@ -634,11 +636,13 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         let alert = UIAlertController(title: "Restore Original Photo", message: "This action will remove all edits and cannot be undone", preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Revert", style: .destructive, handler: { (alert: UIAlertAction!) -> Void in
-            //restore original photo
+            //restore original photo to the image view
             self.photoView.image = self.originalPhoto
-            self.photo = nil
+            // crush up the original photo
+            self.editedPhoto = nil
+            // remove the revert button
             self.revertButton.removeFromSuperview()
-            // callback here
+            // callback to crush the edited photo in the Content View Controller
             self.callback?()
         }))
         

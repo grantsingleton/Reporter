@@ -21,7 +21,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
     var jobDescription: String?
     var previousJob: Job?
     var content: [JobContentItem] = []
-    var callback: ((_ job: Job) -> Void)?
+    var saveJobsCallback: ((_ job: Job) -> Void)?
     let locationManager = CLLocationManager()
     var deviceLocation: CLLocationCoordinate2D?
     var weatherData: WeatherData?
@@ -111,7 +111,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             content.remove(at: indexPath.row)
             // update the job and pass it back to JobTableViewController to be saved
             self.job?.content = content
-            callback?(self.job!)
+            saveJobsCallback?(self.job!)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -175,6 +175,16 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             // pass selected content to the content view controller
             let selectedContent = content[indexPath.row]
             contentDetailViewController.content = selectedContent
+            
+            // this callback is called when the user reverts the image
+            contentDetailViewController.revertImageCallback = { () -> Void in
+                // put the original photo in the table view cell
+                selectedContentCell.contentPhoto.image = selectedContent.photo
+                // destroy the edited photo
+                selectedContent.editedPhoto = nil
+                // initiate the save jobs callback
+                self.saveJobsCallback!(self.job!)
+            }
             
         case "AddMetaData":
             print("Adding Meta Data to Job Content item")
@@ -254,7 +264,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             }
             // Pass the job back to the jobtableviewcontroller and save it there
             self.job?.content = content
-            callback?(self.job!)
+            saveJobsCallback?(self.job!)
             
         }
         else if let sourceViewController = sender.source as? MetaDataViewController {
@@ -280,7 +290,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             navigationItem.title = self.job?.date
             print("SET JOB DATA")
             // Pass the job back to the jobtableviewcontroller and save it there
-            callback?(self.job!)
+            saveJobsCallback?(self.job!)
         }
     }
 
@@ -296,7 +306,7 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         } else {
             if (isWeatherLoaded()) {
                 job?.weather = WeatherInformation(weatherData: self.weatherData!)
-                callback?(self.job!)
+                saveJobsCallback?(self.job!)
                 
                 fetchWeatherTitle += "Already Fetched"
             } else {

@@ -167,7 +167,7 @@ class JobLocationTableViewController: UITableViewController, FloatyDelegate {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            jobTableViewController.callback = { (jobLocation) -> Void in
+            jobTableViewController.saveLocationsCallback = { (jobLocation) -> Void in
                 self.locations[indexPath.row] = jobLocation
                 self.saveLocations()
                 self.tableView.reloadRows(at: [indexPath], with: .none)
