@@ -21,6 +21,8 @@ class PDFBuilder {
     let verticalSpace: CGFloat = 10.0 // distance between lines
     let doubleVerticalSpace: CGFloat = 20.0
     let sideMargin: CGFloat = 50.0
+    var center: CGFloat = 0.0
+    let centerMargin: CGFloat = 20
     let spaceBar: CGFloat = 5.0
     
     // I dont know if I like this variable but here it is
@@ -87,25 +89,6 @@ class PDFBuilder {
         let redFlags = "Red Flags - " + String(redFlagsCount)
         let yellowFlags = "Yellow Flags - " + String(yellowFlagsCount)
         let greenFlags = "Green Flags - " + String(greenFlagsCount)
-        
-        
-        /*
-         Temperature Low/High (°F) 00/00
-         Rain (inches) 0.00”
-         Humidity Min/Max 00/00
-         Wind Speed (MPH)  Direction Avg/Gust
-         */
-        /*
-         WEATHER
-         */
-        let lowTemp = self.job.weather?.temperatureLow
-        let highTemp = self.job.weather?.temperatureHigh
-        let rainfall = self.job.weather?.rainFall
-        let minHumidity = self.job.weather?.humidityMin
-        let maxHumidity = self.job.weather?.humidityMax
-        let windDirection = self.job.weather?.windBearing
-        let avgWindSpeed = self.job.weather?.windSpeedAvg
-        let windGust = self.job.weather?.windGust
 
         
         
@@ -115,6 +98,9 @@ class PDFBuilder {
         let  pageWidth = 612 // 8.5 * 72
         let pageHeight = 11 * 72
         let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
+        
+        // calculate center
+        self.center = pageRect.size.width / 2
         
         // Create a pdf renderer with those dimensions
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect)
@@ -156,23 +142,84 @@ class PDFBuilder {
             // Issued By Title
             bottomOfTitleTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + verticalSpace, title: issuedBy, font: (smallTitleFont ?? smallTitleBackupFont))
             
+            /*
+             Draw In Attendance Here (On the left)
+             */
+            var bottomOfAttendanceTuple = bottomOfTitleTuple
+            var bottomOfWeatherTuple = bottomOfTitleTuple
+            let attendanceTitle = "In Attendance:"
+            bottomOfAttendanceTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + doubleVerticalSpace, title: attendanceTitle, font: (smallTitleFont ?? smallTitleBackupFont))
             
-            
-            
+            let attendance = self.job.inAttendance!
+            for person in attendance {
+                bottomOfAttendanceTuple = addAttendanceLineLeft(pageRect: pageRect, lineTop: bottomOfAttendanceTuple.bottom + verticalSpace, person: person, font: (paragraphFont ?? paragraphBackupFont))
+            }
             
             /*
-                DRAW IN ATTENDANCE AND WEATHER HERE
+             Draw Weather Here (On the right)
              */
-            
-            
             
             /*
-                DRAW DISTRIBUTION HERE
+             Temperature Low/High (°F) 00/00
+             Rain (inches) 0.00”
+             Humidity Min/Max 00/00
+             Wind Speed (MPH)  Direction Avg/Gust
+             */
+            /*
+             WEATHER
+             */
+            let lowTemp = self.job.weather?.temperatureLow
+            let highTemp = self.job.weather?.temperatureHigh
+            let rainfall = self.job.weather?.rainFall
+            let minHumidity = self.job.weather?.humidityMin
+            let maxHumidity = self.job.weather?.humidityMax
+            let windDirection = self.job.weather?.windBearing
+            let avgWindSpeed = self.job.weather?.windSpeedAvg
+            let windGust = self.job.weather?.windGust
+            
+            let tempString = String(round2Decimal(number: lowTemp!)) + "/" + String(round2Decimal(number: highTemp!))
+            let rainString = String(round2Decimal(number: rainfall!))
+            let humidityString = String(round2Decimal(number: minHumidity!)) + "/" + String(round2Decimal(number: maxHumidity!))
+            let windString = String(windDirection!) + " @ " + String(round2Decimal(number: avgWindSpeed!)) + "/" + String(round2Decimal(number: windGust!))
+            let eventsString = "NULL"
+            
+            let weatherTitle = "Weather Summary for: " + self.job.date
+            bottomOfWeatherTuple = addSectionTitleRight(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + doubleVerticalSpace, title: weatherTitle, font: (smallTitleFont ?? smallTitleBackupFont))
+            
+            var weatherStrings: [(title: String, value: String)] = []
+            weatherStrings += [("Temperature Low/High (°F)", tempString)]
+            weatherStrings += [("Rain (inches)", rainString)]
+            weatherStrings += [("Humidity Min/Max", humidityString)]
+            weatherStrings += [("Wind Speed (MPH) Avg/Gust", windString)]
+            weatherStrings += [("Events", eventsString)]
+            
+            for line in weatherStrings {
+                bottomOfWeatherTuple = addWeatherLineRight(pageRect: pageRect, lineTop: bottomOfWeatherTuple.bottom + verticalSpace, data: line, font: (paragraphFont ?? paragraphBackupFont))
+            }
+            
+            /*
+             DRAW DISTRIBUTION HERE
              */
             
+            let distributionTitle = "Distribution:"
+            // let bottom of distribution tuple be the greater between bottom of weather and bottom of attendance
+            var bottomOfDistributionTuple = (bottomOfWeatherTuple.bottom > bottomOfAttendanceTuple.bottom) ? bottomOfWeatherTuple : bottomOfAttendanceTuple
+            bottomOfDistributionTuple = addSectionTitleLeft(pageRect: pageRect, titleTop: bottomOfDistributionTuple.bottom, title: distributionTitle, font: (smallTitleFont ?? smallTitleBackupFont))
+            var topForRightDistTuple = bottomOfDistributionTuple
+            let distribution = self.job.distribution!
+            var index: Int = 1
             
-            
-            
+            for person in distribution {
+                if ((index % 2) == 0) { // if even
+                    // print on the right side of page
+                    topForRightDistTuple = addAttendanceLineRight(pageRect: pageRect, lineTop: topForRightDistTuple.bottom + verticalSpace, person: person, font: (paragraphFont ?? paragraphBackupFont))
+                } else {
+                    // print on the left side of the page
+                    bottomOfDistributionTuple = addAttendanceLineLeft(pageRect: pageRect, lineTop: bottomOfDistributionTuple.bottom + verticalSpace, person: person, font: (paragraphFont ?? paragraphBackupFont))
+                }
+                index += 1
+            }
+            bottomOfTitleTuple = bottomOfDistributionTuple
             
             //MARK: Purpose of Visit
             // Purpose Title
@@ -407,18 +454,150 @@ class PDFBuilder {
         // get the rectangle size that the text fits in
         let titleStringSize = attributedTitle.size()
         
-        // set the margin
-        let margin: CGFloat = 50.0
-        
         // Set the top (y) of the title text to titleTop which is passed from caller
         // set the x coordninate to the left margin
-        let titleStringRect = CGRect(x: margin, y: titleTop, width: titleStringSize.width, height: titleStringSize.height)
+        let titleStringRect = CGRect(x: sideMargin, y: titleTop, width: titleStringSize.width, height: titleStringSize.height)
         
         // Draw the title onto the page
         attributedTitle.draw(in: titleStringRect)
         
         // return y coordinate for the bottom of the rectangle
         return (titleStringRect.origin.y + titleStringRect.size.height, titleStringRect.origin.x + titleStringRect.size.width)
+    }
+    
+    func addSectionTitleRight(pageRect: CGRect, titleTop: CGFloat, title: String, font: UIFont) -> (bottom: CGFloat, right: CGFloat) {
+        
+        // set the attributes for the title
+        let titleAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+        
+        // create an attributed title with the text of the title and the font
+        let attributedTitle = NSAttributedString(string: title, attributes: titleAttributes)
+        
+        // get the rectangle size that the text fits in
+        let titleStringSize = attributedTitle.size()
+        
+        // Set the top (y) of the title text to titleTop which is passed from caller
+        // set the x coordninate to the left margin
+        let xCoordinate = pageRect.size.width - sideMargin - titleStringSize.width
+        let titleStringRect = CGRect(x: xCoordinate, y: titleTop, width: titleStringSize.width, height: titleStringSize.height)
+        
+        // Draw the title onto the page
+        attributedTitle.draw(in: titleStringRect)
+        
+        // return y coordinate for the bottom of the rectangle
+        return (titleStringRect.origin.y + titleStringRect.size.height, titleStringRect.origin.x + titleStringRect.size.width)
+    }
+    
+    func addAttendanceLineLeft(pageRect: CGRect, lineTop: CGFloat, person: Person, font: UIFont) -> (bottom: CGFloat, right: CGFloat) {
+        
+        // Draw name
+        // set the attributes for the name string
+        let stringAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+        
+        // create an attributed title with the text of the title and the font
+        let attributedString = NSAttributedString(string: person.name, attributes: stringAttributes)
+        
+        // get the rectangle size that the text fits in
+        let stringSize = attributedString.size()
+        
+        // Set the top (y) of the title text to titleTop which is passed from caller
+        // set the x coordninate to the left margin
+        let stringRect = CGRect(x: sideMargin, y: lineTop, width: stringSize.width, height: stringSize.height)
+        
+        // Draw the name onto the page
+        attributedString.draw(in: stringRect)
+        
+        // Draw "From"
+        // create an attributed title with the text of the title and the font
+        let attributedFromString = NSAttributedString(string: person.from, attributes: stringAttributes)
+        
+        // get the rectangle size that the text fits in
+        let fromStringSize = attributedFromString.size()
+        
+        // **put a check here for long names
+        let xCoordinate = center - centerMargin - fromStringSize.width
+        let fromStringRect = CGRect(x: xCoordinate, y: lineTop, width: fromStringSize.width, height: fromStringSize.height)
+        
+        // Draw the name onto the page
+        attributedFromString.draw(in: fromStringRect)
+        
+        // return the bottom of the line and the right edge
+        return (stringRect.origin.y + stringRect.size.height, fromStringRect.origin.x + fromStringRect.size.width)
+    }
+    
+    func addAttendanceLineRight(pageRect: CGRect, lineTop: CGFloat, person: Person, font: UIFont) -> (bottom: CGFloat, right: CGFloat) {
+        // Draw title
+        // set the attributes for the title string
+        let titleStringAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+        
+        // create an attributed title with the text of the title and the font
+        let attributedTitle = NSAttributedString(string: person.name, attributes: titleStringAttributes)
+        
+        // get the rectangle size that the text fits in
+        let titleStringSize = attributedTitle.size()
+        
+        // Set the top (y) of the title text to titleTop which is passed from caller
+        // set the x coordninate to the left margin
+        let xCoordinate = center + centerMargin
+        let titleRect = CGRect(x: xCoordinate, y: lineTop, width: titleStringSize.width, height: titleStringSize.height)
+        
+        // Draw the name onto the page
+        attributedTitle.draw(in: titleRect)
+        
+        // Draw Weather value
+        // create an attributed title with the text of the title and the font
+        let attributedValueString = NSAttributedString(string: person.from, attributes: titleStringAttributes)
+        
+        // get the rectangle size that the text fits in
+        let valueStringSize = attributedValueString.size()
+        
+        // **put a check here for long names
+        let valXCoordinate = pageRect.size.width - sideMargin - valueStringSize.width
+        let valueStringRect = CGRect(x: valXCoordinate, y: lineTop, width: valueStringSize.width, height: valueStringSize.height)
+        
+        // Draw the name onto the page
+        attributedValueString.draw(in: valueStringRect)
+                
+        // return the bottom of the line and the right edge
+        return (valueStringRect.origin.y + valueStringRect.size.height, valueStringRect.origin.x + valueStringRect.size.width)
+    }
+    
+    func addWeatherLineRight(pageRect: CGRect, lineTop: CGFloat, data: (title: String, value: String), font: UIFont) -> (bottom: CGFloat, right: CGFloat) {
+        
+        // Draw title
+        // set the attributes for the title string
+        let titleStringAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+        
+        // create an attributed title with the text of the title and the font
+        let attributedTitle = NSAttributedString(string: data.title, attributes: titleStringAttributes)
+        
+        // get the rectangle size that the text fits in
+        let titleStringSize = attributedTitle.size()
+        
+        // Set the top (y) of the title text to titleTop which is passed from caller
+        // set the x coordninate to the left margin
+        let xCoordinate = center + centerMargin
+        let titleRect = CGRect(x: xCoordinate, y: lineTop, width: titleStringSize.width, height: titleStringSize.height)
+        
+        // Draw the name onto the page
+        attributedTitle.draw(in: titleRect)
+        
+        // Draw Weather value
+        // create an attributed title with the text of the title and the font
+        let attributedValueString = NSAttributedString(string: data.value, attributes: titleStringAttributes)
+        
+        // get the rectangle size that the text fits in
+        let valueStringSize = attributedValueString.size()
+        
+        // **put a check here for long names
+        let valXCoordinate = pageRect.size.width - sideMargin - valueStringSize.width
+        let valueStringRect = CGRect(x: valXCoordinate, y: lineTop, width: valueStringSize.width, height: valueStringSize.height)
+        
+        // Draw the name onto the page
+        attributedValueString.draw(in: valueStringRect)
+        
+        // return the bottom of the line and the right edge
+        return (valueStringRect.origin.y + valueStringRect.size.height, valueStringRect.origin.x + valueStringRect.size.width)
     }
     
     func addParagraph(pageRect: CGRect, textTop: CGFloat, paragraphText: String, font: UIFont) -> CGFloat {
@@ -603,6 +782,11 @@ class PDFBuilder {
             }
         }
         return count
+    }
+    
+    func round2Decimal(number: Double) -> Double {
+        //let y = Double(round(1000*x)/1000)
+        return round(100 * number) / 100
     }
     
 }

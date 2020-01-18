@@ -78,7 +78,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
     let orangeItem = FloatyItem()
     let blackItem = FloatyItem()
     let whiteItem = FloatyItem()
-    
+        
     // editor selector enum
     enum SelectedEdit {
         case CIRCLE, RECTANGLE, DASHED, LINE, TEXT, IMAGE, SELECT, ARROW, ERASER, NONE
@@ -498,6 +498,7 @@ class PhotoEditingViewController: UIViewController, UINavigationControllerDelega
         //
         // The anchor point is changed so that the controls can be scaled correctly
         // in `textToolDidUpdateEditingViewTransform`.
+        
         let makeView: (UIImage?) -> UIView = {
             let view = UIView()
             view.translatesAutoresizingMaskIntoConstraints = false
