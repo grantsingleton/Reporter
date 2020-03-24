@@ -1,4 +1,4 @@
-framework module iOSDropDown {
+module iOSDropDown {
   umbrella header "iOSDropDown-umbrella.h"
 
   export *

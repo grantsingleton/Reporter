@@ -20,6 +20,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Allows user to take photo with camera</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Reporter would like to use your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Reporter would like to use your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Reporter would like to use your location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allows user to select photo from library</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -60,15 +70,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allows user to select photo from library</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Allows user to take photo with camera</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Reporter would like to use your location</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Reporter would like to use your location</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Reporter would like to use your location</string>
 </dict>
 </plist>

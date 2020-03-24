@@ -9,6 +9,23 @@
 import UIKit
 import CoreLocation
 
+extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest  = 0
+        case low     = 0.25
+        case medium  = 0.5
+        case high    = 0.75
+        case highest = 1
+    }
+
+    /// Returns the data for the specified image in JPEG format.
+    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
+    /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
+    func jpeg(_ jpegQuality: JPEGQuality) -> Data? {
+        return jpegData(compressionQuality: jpegQuality.rawValue)
+    }
+}
+
 class PDFBuilder {
     
     //MARK: Data Properties
@@ -111,9 +128,11 @@ class PDFBuilder {
             
             //MARK: Begin Cover Page
             // **FIXME** temp hardcode of logo image
-            let logoImage = UIImage(named: "Z6logo")
-            
-            let bottomOfLogo = addLogoImage(pageRect: pageRect, imageTop: topMargin, image: logoImage!)
+            let logoImage = UIImage(named: "Zero6Logo")
+            let logoImageData = logoImage?.jpeg(.lowest)
+            let compressedLogoImage = UIImage(data: logoImageData!)
+                        
+            let bottomOfLogo = addLogoImage(pageRect: pageRect, imageTop: topMargin, image: compressedLogoImage!)
 
             
             //MARK: Centered Title
@@ -249,8 +268,19 @@ class PDFBuilder {
                 if (item.photo != UIImage(named: "defaultPhoto")) {
                     
                     photoNumber += 1
+                    
+                    var compressedPhoto: UIImage;
+                    
+                    if ((item.editedPhoto) != nil) {
+                        let photoData = item.editedPhoto?.jpeg(.medium)
+                        compressedPhoto = UIImage(data: photoData!)!
+                    }
+                    else {
+                        let photoData = item.photo?.jpeg(.lowest)
+                        compressedPhoto = UIImage(data: photoData!)!
+                    }
                     // If the image and three lines can fit on the page then draw it on the page, otherwise start a new page (Add an AI which resizes image if it barely doesnt fit)
-                    if imageCanFitOnPage(pageRect: pageRect, imageTop: bottomOfContent, image: item.photo!, font: (smallTitleFont ?? smallTitleBackupFont)) {
+                    if imageCanFitOnPage(pageRect: pageRect, imageTop: bottomOfContent, image: compressedPhoto, font: (smallTitleFont ?? smallTitleBackupFont)) {
                         
                         bottomOfContent = addContentItem(pageRect: pageRect, item: item, photoNumber: photoNumber, contentTop: bottomOfContent)
                         bottomOfContent += verticalSpace
@@ -312,7 +342,7 @@ class PDFBuilder {
         
         // set the image to be at most 15% of the page height and 15% of the page width
         let maxHeight = pageRect.height * 0.15
-        let maxWidth = pageRect.width * 0.15
+        let maxWidth = pageRect.width * 0.40
         
         // maximize size of the image while ensuring that it fits within constraints and maintains aspect ratio
         let aspectWidth = maxWidth / image.size.width
@@ -761,7 +791,19 @@ class PDFBuilder {
             photoNumberString = "0" + String(photoNumber)
         }
         photoNumberString = "Photo " + photoNumberString
-        bottomOfContent = addImage(pageRect: pageRect, imageTop: bottomOfContent, image: item.photo!)
+        
+        var compressedPhoto: UIImage;
+        
+        if ((item.editedPhoto) != nil) {
+            let photoData = item.editedPhoto?.jpeg(.medium)
+            compressedPhoto = UIImage(data: photoData!)!
+        }
+        else {
+            let photoData = item.photo?.jpeg(.lowest)
+            compressedPhoto = UIImage(data: photoData!)!
+        }
+        
+        bottomOfContent = addImage(pageRect: pageRect, imageTop: bottomOfContent, image: compressedPhoto)
         bottomOfContent = addTitle(pageRect: pageRect, titleTop: bottomOfContent, title: photoNumberString, titleFont: (smallTitleFont ?? smallTitleBackupFont))
         let flagString = flagFactory(flag: item.status)
         bottomOfContent = addTitle(pageRect: pageRect, titleTop: bottomOfContent + (verticalSpace / 2.0), title: flagString, titleFont: (smallTitleFont ?? smallTitleBackupFont))

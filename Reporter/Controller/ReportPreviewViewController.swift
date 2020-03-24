@@ -65,7 +65,6 @@ class ReportPreviewViewController: UIViewController, MFMailComposeViewController
             print("Mail services are not available")
             return
         }
-        
         let composeMailViewController = MFMailComposeViewController()
         composeMailViewController.mailComposeDelegate = self
         
@@ -74,7 +73,12 @@ class ReportPreviewViewController: UIViewController, MFMailComposeViewController
         composeMailViewController.addAttachmentData(PDF, mimeType: "application/pdf", fileName: "pdfReport")
         
         self.present(composeMailViewController, animated: true, completion: nil)
-    }
-    
+        
 
+    }
+
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
+    }
 }

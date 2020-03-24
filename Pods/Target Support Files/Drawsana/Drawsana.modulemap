@@ -1,4 +1,4 @@
-framework module Drawsana {
+module Drawsana {
   umbrella header "Drawsana-umbrella.h"
 
   export *

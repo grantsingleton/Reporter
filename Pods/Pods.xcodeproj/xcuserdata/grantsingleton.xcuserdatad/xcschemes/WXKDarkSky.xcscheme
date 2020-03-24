@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "17587220ECAB209937F607586210A0BB"
-               BuildableName = "WXKDarkSky.framework"
+               BuildableName = "libWXKDarkSky.a"
                BlueprintName = "WXKDarkSky"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

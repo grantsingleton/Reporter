@@ -1,4 +1,4 @@
-framework module WXKDarkSky {
+module WXKDarkSky {
   umbrella header "WXKDarkSky-umbrella.h"
 
   export *

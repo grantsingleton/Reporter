@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "58C11AE6223C3AA93E5419115FE034D7"
-               BuildableName = "Drawsana.framework"
+               BuildableName = "libDrawsana.a"
                BlueprintName = "Drawsana"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

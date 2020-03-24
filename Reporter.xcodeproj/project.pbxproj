@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D871F95538B8A3C00754FF5 /* Pods_ReporterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CD5D9448157E47915B3D0A /* Pods_ReporterTests.framework */; };
-		21D18F9ABD718907D2D205D4 /* Pods_Reporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0558675A30EA33BD702ABCFB /* Pods_Reporter.framework */; };
+		6556CDD419E2CB18E368C8F3 /* libPods-Reporter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 687421C164DE93C1581ECDA2 /* libPods-Reporter.a */; };
 		D90EC1A423B50EDD003DA073 /* AttendanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90EC1A323B50EDD003DA073 /* AttendanceTableViewCell.swift */; };
 		D90EC1A823B51138003DA073 /* DistributionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90EC1A723B51138003DA073 /* DistributionTableViewCell.swift */; };
 		D90EE89E23C0430300DA632F /* ReportPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90EE89D23C0430200DA632F /* ReportPreviewViewController.swift */; };
@@ -43,7 +42,7 @@
 		D9ECB669238C52E800186D79 /* UITextViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */; };
 		D9EE6B6623B8403800B682B6 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE6B6523B8403800B682B6 /* NewLocationViewController.swift */; };
 		D9FA428723A19BD000952434 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA428623A19BD000952434 /* DatePickerViewController.swift */; };
-		D9FA428A23A1F25600952434 /* report_template.html in Resources */ = {isa = PBXBuildFile; fileRef = D9FA428923A1F25600952434 /* report_template.html */; };
+		ED2D5274F5A8EEF209A0F38C /* libPods-ReporterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA3ECF3D5AE56EEDFFBB240 /* libPods-ReporterTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,11 +69,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0558675A30EA33BD702ABCFB /* Pods_Reporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		13CD5D9448157E47915B3D0A /* Pods_ReporterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReporterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4894D7034A86E43FD8D7F7FA /* Pods-Reporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reporter.release.xcconfig"; path = "Target Support Files/Pods-Reporter/Pods-Reporter.release.xcconfig"; sourceTree = "<group>"; };
+		687421C164DE93C1581ECDA2 /* libPods-Reporter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Reporter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CADE63C99FCF3A7F253152 /* Pods-Reporter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reporter.debug.xcconfig"; path = "Target Support Files/Pods-Reporter/Pods-Reporter.debug.xcconfig"; sourceTree = "<group>"; };
 		79B9494740D2967CB6C92DBF /* Pods-ReporterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.release.xcconfig"; path = "Target Support Files/Pods-ReporterTests/Pods-ReporterTests.release.xcconfig"; sourceTree = "<group>"; };
+		8EA3ECF3D5AE56EEDFFBB240 /* libPods-ReporterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReporterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16A573DDAB03D44FE8D4F7B /* Pods-ReporterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.debug.xcconfig"; path = "Target Support Files/Pods-ReporterTests/Pods-ReporterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D90EC1A323B50EDD003DA073 /* AttendanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceTableViewCell.swift; sourceTree = "<group>"; };
 		D90EC1A723B51138003DA073 /* DistributionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,7 +98,7 @@
 		D921548123B6AAB1008F31BF /* JobLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLocation.swift; sourceTree = "<group>"; };
 		D92BD30A238B73D500DC6D77 /* JobContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobContentTableViewController.swift; sourceTree = "<group>"; };
 		D93350CF23B53438004402C9 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		D946645F238F707C0004C062 /* Reporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D946645F238F707C0004C062 /* Z6 Reporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Z6 Reporter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9466464238F7DBC0004C062 /* ReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9466465238F7DEA0004C062 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		D9466467238F7F480004C062 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +113,6 @@
 		D9ECB668238C52E800186D79 /* UITextViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAdditions.swift; sourceTree = "<group>"; };
 		D9EE6B6523B8403800B682B6 /* NewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
 		D9FA428623A19BD000952434 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
-		D9FA428923A1F25600952434 /* report_template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = report_template.html; path = ../../../../Downloads/report_template.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21D18F9ABD718907D2D205D4 /* Pods_Reporter.framework in Frameworks */,
+				6556CDD419E2CB18E368C8F3 /* libPods-Reporter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D871F95538B8A3C00754FF5 /* Pods_ReporterTests.framework in Frameworks */,
+				ED2D5274F5A8EEF209A0F38C /* libPods-ReporterTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +149,8 @@
 		8677ED0464F99B192E7964C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0558675A30EA33BD702ABCFB /* Pods_Reporter.framework */,
-				13CD5D9448157E47915B3D0A /* Pods_ReporterTests.framework */,
+				687421C164DE93C1581ECDA2 /* libPods-Reporter.a */,
+				8EA3ECF3D5AE56EEDFFBB240 /* libPods-ReporterTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,10 +158,9 @@
 		D91C20F9238A1E15005463E1 = {
 			isa = PBXGroup;
 			children = (
-				D9FA428823A1F23F00952434 /* Templates */,
 				D91C2104238A1E15005463E1 /* Reporter */,
 				D91C211B238A1E17005463E1 /* ReporterTests */,
-				D946645F238F707C0004C062 /* Reporter.app */,
+				D946645F238F707C0004C062 /* Z6 Reporter.app */,
 				D9466464238F7DBC0004C062 /* ReporterTests.xctest */,
 				33D121BF2FBF86AB62CFD5A4 /* Pods */,
 				8677ED0464F99B192E7964C8 /* Frameworks */,
@@ -252,14 +249,6 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		D9FA428823A1F23F00952434 /* Templates */ = {
-			isa = PBXGroup;
-			children = (
-				D9FA428923A1F25600952434 /* report_template.html */,
-			);
-			path = Templates;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,7 +261,6 @@
 				D91C20FF238A1E15005463E1 /* Frameworks */,
 				D91C2100238A1E15005463E1 /* Resources */,
 				D946645B238F6BAD0004C062 /* Embed App Extensions */,
-				A557042A127772999C2AE06E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -280,7 +268,7 @@
 			);
 			name = Reporter;
 			productName = Reporter;
-			productReference = D946645F238F707C0004C062 /* Reporter.app */;
+			productReference = D946645F238F707C0004C062 /* Z6 Reporter.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D91C2117238A1E17005463E1 /* ReporterTests */ = {
@@ -347,7 +335,6 @@
 			files = (
 				D91C2112238A1E17005463E1 /* LaunchScreen.storyboard in Resources */,
 				D91C210F238A1E17005463E1 /* Assets.xcassets in Resources */,
-				D9FA428A23A1F25600952434 /* report_template.html in Resources */,
 				D91C210D238A1E15005463E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,23 +391,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A557042A127772999C2AE06E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Reporter/Pods-Reporter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Reporter/Pods-Reporter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reporter/Pods-Reporter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -620,16 +590,17 @@
 			baseConfigurationReference = 69CADE63C99FCF3A7F253152 /* Pods-Reporter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 53DUN5SP9N;
+				DEVELOPMENT_TEAM = G9BC5HNPU3;
 				INFOPLIST_FILE = Reporter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.singleton.Reporter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.singleton.Z6Reporter;
+				PRODUCT_NAME = "Z6 Reporter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -640,16 +611,17 @@
 			baseConfigurationReference = 4894D7034A86E43FD8D7F7FA /* Pods-Reporter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 53DUN5SP9N;
+				DEVELOPMENT_TEAM = G9BC5HNPU3;
 				INFOPLIST_FILE = Reporter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.singleton.Reporter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.singleton.Z6Reporter;
+				PRODUCT_NAME = "Z6 Reporter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

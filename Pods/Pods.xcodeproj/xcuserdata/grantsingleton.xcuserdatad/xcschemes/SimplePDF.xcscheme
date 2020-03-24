@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4A622AC352147B03D34EE70B98F592BC"
-               BuildableName = "SimplePDF.framework"
+               BuildableName = "libSimplePDF.a"
                BlueprintName = "SimplePDF"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

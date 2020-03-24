@@ -1,4 +1,4 @@
-framework module SimplePDF {
+module SimplePDF {
   umbrella header "SimplePDF-umbrella.h"
 
   export *
