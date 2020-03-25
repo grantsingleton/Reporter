@@ -377,6 +377,10 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
             }
         }
         
+        if (isWeatherLoaded()) {
+            job?.weather = WeatherInformation(weatherData: weatherData!)
+        }
+        
         let pdfBuilder = PDFBuilder(job: job!, jobLocationName: self.jobLocationName!, jobDescription: self.jobDescription!)
         
         let reportPDFData = pdfBuilder.buildPDF()
