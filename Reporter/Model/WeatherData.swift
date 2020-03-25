@@ -79,15 +79,15 @@ class WeatherData {
                             rainFallSum += hourlyWeather[index].precipIntensity ?? 0.0
                             windSpeedSum += hourlyWeather[index].windSpeed ?? 0.0
                             humidityArray.append(hourlyWeather[index].humidity ?? 2.0)
-                            
+                            print("Humidity at: " + (hourlyWeather[index].humidity?.description ?? CGFloat(2.0).description) )
                         }
                         self.windSpeedAvg = windSpeedSum / Double((rangeMax - rangeMin + 1))
                         self.rainFall = rainFallSum
                         // calculate min and max humidity
-                        var max = 1.0
-                        var min = 0.0
+                        var max: Double = 0.0
+                        var min: Double = 1.0
                         for number in humidityArray {
-                            if (number <= 1) {
+                            if (number != 2.0) {
                                 if (number > max) {
                                     max = number
                                 }
