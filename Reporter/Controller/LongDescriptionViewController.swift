@@ -71,8 +71,7 @@ class LongDescriptionViewController: UIViewController, UITextViewDelegate, UINav
     
     //MARK: Private Methods
     private func updateSaveButtonState() {
-        let text = longDescriptonTextView.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
+        saveButton.isEnabled = true
     }
     
     

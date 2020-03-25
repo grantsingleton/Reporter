@@ -272,16 +272,17 @@ class PDFBuilder {
                     var compressedPhoto: UIImage;
                     
                     if ((item.editedPhoto) != nil) {
-                        let photoData = item.editedPhoto?.jpeg(.medium)
-                        compressedPhoto = UIImage(data: photoData!)!
+                        // not really compressed but oh well -_-
+                        compressedPhoto = item.editedPhoto!
                     }
                     else {
-                        let photoData = item.photo?.jpeg(.lowest)
+                        let photoData = item.photo?.jpeg(.medium)
                         compressedPhoto = UIImage(data: photoData!)!
                     }
                     // If the image and three lines can fit on the page then draw it on the page, otherwise start a new page (Add an AI which resizes image if it barely doesnt fit)
                     if imageCanFitOnPage(pageRect: pageRect, imageTop: bottomOfContent, image: compressedPhoto, font: (smallTitleFont ?? smallTitleBackupFont)) {
                         
+                        // The next line adds the photo and the three lines (photo#, flag, title) under it. The description is drawn below
                         bottomOfContent = addContentItem(pageRect: pageRect, item: item, photoNumber: photoNumber, contentTop: bottomOfContent)
                         bottomOfContent += verticalSpace
 
@@ -308,6 +309,13 @@ class PDFBuilder {
                     let wordArray = item.longDescription.components(separatedBy: " ")
                     var wordEdge = (right: sideMargin, bottom: bottomOfContent)
                     
+                    // Start a new line if needed
+                    if (!newlineFits(pageRect: pageRect, edge: wordEdge, word: "Test", font: (paragraphFont ?? paragraphBackupFont))) {
+                        context.beginPage()
+                        wordEdge = (right: sideMargin, bottom: topMargin)
+                        wordEdge.right = wordEdge.right - spaceBar
+                    }
+                    
                     for word in wordArray {
                         // if word fits in row, then draw it there
                         if (wordFitsInRow(pageRect: pageRect, edge: wordEdge, word: word, font: (paragraphFont ?? paragraphBackupFont))) {
@@ -324,7 +332,7 @@ class PDFBuilder {
                                 context.beginPage()
                                 wordEdge = (right: sideMargin, bottom: topMargin)
                                 // subtract spacebar from edge.right since the function addWordToLine will add spacebar. This only matters for the first word in a new line
-                                wordEdge.right = wordEdge.right - verticalSpace
+                                wordEdge.right = wordEdge.right - spaceBar
                                 wordEdge = addWordToLine(pageRect: pageRect, edge: wordEdge, word: word, font: (paragraphFont ?? paragraphBackupFont))
                             }
                         }
@@ -437,10 +445,10 @@ class PDFBuilder {
         
         // Set the top (y) of the title text to titleTop which is passed from caller
         // set the x coordninate to center the title text
-        let titleStringRect = CGRect(x: (pageRect.width - titleStringSize.width) / 2.0, y: bottomOfContent + verticalSpace, width: titleStringSize.width, height: titleStringSize.height)
+        let titleStringRect = CGRect(x: (pageRect.width - titleStringSize.width) / 2.0, y: bottomOfContent, width: titleStringSize.width, height: titleStringSize.height)
         
         // return y coordinate for the bottom of the rectangle
-        bottomOfContent += titleStringRect.size.height * 3
+        bottomOfContent += (titleStringRect.size.height * 3) + verticalSpace
         
         // check if drawing this on the page would fit or not
         if ( bottomOfContent > (pageRect.size.height - (topMargin * 2)) ) {
@@ -795,11 +803,10 @@ class PDFBuilder {
         var compressedPhoto: UIImage;
         
         if ((item.editedPhoto) != nil) {
-            let photoData = item.editedPhoto?.jpeg(.medium)
-            compressedPhoto = UIImage(data: photoData!)!
+            compressedPhoto = item.editedPhoto!
         }
         else {
-            let photoData = item.photo?.jpeg(.lowest)
+            let photoData = item.photo?.jpeg(.medium)
             compressedPhoto = UIImage(data: photoData!)!
         }
         
