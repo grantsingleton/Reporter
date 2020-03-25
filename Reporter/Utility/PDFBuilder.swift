@@ -196,11 +196,11 @@ class PDFBuilder {
             let avgWindSpeed = self.job.weather?.windSpeedAvg
             let windGust = self.job.weather?.windGust
             
-            let tempString = String(round2Decimal(number: lowTemp!)) + "/" + String(round2Decimal(number: highTemp!))
-            let rainString = String(round2Decimal(number: rainfall!))
+            let tempString = String(round1Decimal(number: lowTemp!)) + "/" + String(round1Decimal(number: highTemp!))
+            let rainString = String(round2Decimal(number: rainfall!)) + "\""
             let humidityString = String(round2Decimal(number: minHumidity!)) + "/" + String(round2Decimal(number: maxHumidity!))
-            let windString = String(windDirection!) + " @ " + String(round2Decimal(number: avgWindSpeed!)) + "/" + String(round2Decimal(number: windGust!))
-            let eventsString = "NULL"
+            let windString = degreesToDirection(degrees: windDirection!) + " @ " + String(round1Decimal(number: avgWindSpeed!)) + "/" + String(round1Decimal(number: windGust!))
+            let eventsString = "None"
             
             let weatherTitle = "Weather Summary for: " + self.job.date
             bottomOfWeatherTuple = addSectionTitleRight(pageRect: pageRect, titleTop: bottomOfTitleTuple.bottom + doubleVerticalSpace, title: weatherTitle, font: (smallTitleFont ?? smallTitleBackupFont))
@@ -513,7 +513,7 @@ class PDFBuilder {
         
         // Set the top (y) of the title text to titleTop which is passed from caller
         // set the x coordninate to the left margin
-        let xCoordinate = pageRect.size.width - sideMargin - titleStringSize.width
+        let xCoordinate = center + centerMargin
         let titleStringRect = CGRect(x: xCoordinate, y: titleTop, width: titleStringSize.width, height: titleStringSize.height)
         
         // Draw the title onto the page
@@ -836,6 +836,40 @@ class PDFBuilder {
     func round2Decimal(number: Double) -> Double {
         //let y = Double(round(1000*x)/1000)
         return round(100 * number) / 100
+    }
+    
+    func round1Decimal(number: Double) -> Double {
+        //let y = Double(round(1000*x)/1000)
+        return round(10 * number) / 10
+    }
+    
+    func degreesToDirection(degrees: Int) -> String {
+        
+        if ( (degrees >= 340 && degrees <= 360) || (degrees >= 0 && degrees <= 20) ) {
+            return "N"
+        }
+        else if ( (degrees >= 20 && degrees <= 70) ) {
+            return "NE"
+        }
+        else if ( (degrees >= 70 && degrees <= 110) ) {
+            return "E"
+        }
+        else if ( (degrees >= 110 && degrees <= 160) ) {
+            return "SE"
+        }
+        else if ( (degrees >= 160 && degrees <= 200) ) {
+            return "S"
+        }
+        else if ( (degrees >= 200 && degrees <= 250) ) {
+            return "SW"
+        }
+        else if ( (degrees >= 250 && degrees <= 290) ) {
+            return "W"
+        }
+        else if ( (degrees >= 290 && degrees <= 340) ) {
+            return "NW"
+        }
+        return String(degrees)
     }
     
 }
