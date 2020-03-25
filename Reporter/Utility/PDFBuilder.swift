@@ -417,15 +417,14 @@ class PDFBuilder {
         
         // calculate the scaled height and width to use
         let scaledWidth = image.size.width * aspectRatio
-        let scaledHeight = image.size.width * aspectRatio
+        let scaledHeight = image.size.height * aspectRatio
         
         // calculate horizontal offset to center the image
         let imageX = (pageRect.width - scaledWidth) / 2.0
         // Create a rectangle at this coordinate with size calculated
         let imageRect = CGRect(x: imageX, y: imageTop, width: scaledWidth, height: scaledHeight)
         
-        var bottomOfContent = imageRect.origin.y + imageRect.size.height
-        
+        var bottomOfContent = imageTop + imageRect.size.height
         
         
         /*
@@ -443,15 +442,13 @@ class PDFBuilder {
         // get the rectangle size that the text fits in
         let titleStringSize = attributedTitle.size()
         
-        // Set the top (y) of the title text to titleTop which is passed from caller
-        // set the x coordninate to center the title text
-        let titleStringRect = CGRect(x: (pageRect.width - titleStringSize.width) / 2.0, y: bottomOfContent, width: titleStringSize.width, height: titleStringSize.height)
         
         // return y coordinate for the bottom of the rectangle
-        bottomOfContent += (titleStringRect.size.height * 3) + verticalSpace
+        bottomOfContent += titleStringSize.height + (verticalSpace/2.0) + titleStringSize.height + (verticalSpace/2.0) + titleStringSize.height
+        
         
         // check if drawing this on the page would fit or not
-        if ( bottomOfContent > (pageRect.size.height - (topMargin * 2)) ) {
+        if ( bottomOfContent > (pageRect.size.height - topMargin) ) {
             return false
         } else {
             return true
@@ -811,10 +808,13 @@ class PDFBuilder {
         }
         
         bottomOfContent = addImage(pageRect: pageRect, imageTop: bottomOfContent, image: compressedPhoto)
+        
+        
         bottomOfContent = addTitle(pageRect: pageRect, titleTop: bottomOfContent, title: photoNumberString, titleFont: (smallTitleFont ?? smallTitleBackupFont))
         let flagString = flagFactory(flag: item.status)
         bottomOfContent = addTitle(pageRect: pageRect, titleTop: bottomOfContent + (verticalSpace / 2.0), title: flagString, titleFont: (smallTitleFont ?? smallTitleBackupFont))
         bottomOfContent = addTitle(pageRect: pageRect, titleTop: bottomOfContent + (verticalSpace / 2.0), title: item.shortDescription, titleFont: (smallTitleFont ?? smallTitleBackupFont))
+        
         
         return bottomOfContent
     }
