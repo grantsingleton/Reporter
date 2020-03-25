@@ -592,6 +592,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = G9BC5HNPU3;
 				INFOPLIST_FILE = Reporter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -599,6 +600,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.singleton.Z6Reporter;
 				PRODUCT_NAME = "Z6 Reporter";
 				SWIFT_VERSION = 5.0;
@@ -613,6 +615,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = G9BC5HNPU3;
 				INFOPLIST_FILE = Reporter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -620,6 +623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.singleton.Z6Reporter;
 				PRODUCT_NAME = "Z6 Reporter";
 				SWIFT_VERSION = 5.0;
