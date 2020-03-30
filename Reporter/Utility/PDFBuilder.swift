@@ -276,7 +276,7 @@ class PDFBuilder {
                         compressedPhoto = item.editedPhoto!
                     }
                     else {
-                        let photoData = item.photo?.jpeg(.medium)
+                        let photoData = item.photo?.jpeg(.lowest)
                         compressedPhoto = UIImage(data: photoData!)!
                     }
                     // If the image and three lines can fit on the page then draw it on the page, otherwise start a new page (Add an AI which resizes image if it barely doesnt fit)
@@ -803,7 +803,7 @@ class PDFBuilder {
             compressedPhoto = item.editedPhoto!
         }
         else {
-            let photoData = item.photo?.jpeg(.medium)
+            let photoData = item.photo?.jpeg(.lowest)
             compressedPhoto = UIImage(data: photoData!)!
         }
         
