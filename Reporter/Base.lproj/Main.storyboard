@@ -10,13 +10,13 @@
         <!--Jobs-->
         <scene sceneID="OE6-fp-ARH">
             <objects>
-                <tableViewController id="52h-dN-Ea7" customClass="JobTableViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="52h-dN-Ea7" customClass="JobTableViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j7v-iO-wY8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobTableViewCell" textLabel="Gah-sj-BIP" rowHeight="90" style="IBUITableViewCellStyleDefault" id="lYD-KO-DoO" customClass="JobTableViewCell" customModule="Reporter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobTableViewCell" textLabel="Gah-sj-BIP" rowHeight="90" style="IBUITableViewCellStyleDefault" id="lYD-KO-DoO" customClass="JobTableViewCell" customModule="Z6_Reporter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lYD-KO-DoO" id="Zl4-Q1-N3B">
@@ -61,13 +61,13 @@
         <!--Content-->
         <scene sceneID="tY6-Nk-D6t">
             <objects>
-                <tableViewController id="v27-kF-d4G" customClass="JobContentTableViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="v27-kF-d4G" customClass="JobContentTableViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xjL-hc-Avn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobContentTableViewCell" rowHeight="90" id="M73-T8-R7k" customClass="JobContentTableViewCell" customModule="Reporter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobContentTableViewCell" rowHeight="90" id="M73-T8-R7k" customClass="JobContentTableViewCell" customModule="Z6_Reporter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M73-T8-R7k" id="Waa-aw-eiI">
@@ -139,9 +139,15 @@
                                     <action selector="runReport:" destination="v27-kF-d4G" id="Mhq-eM-pry"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="edit" id="bhK-E3-nDx">
+                                <connections>
+                                    <action selector="rearrangeCells:" destination="v27-kF-d4G" id="iz6-vk-x7z"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="bhK-E3-nDx" id="Wft-CU-2B6"/>
                         <segue destination="QFr-ca-o9V" kind="presentation" identifier="AddContent" id="Bv7-RO-pp4"/>
                         <segue destination="8TP-rw-hOr" kind="show" identifier="displayPDF" id="Lqw-If-CfR"/>
                     </connections>
@@ -153,7 +159,7 @@
         <!--Report Preview View Controller-->
         <scene sceneID="LwJ-Sf-YRl">
             <objects>
-                <viewController id="8TP-rw-hOr" customClass="ReportPreviewViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8TP-rw-hOr" customClass="ReportPreviewViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AZc-KS-1jl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,13 +184,13 @@
         <!--Locations-->
         <scene sceneID="aAy-IB-JMY">
             <objects>
-                <tableViewController id="a67-Bs-Tk8" customClass="JobLocationTableViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="a67-Bs-Tk8" customClass="JobLocationTableViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ejy-yN-HyF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobLocationTableViewCell" textLabel="DSq-6b-bjg" rowHeight="90" style="IBUITableViewCellStyleDefault" id="bcb-DX-hps" customClass="JobLocationTableViewCell" customModule="Reporter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobLocationTableViewCell" textLabel="DSq-6b-bjg" rowHeight="90" style="IBUITableViewCellStyleDefault" id="bcb-DX-hps" customClass="JobLocationTableViewCell" customModule="Z6_Reporter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bcb-DX-hps" id="VUc-W8-pyf">
@@ -223,7 +229,7 @@
         <!--Date Picker View Controller-->
         <scene sceneID="SLt-EC-GDg">
             <objects>
-                <viewController id="og0-Bd-IWt" customClass="DatePickerViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="og0-Bd-IWt" customClass="DatePickerViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KCJ-Y5-xLd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,7 +286,7 @@
         <!--Content Editor-->
         <scene sceneID="aRZ-tP-aPE">
             <objects>
-                <viewController id="zGg-F4-Eqk" customClass="JobContentViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zGg-F4-Eqk" customClass="JobContentViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hly-ee-jNw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +368,7 @@
         <!--Markup-->
         <scene sceneID="oh7-47-3jq">
             <objects>
-                <viewController id="awn-mq-y9e" customClass="PhotoEditingViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="awn-mq-y9e" customClass="PhotoEditingViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nzn-7i-llZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,7 +429,7 @@
         <!--Description-->
         <scene sceneID="U2n-PC-XLi">
             <objects>
-                <viewController id="2KM-bf-x1m" customClass="LongDescriptionViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2KM-bf-x1m" customClass="LongDescriptionViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xar-FI-pd4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -485,7 +491,7 @@
         <!--Settings-->
         <scene sceneID="zkM-7v-WUL">
             <objects>
-                <viewController id="Ute-k4-Kfx" customClass="MetaDataViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ute-k4-Kfx" customClass="MetaDataViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xkF-wE-Wnd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1230"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -605,7 +611,7 @@
                                                             <constraint firstAttribute="height" constant="200" id="Glc-xa-52I"/>
                                                         </constraints>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AttendanceTableViewCell" textLabel="kxp-ym-I8P" detailTextLabel="46b-2m-MSO" style="IBUITableViewCellStyleValue2" id="BOA-WU-UUX" customClass="AttendanceTableViewCell" customModule="Reporter" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AttendanceTableViewCell" textLabel="kxp-ym-I8P" detailTextLabel="46b-2m-MSO" style="IBUITableViewCellStyleValue2" id="BOA-WU-UUX" customClass="AttendanceTableViewCell" customModule="Z6_Reporter" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="335" height="43.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BOA-WU-UUX" id="sac-7l-D83">
@@ -677,7 +683,7 @@
                                                             <constraint firstAttribute="height" constant="200" id="M4k-Uk-RFl"/>
                                                         </constraints>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DistributionTableViewCell" textLabel="rYa-pG-35s" detailTextLabel="nUH-dp-XtT" style="IBUITableViewCellStyleValue2" id="XOP-VC-RLI" customClass="DistributionTableViewCell" customModule="Reporter" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DistributionTableViewCell" textLabel="rYa-pG-35s" detailTextLabel="nUH-dp-XtT" style="IBUITableViewCellStyleValue2" id="XOP-VC-RLI" customClass="DistributionTableViewCell" customModule="Z6_Reporter" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="335" height="43.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XOP-VC-RLI" id="9S2-o5-JlS">
@@ -813,7 +819,7 @@
         <!--New Location View Controller-->
         <scene sceneID="S6b-Uz-6h3">
             <objects>
-                <viewController id="AOy-T4-J1F" customClass="NewLocationViewController" customModule="Reporter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AOy-T4-J1F" customClass="NewLocationViewController" customModule="Z6_Reporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jbi-v3-06c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

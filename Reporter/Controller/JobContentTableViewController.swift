@@ -14,6 +14,7 @@ import Floaty
 
 class JobContentTableViewController: UITableViewController, UINavigationControllerDelegate, CLLocationManagerDelegate, FloatyDelegate {
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
     //MARK: Properties
     // The job passed in when the user selects a job
     var job: Job?
@@ -119,21 +120,44 @@ class JobContentTableViewController: UITableViewController, UINavigationControll
         }    
     }
     
-
-    /*
-    // Override to support rearranging the table view.
+    //MARK: Rearrange Cell Methods
+    
+    // support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        // rearrange in the table
+        let item = content[fromIndexPath.row]
+        content.remove(at: to.row)
+        content.insert(item, at: to.row)
+        // rearrange in the data
+        let cItem = job!.content.remove(at: fromIndexPath.row)
+        job!.content.insert(cItem, at: to.row)
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
+
+    // support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
+    
+    // The button which fires this event is called 'edit' in the storyboard
+    @IBAction func rearrangeCells(_ sender: Any) {
+        
+        self.isEditing = !self.isEditing
+        
+        switch self.isEditing {
+        case true:
+            editButton.title = "done"
+        case false:
+            editButton.title = "edit"
+        }
+        
+        // if done, save the new data order
+        if (!self.isEditing) {
+            self.saveJobsCallback!(self.job!)
+        }
+    }
 
     //MARK: Delegate Methods
     
